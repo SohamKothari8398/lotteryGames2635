@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { IoMdClock } from "react-icons/io";
 import { BiSolidWalletAlt, BiUserCircle } from 'react-icons/bi';
 import { MdLockClock, MdArrowDropDownCircle } from 'react-icons/md';
-import axios from 'axios';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import GetWalletBalance from '../UsersPanel/WalletBalance';
+import { useService } from '../../hooks/useService';
 
 const gameTimer = 900;
 let totalRewardAmount = 0;
@@ -23,6 +23,7 @@ function formatTimer(seconds) {
 }
 function Form() {
     const { user } = useAuthContext();
+    const service = useService();
     const [countdownTimer, setCountdownTimer] = useState(0);
     const [cooldown, setCooldown] = useState(10);
     const [counter, setCounter] = useState(1);
@@ -45,7 +46,7 @@ function Form() {
             setBetCount((prevCount) => prevCount + 1);
             // setTotalAmountBet((prevAmount) => (prevAmount + betAmount));
             console.log(userID, number, betAmount);
-            const response = await axios.post("/games/doubleDigitLottery/createBet", {
+            const response = await service.post("/games/doubleDigitLottery/createBet", {
                 userID: user.userID,
                 betNumber: number,
                 betAmount: betAmount,

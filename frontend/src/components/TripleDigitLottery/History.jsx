@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import axios from 'axios';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useService } from '../../hooks/useService';
 
 function History() {
     const { user } = useAuthContext();
+    const service = useService()
     const [allBetsTable, setAllBetsTable] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const betsResponse = await axios.get(`/games/tripleDigitLottery/bets/${user.userID}`);
+                const betsResponse = await service.get(`/games/tripleDigitLottery/bets/${user.userID}`);
                 const fetchedBets = betsResponse.data;
                 setAllBetsTable(fetchedBets);
                 if (!allBetsTable || allBetsTable.length === 0) console.error("No Bets found. Place Some Bets");

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useService } from "./useService";
 
 export const useLogin = () => {
+  const service = useService();
   const [error, setError] = useState(null);
   const [isLoading, setisLoading] = useState(null);
   const { dispatch } = useAuthContext();
@@ -13,7 +14,7 @@ export const useLogin = () => {
     setisLoading(true);
     setError(null);
     try {
-      const response = await axios.post("/login", { userID, password });
+      const response = await service.post("/login", { userID, password });
       if (response.data.Status === "Success") {
         if (response.data.role === "admin") {
           alert("Admin Logged In Successfully.");

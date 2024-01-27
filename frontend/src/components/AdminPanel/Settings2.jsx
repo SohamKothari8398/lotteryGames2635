@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { FaWindowClose } from 'react-icons/fa';
 import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
 import { BiSolidOffer } from 'react-icons/bi';
 import { FaPowerOff, FaHome, FaUserSecret, FaGamepad, FaUserCircle } from "react-icons/fa";
-import axios from 'axios';
 import { useLogout } from '../../hooks/useLogout';
+import { useService } from '../../hooks/useService';
 
 function AdminSettings2() {
+    const service = useService();
     const [showUserSettings, setshowUserSettings] = useState('');
     const [showAllGamesSettings, setshowAllGamesSettings] = useState('');
     const [showSubAdminSettings, setshowSubAdminSettings] = useState('');
@@ -45,7 +45,7 @@ function AdminSettings2() {
                 alert('All fields required');
                 return;
             }
-            const response = await axios.patch('/agent/settings/blockUser', { userID, mobileNumber });
+            const response = await service.patch('/agent/settings/blockUser', { userID, mobileNumber });
             if (response.status === 200) {
                 alert(`User Blocked!!!!\nUser Name: ${userID} \nMobile Number: ${mobileNumber}`);
                 setUserID('');
@@ -70,7 +70,7 @@ function AdminSettings2() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.patch('/agent/settings/activateUser', { userID, mobileNumber });
+            const response = await service.patch('/agent/settings/activateUser', { userID, mobileNumber });
             if (response.status === 200) {
                 alert(`User Activated!!!!\nUser Name: ${userID} \nMobile Number: ${mobileNumber}`);
                 setUserID('');
@@ -95,7 +95,7 @@ function AdminSettings2() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.patch('/admin/settings/betsLock', { userID, mobileNumber });
+            const response = await service.patch('/admin/settings/betsLock', { userID, mobileNumber });
             if (response.status === 200) {
                 alert(`User Bets Locked!!!!\nUser Name: ${userID} \nMobile Number: ${mobileNumber}`);
                 setUserID('');
@@ -120,7 +120,7 @@ function AdminSettings2() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.patch('/admin/settings/gamesLock', { userID, mobileNumber });
+            const response = await service.patch('/admin/settings/gamesLock', { userID, mobileNumber });
             if (response.status === 200) {
                 alert(`User Games Locked!!!!\nUser Name: ${userID} \nMobile Number: ${mobileNumber}`);
                 setUserID('');
@@ -145,7 +145,7 @@ function AdminSettings2() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.post('/register', userDetails);
+            const response = await service.post('/register', userDetails);
             if (response.status === 200) {
                 alert('User created successfully');
                 setUserDetails({
@@ -174,7 +174,7 @@ function AdminSettings2() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.post('/admin/settings/createAgent', agentDetails);
+            const response = await service.post('/admin/settings/createAgent', agentDetails);
             if (response.status === 200) {
                 alert('Agent created successfully');
                 setAgentDetails({
@@ -231,7 +231,7 @@ function AdminSettings2() {
     };
 
     const navigateToAdminPage = () => {
-        navigate('/admin');
+        navigate(-1);
     }
 
     const handleshowUserSettings = () => {

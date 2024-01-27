@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaWindowClose, FaEye, FaEyeSlash, FaArrowAltCircleUp, FaArrowCircleDown } from 'react-icons/fa';
 import { useLogin } from '../../hooks/useLogin';
-import axios from 'axios';
+import { useService } from '../../hooks/useService';
 
 function LoginSignin() {
+    const service = useService()
     const navigate = useNavigate();
     const [showForgotPassword, setShowForgotPassword] = useState(false);
     const [userID, setUserID] = useState("");
@@ -36,7 +37,7 @@ function LoginSignin() {
             if (newPassword.length < 8) {
                 throw new Error('Frontend Error: Password should be a minimum of 8 characters long.');
             }
-            const response = await axios.put('/login', {
+            const response = await service.put('/login', {
                 mobileNumber: mobileNumber2,
                 otp: otp,
                 newPassword: newPassword,

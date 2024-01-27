@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
-import axios from 'axios';
 import { format } from 'date-fns';
+import { useService } from '../../hooks/useService';
 
 const AdminWithdrawalApprovals = () => {
+    const service = useService();
     const [tableData, setTableData] = useState([]);
     const [statusOptions] = useState(['Select Status', 'Pending', 'Success', 'Rejected']);
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const AdminWithdrawalApprovals = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('/admin/adminWithdrawalApprovalsPage');
+                const response = await service.get('/admin/adminWithdrawalApprovalsPage');
                 setTableData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -67,7 +68,7 @@ const AdminWithdrawalApprovals = () => {
             return;
         }
         try {
-            const response = await axios.patch(`/admin/adminWithdrawalApprovalsPage/${row._id}`, {
+            const response = await service.patch(`/admin/adminWithdrawalApprovalsPage/${row._id}`, {
                 status: row.status,
                 adminRemarks: row.adminRemarks,
             });

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
-import axios from 'axios';
+import { useService } from '../../hooks/useService';
+
 
 function UsersSettings() {
+    const service = useService();
     const [userID, setUserID] = useState();
     const [mobileNumber, setMobileNumber] = useState(0);
     const navigate = useNavigate();
@@ -20,7 +22,7 @@ function UsersSettings() {
                 alert('All fields required');
                 return;
             }
-            const response = await axios.patch('/agent/settings/blockUser', { userID });
+            const response = await service.patch('/agent/settings/blockUser', { userID });
             if (response.status === 200) {
                 alert(`User Blocked!!!!\nUser Name: ${userID}`);
                 setUserID('');
@@ -45,7 +47,7 @@ function UsersSettings() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.patch('/agent/settings/activateUser', { userID });
+            const response = await service.patch('/agent/settings/activateUser', { userID });
             if (response.status === 200) {
                 alert(`User Activated!!!!\nUser Name: ${userID}`);
                 setUserID('');
@@ -70,7 +72,7 @@ function UsersSettings() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.patch('/admin/settings/betsLock', { userID });
+            const response = await service.patch('/admin/settings/betsLock', { userID });
             if (response.status === 200) {
                 alert(`User Bets Locked!!!!\nUser Name: ${userID} `);
                 setUserID('');
@@ -95,7 +97,7 @@ function UsersSettings() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.patch('/admin/settings/betsActivate', { userID });
+            const response = await service.patch('/admin/settings/betsActivate', { userID });
             if (response.status === 200) {
                 alert(`User Bets Activated!!!!\nUser Name: ${userID}`);
                 setUserID('');
@@ -120,7 +122,7 @@ function UsersSettings() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.patch('/admin/settings/gamesLock', { userID });
+            const response = await service.patch('/admin/settings/gamesLock', { userID });
             if (response.status === 200) {
                 alert(`User Games Locked!!!!\nUser Name: ${userID}`);
                 setUserID('');
@@ -145,7 +147,7 @@ function UsersSettings() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.post('/register', userDetails);
+            const response = await service.post('/register', userDetails);
             if (response.status === 200) {
                 alert('User created successfully');
                 setUserDetails({

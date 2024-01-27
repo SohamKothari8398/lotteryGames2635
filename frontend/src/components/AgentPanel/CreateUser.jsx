@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
-import axios from 'axios';
+import { useService } from '../../hooks/useService';
 
 function AgentsCreateUser() {
     // States
+    const service = useService();
     const navigate = useNavigate();
     const [userID, setUserID] = useState();
     const [mobileNumber, setMobileNumber] = useState(0);
@@ -21,7 +22,7 @@ function AgentsCreateUser() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.post('/register', userDetails);
+            const response = await service.post('/register', userDetails);
             if (response.status === 200) {
                 alert(`User Name: ${userDetails.userID} \nMobile Number: ${userDetails.mobileNumber} \nPromoCode: ${userDetails.promoCode}`);
                 setUserDetails({
@@ -57,7 +58,7 @@ function AgentsCreateUser() {
                 alert('All fields required');
                 return;
             }
-            const response = await axios.patch('/agent/settings/blockUser', { userID, mobileNumber });
+            const response = await service.patch('/agent/settings/blockUser', { userID, mobileNumber });
             if (response.status === 200) {
                 alert(`User Blocked!!!!\nUser Name: ${userID} \nMobile Number: ${mobileNumber}`);
                 setUserID('');
@@ -82,7 +83,7 @@ function AgentsCreateUser() {
                 alert('Please fill out all required fields');
                 return;
             }
-            const response = await axios.patch('/agent/settings/activateUser', { userID, mobileNumber });
+            const response = await service.patch('/agent/settings/activateUser', { userID, mobileNumber });
             if (response.status === 200) {
                 alert(`User Activated!!!!\nUser Name: ${userID} \nMobile Number: ${mobileNumber}`);
                 setUserID('');

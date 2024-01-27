@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
 import { useAuthContext } from '../../hooks/useAuthContext';

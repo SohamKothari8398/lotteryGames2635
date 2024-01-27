@@ -3,7 +3,6 @@ import { FaGamepad } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import { BiSolidOffer } from 'react-icons/bi';
 import { CgProfile } from 'react-icons/cg';
-import { TbFileAnalytics } from 'react-icons/tb';
 import { MdHelp } from 'react-icons/md';
 import { GiWallet } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';

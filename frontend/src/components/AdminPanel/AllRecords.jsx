@@ -12,7 +12,7 @@ import ComplaintRecords from './UsersComplaints';
 const AdminAllRecords = () => {
     const navigate = useNavigate();
     const navigateToAdminPage = () => {
-        navigate('/admin');
+        navigate(-1);
     }
 
     // Use States

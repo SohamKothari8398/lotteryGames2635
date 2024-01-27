@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import { FcGoogle } from 'react-icons/fc';
 import { FaWindowClose } from 'react-icons/fa';
-import upiMiniLogo from '../../assets/upi-logo-mini.png';
-// import cardMiniLogo from '../../assets/cards_logo_mini.jpg';
-import netBankMiniLogo from '../../assets/netBanking_Logo_mini.png';
-import phonePeMiniLogo from '../../assets/phonePe_logo_mini.png';
-import paytmLogoMini from '../../assets/paytm_Logo_mini.png';
 import upilogo from '../../assets/upi-logo.jpg';
 import gpayLogo from '../../assets/g-pay_logo.jpg';
 import paytmLogo from '../../assets/paytm_logo.jpg';
@@ -17,11 +11,12 @@ import card_payments2 from '../../assets/MasterCard_Logo.png';
 import phonepe from '../../assets/phonePe-logo.png';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import axios from "axios";
 import GetWalletBalance from '../UsersPanel/WalletBalance';
+import { useService } from '../../hooks/useService';
 
 function Withdraw() {
     const { user } = useAuthContext();
+    const service = useService();
     const [amount, setAmount] = useState(0);
     const [otp, setOtp] = useState(0);
     const navigate = useNavigate();
@@ -36,7 +31,7 @@ function Withdraw() {
                 return;
             }
             if (amount > user.walletBalance) alert("Invalid Request!!\nInsufficient Account Balance!!");
-            const response = await axios.post("/withdraw", {
+            const response = await service.post("/withdraw", {
                 userID: user.userID,
                 mobileNumber: user.mobileNumber,
                 otp,

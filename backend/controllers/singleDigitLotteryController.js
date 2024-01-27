@@ -250,34 +250,6 @@ module.exports = {
   getRecentBetsById,
 };
 
-// cron.schedule("*/6 * * * *", async () => {
-//   try {
-//     console.log(
-//       "Time Before await createGame() for SDL :",
-//       Math.floor(Date.now() / 1000)
-//     );
-//     await createGame();
-//     console.log(
-//       "Time after Create Game Request Success from node-cron for Single Digit Lottery",
-//       Math.floor(Date.now() / 1000)
-//     );
-//   } catch (error) {
-//     console.error("Error creating a game:", error.message);
-//   }
-// });
-
-// cron.schedule("10 */6 * * * *", async () => {
-//   try {
-//     await updateBetsAndGame();
-//     console.log(
-//       "Update Request Success from node-cron for Single Digit Lottery",
-//       Math.floor(Date.now() / 1000)
-//     );
-//   } catch (error) {
-//     console.error("Error updating  game:", error.message);
-//   }
-// });
-
 // const updateBetsAndGame = async () => {
 //   try {
 //     const gameToUpdate = await GameModel.findOne().sort({ createdAt: -1 });
@@ -315,23 +287,3 @@ module.exports = {
 //     console.error("Error fetching game for update:", error.message);
 //   }
 // };
-
-// function scheduleGameCreation() {
-//   setTimeout(async () => {
-//     try {
-//       const games = await GameModel.find();
-//       if (!games || games.length === 0) await createGame();
-//       else {
-//         await createGame();
-//         console.log(
-//           "Single Digit Lottery Game Request Created from Controller",
-//           Math.floor(Date.now() * 1000)
-//         );
-//       }
-//     } catch (error) {
-//       console.error("Error creating a new game:", error.message);
-//     }
-//     // }, 5 * 60 * 1000 + 10 * 1000);
-//   }, 15 * 60 * 1000);
-// }
-// scheduleGameCreation();

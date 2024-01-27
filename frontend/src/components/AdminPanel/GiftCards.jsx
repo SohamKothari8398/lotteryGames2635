@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import axios from 'axios';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useService } from '../../hooks/useService';
 
 function AgentsGiftCard() {
+    const service = useService();
     const { user } = useAuthContext();
     const [userID, setUserID] = useState('');
     const [amount, setAmount] = useState(null);
@@ -20,7 +22,7 @@ function AgentsGiftCard() {
             else {
                 const confirmation = window.confirm(`Confirm the details of your gift card: \n${userID} \n${amount}`);
                 if (confirmation) {
-                    const response = await axios.post("/admin/createGiftCard", {
+                    const response = await service.post("/admin/createGiftCard", {
                         fromUser: user.userID,
                         toUser: userID,
                         amount: amount

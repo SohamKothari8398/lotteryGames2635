@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import axios from 'axios';
 import { format } from 'date-fns';
+import { useService } from '../../hooks/useService';
 
 
 function AgentsUserRecords() {
     const { user } = useAuthContext();
+    const service = useService();
     // Use States
     const [tableData, setTableData] = useState([]);
     const [showDepositRecord, setshowDepositRecord] = useState('');
@@ -19,7 +20,7 @@ function AgentsUserRecords() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('/agent/userRecords', { params: { promoCode: user.promoCode } });
+                const response = await service.get('/agent/userRecords', { params: { promoCode: user.promoCode } });
                 setTableData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error.message || error);

@@ -242,7 +242,6 @@ module.exports = {
   getRecentBetsById,
 };
 
-// // Update bets after 15 minutes
 // const updateBets = async (gameIdToUpdate) => {
 //   try {
 //     const gameToUpdate = await GameModel.findOne({
@@ -296,24 +295,3 @@ module.exports = {
 //     console.error("Error fetching game for game update:", error.message);
 //   }
 // };
-
-// function scheduleGameCreation() {
-//   setTimeout(async () => {
-//     try {
-//       const games = await GameModel.find();
-//       if (!games || games.length === 0) await createGame();
-//       else {
-//         await createGame();
-//         console.log(
-//           "Triple Digit Lottery Game Request Created from Controller",
-//           Math.floor(Date.now() * 1000)
-//         );
-//       }
-//     } catch (error) {
-//       console.error("Error creating a new game:", error.message);
-//     }
-//     // }, 5 * 60 * 1000 + 10 * 1000);
-//   }, 15 * 60 * 1000);
-// }
-
-// scheduleGameCreation();

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { format } from 'date-fns';
-import axios from 'axios';
+import { useService } from '../../hooks/useService';
 
 function GameTable() {
     const [gamesTable, setGamesTable] = useState([]);
+    const service = useService();
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const gamesResponse = await axios.get('/games/doubleDigitLottery/games');
+                const gamesResponse = await service.get('/games/doubleDigitLottery/games');
                 const gamesData = gamesResponse.data;
                 setGamesTable(gamesData);
                 if (!gamesTable || gamesTable === 0) console.error("No Games Found. Wait for 5 to 15 minutes");
@@ -25,7 +26,7 @@ function GameTable() {
 
     return (
         <div className="px-4 pb-10 flex flex-col bg-blue-900 items-center">
-            <div className="text-center font-semibold bg-black text-white rounded-lg text-lg md:text-xl p-4 my-4 border-4 flex flex-row">Results
+            <div className="text-center font-semibold bg-black text-white rounded-lg text-lg md:text-xl p-4 my-4 border-4 flex flex-row">Games & Results
                 {/* <MdOutlineArrowDropDownCircle size={35} className='ml-4' />              */}
             </div>
             <div className="w-full md:w-[98%] h-auto overflow-x-auto lg:overflow-hidden rounded-lg text-white grid items-center">

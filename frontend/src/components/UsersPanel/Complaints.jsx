@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { FaWindowClose } from 'react-icons/fa';
 import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import axios from 'axios';
+import { useService } from '../../hooks/useService';
 
 function UserComplaintsForm() {
     const { user } = useAuthContext();
+    const service = useService()
     const [showComplaintsForm, setShowComplaintsForm] = useState(false);
     const [showComplaintsStatus, setShowComplaintsStatus] = useState(false);
     const [showComplaintsHistory, setShowComplaintsHistory] = useState(false);
@@ -42,7 +43,7 @@ function UserComplaintsForm() {
     useEffect(() => {
         const fetchUserComplaints = async () => {
             try {
-                const response = await axios.get(`/user/complaints/${userId}`);
+                const response = await service.get(`/user/complaints/${userId}`);
                 const fetchedComplaints = response.data;
                 setUserComplaints(fetchedComplaints);
                 // Filter pending complaints
@@ -98,7 +99,7 @@ function UserComplaintsForm() {
             setShowComplaintsStatus(true);
             setShowComplaintsHistory(true);
             try {
-                const result = axios.post('/user/complaints', {
+                const result = service.post('/user/complaints', {
                     userId: user.userID,
                     mobileNumber: user.mobileNumber,
                     complaintID: complaintID,

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
-import axios from 'axios';
 import { format } from 'date-fns';
+import { useService } from '../../hooks/useService';
 
 
 const UserComplaints = () => {
+    const service = useService();
     const [complaintsData, setComplaintsData] = useState([]);
     const [complaintStatuses, setComplaintStatuses] = useState([]);
     const [complaintRemarks, setComplaintRemarks] = useState([]);
@@ -13,7 +14,7 @@ const UserComplaints = () => {
 
     useEffect(() => {
         // Fetch complaints data from the server
-        axios.get('/user/complaints')
+        service.get('/user/complaints')
             .then(response => {
                 const fetchedData = response.data;
                 setComplaintsData(fetchedData);
@@ -45,7 +46,7 @@ const UserComplaints = () => {
         const enteredRemark = complaintRemarks[index];
 
         // Assuming you have an endpoint to update adminRemarks and compStatus
-        axios.patch(`/admin/usersComplaints/${complaintsData[index]._id}`, {
+        service.patch(`/admin/usersComplaints/${complaintsData[index]._id}`, {
             adminRemarks: enteredRemark,
             compStatus: selectedStatus,
         })

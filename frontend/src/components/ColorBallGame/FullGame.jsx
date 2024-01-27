@@ -14,8 +14,8 @@ function Game() {
     return (
         <div className='bg-blue-400 text-white font-bold'>
             <Form />
-            <BetsTable />
             <GameTable />
+            <BetsTable />
             <History />
             {/** <Analytics/> */}
             <button onClick={navigateToBack} className="fixed text-red-500 rounded-lg bg-white top-2 right-4 z-10 ">

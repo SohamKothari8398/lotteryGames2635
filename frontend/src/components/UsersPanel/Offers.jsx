@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { FaWindowClose } from 'react-icons/fa';
-import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
 
 function UserOffers() {
 
@@ -10,15 +9,7 @@ function UserOffers() {
     const navigate = useNavigate();
 
     const navigateToUserHome = () => {
-        navigate('/user/home');
-    }
-
-    const handleshowDepositHistory = () => {
-        setshowDepositHistory(!showDepositHistory);
-    }
-
-    const handleshowWithdrawHistory = () => {
-        setshowWithdrawHistory(!showWithdrawHistory);
+        navigate(-1);
     }
 
     return (

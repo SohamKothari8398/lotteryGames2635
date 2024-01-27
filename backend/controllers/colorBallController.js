@@ -76,15 +76,6 @@ const createGame = async (req, res) => {
       await newGame.save();
       console.log("Color Ball Game Created at", Math.floor(Date.now() * 1000));
       await updateBetsAndGame(newGame.gameID);
-      // // Call updateGame function with gameID
-      // updateGame(newGame.gameID);
-      // // Call updateBets function with gameID
-      // updateBets(newGame.gameID);
-      // if (res) {
-      //   res.status(201).json(newGame);
-      // } else {
-      //   console.log("New game created from controller !");
-      // }
     }
   } catch (error) {
     if (res) {
@@ -94,39 +85,6 @@ const createGame = async (req, res) => {
     }
   }
 };
-
-// function scheduleGameCreation() {
-//   setTimeout(async () => {
-//     try {
-//       const games = await GameModel.find();
-//       if (!games || games.length === 0) await createGame();
-//       else {
-//         await createGame();
-//         console.log(
-//           "Single Digit Lottery Game Request Created from Controller",
-//           Math.floor(Date.now() * 1000)
-//         );
-//       }
-//     } catch (error) {
-//       console.error("Error creating a new game:", error.message);
-//     }
-//     // }, 5 * 60 * 1000 + 10 * 1000);
-//   }, 15 * 60 * 1000);
-// }
-// scheduleGameCreation();
-
-// function scheduleGameCreation() {
-//   setTimeout(async () => {
-//     try {
-//       await createGame();
-//       console.log("Color Ball Game Request Created from Controller");
-//     } catch (error) {
-//       console.error("Error creating a new game:", error.message);
-//     }
-//   }, 15 * 60 * 1000); // 5 minutes and 10 seconds delay
-// }
-
-// scheduleGameCreation();
 
 // Get all Games
 const getAllGames = async (req, res) => {

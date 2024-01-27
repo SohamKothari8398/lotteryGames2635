@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
+import { useService } from '../../hooks/useService';
 import axios from 'axios';
 import { format } from 'date-fns';
 
 const AgentsRecordTable = () => {
+    const service = useService();
     const [tableData, setTableData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('/admin/agentsRecords');
+                const response = await service.get('/admin/agentsRecords');
                 setTableData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);

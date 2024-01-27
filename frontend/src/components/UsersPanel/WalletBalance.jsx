@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios";
+import { useService } from '../../hooks/useService';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 function GetWalletBalance() {
     const [walletBalance, setWalletBalance] = useState(null);
+    const service = useService()
     const { user } = useAuthContext();
     useEffect(() => {
         const fetchData = async () => {
             try {
                 // console.log(user.userID);
-                const response = await axios.get(`/getWalletBalance/${user.userID}`);
+                const response = await service.get(`/getWalletBalance/${user.userID}`);
                 if (!response.data) {
                     console.log("Response Data Not Received.");
                 } else {

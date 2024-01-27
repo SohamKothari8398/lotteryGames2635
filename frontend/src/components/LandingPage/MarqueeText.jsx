@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './MarqueeText.css';
+import { useService } from '../../hooks/useService';
 
 function LandingPageMarqueeText() {
+    const service = useService();
     const [marqueeText, setMarqueeText] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('/promoLink');
+                const response = await service.get('/promoLink');
                 const sliderText = response.data.adsSliderText;
                 setMarqueeText(sliderText);
                 console.log(marqueeText);

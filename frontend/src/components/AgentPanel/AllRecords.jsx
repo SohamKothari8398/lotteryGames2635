@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
 import ResultGamesColorComponent from '../LandingPage/ResultPageGamesColorChange';
-import SubAdminUserRecords from './UserRecords';
 
 function AgentsAllRecords() {
     const navigate = useNavigate();
@@ -13,7 +12,7 @@ function AgentsAllRecords() {
 
 
     const navigateToHomePage = () => {
-        navigate('/agent/home');
+        navigate(-1);
     };
 
     const handleshowUserRecords = () => {

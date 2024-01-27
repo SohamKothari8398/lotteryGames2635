@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { FaWindowClose } from 'react-icons/fa';
-import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
 import { BiSolidOffer } from 'react-icons/bi';
-import { FaPowerOff, FaHome, FaUserSecret, FaGamepad, FaUserCircle } from "react-icons/fa";
-import axios from 'axios';
-import { useLogout } from '../../hooks/useLogout';
+import { FaHome } from "react-icons/fa";
+import { useService } from '../../hooks/useService';
 
 function OffersSettings() {
+    const service = useService();
     const [showOfferSettings, setshowOfferSettings] = useState('');
     const [confirmation, setConfirmation] = useState(false);
-    const { logout } = useLogout();
     const navigate = useNavigate();
     const [deleteSubAdmin, setDeleteSubAdmin] = useState('');
     const handleDeleteAgentSubmit = () => {

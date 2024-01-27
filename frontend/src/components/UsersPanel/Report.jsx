@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { FaWindowClose } from 'react-icons/fa';
 import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
+import { useService } from '../../hooks/useService';
 
 function UserReport() {
-
+    const service = useService()
     const [showDepositHistory, setshowDepositHistory] = useState('');
     const [showWithdrawHistory, setshowWithdrawHistory] = useState('');
     const navigate = useNavigate();

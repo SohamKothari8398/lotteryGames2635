@@ -22,16 +22,6 @@ const GamesCards = () => {
     const [videoLink3, setVideoLink3] = useState("");
     const [videoLink4, setVideoLink4] = useState("");
 
-    //src="https://www.youtube.com/embed/tgbNymZ7vqY?
-    //src="https://www.youtube.com/embed/tgbNymZ7vqY"
-    //src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1"
-    // src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"
-    // src="https://www.youtube.com/embed/O5hShUO6wxs"
-    // src="https://www.youtube.com/embed/O5hShUO6wxs?autoplay=1"
-    // src="https://www.youtube.com/embed/i8n1gSw_o_8"
-    // src="https://www.youtube.com/embed/i8n1gSw_o_8?controls=0"
-    // src="https://www.youtube.com/embed/i8n1gSw_o_8?playlist=tgbNymZ7vqY&loop=1"
-
     // Navigators
     const navigate = useNavigate();
 

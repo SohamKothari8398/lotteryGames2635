@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-// import { FaWindowClose } from 'react-icons/fa';
-import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
-import { BiSolidOffer } from 'react-icons/bi';
-import { FaPowerOff, FaHome, FaUserSecret, FaGamepad, FaUserCircle } from "react-icons/fa";
-import axios from 'axios';
-import { useLogout } from '../../hooks/useLogout';
+import { useNavigate } from 'react-router-dom'
+import { FaHome } from "react-icons/fa";
+import { useService } from '../../hooks/useService';
 
 function GamesSetting() {
+    const service = useService();
     const [gameDuration, setgameDuration] = useState(null);
     const [rewardAmount, setRewardAmount] = useState(null);
     const [confirmation, setConfirmation] = useState(false);

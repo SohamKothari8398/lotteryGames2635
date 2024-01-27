@@ -1,20 +1,15 @@
 import React, { } from 'react';
 import { BsFillClipboard2DataFill } from 'react-icons/bs';
-import { TbSettingsShare } from 'react-icons/tb';
 import { FaUserSecret, FaBriefcase, FaUser, FaWallet, FaGamepad } from 'react-icons/fa';
-import { PiFilesBold, PiPokerChipFill } from 'react-icons/pi';
+import { PiFilesBold } from 'react-icons/pi';
 import { AiFillControl } from 'react-icons/ai';
 import { HiGift } from 'react-icons/hi';
-import { BiSolidOffer } from 'react-icons/bi';
-import { GiReceiveMoney, GiPayMoney, GiCoins } from 'react-icons/gi';
+import { GiReceiveMoney, GiPayMoney } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../hooks/useAuthContext';
 import GetWalletBalance from '../UsersPanel/WalletBalance';
 
 // Component
 function AdminControlBar() {
-    const { user } = useAuthContext();
-    // Navigator
     const navigate = useNavigate();
 
     const navigateToAdminDepositApprovalsPage = () => {

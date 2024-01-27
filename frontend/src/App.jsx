@@ -1,4 +1,3 @@
-// import dotenv from 'dotenv';
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import UserHome from './components/UsersPanel/Home';
@@ -27,10 +26,6 @@ import AgentsAllRecords from './components/AgentPanel/AllRecords';
 import AgentsCreatePromo from './components/AgentPanel/CreatePromo';
 import GiftCard from './components/AdminPanel/GiftCards';
 import AdminThemesPanel from './components/AdminPanel/ThemesPanel';
-// import SingleDigitLottery from './components/Games/SingleDigitLottery';
-// import DoubleDigitLottery from './components/Games/DoubleDigitLottery';
-// import TripleDigitLottery from './components/Games/TripleDigitLottery';
-// import ColorBallGame from './components/Games/ColorBallGame';
 import AdminSummary from './components/AdminPanel/Summary';
 import UserSummary from './components/UsersPanel/Summary';
 import AgentSummary from './components/AgentPanel/Summary';
@@ -50,13 +45,9 @@ import TripleDigitLotteryFullGame from './components/TripleDigitLottery/FullGame
 import ColorBallFullGame from './components/ColorBallGame/FullGame';
 import GamesSetting from './components/AdminPanel/GamesSetting';
 import OffersSettings from './components/AdminPanel/OffersSettings';
-// dotenv.config();
-
-
-// const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 function App() {
-  const { user } = useAuthContext(); // Assuming you have a setUser method in your context
+  const { user } = useAuthContext();
   const isUser = user && user.role === 'user' && user.accountStatus === "active";
   const isAdmin = user && user.role === 'admin';
   const isAgent = user && user.role === 'agent';
@@ -83,17 +74,12 @@ function App() {
           <Route path='/helpCenter' element={<HelpCenter />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          {/* User Routes or After Login Routes  */}
+          {/* Games Routes */}
           <Route path='/games' element={<GamesCards />} />
           <Route path='/games/singleDigitLottery' element={isLogin ? <SingleDigitLotteryGame /> : <Login />} />
           <Route path='/games/doubleDigitLottery' element={isLogin ? <DoubleDigitLotteryGame /> : <Login />} />
-          {/* <Route path='/games/singleDigitLottery' element={isLogin ? <SingleDigitLottery /> : <Login />} />
-          <Route path='/games/test' element={<Game />} /> */}
-          {/* <Route path='/games/doubleDigitLottery' element={isLogin ? <DoubleDigitLottery /> : <Login />} /> */}
           <Route path='/games/tripleDigitLottery' element={isLogin ? <TripleDigitLotteryFullGame /> : <Login />} />
-          {/* <Route path='/games/tripleDigitLottery' element={isLogin ? <TripleDigitLottery /> : <Login />} /> */}
           <Route path='/games/colorBallLottery' element={isLogin ? <ColorBallFullGame /> : <Login />} />
-          {/* <Route path='/games/colorBallLottery' element={isLogin ? <ColorBallGame /> : <Login />} /> */}
           {/* User Routes or After Login Routes  */}
           <Route path='/user/home' element={(isUser) ? <UserHome /> : <Login />} />
           <Route path='/user/wallet' element={(isLogin) ? <UserWallet /> : <Login />} />

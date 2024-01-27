@@ -7,7 +7,7 @@
   
   .marquee {
     display: inline-block;
-    animation: marqueeAnimation 30s ease-in-out infinite;
+    animation: marqueeAnimation 10s ease-in-out infinite;
     }
 
   .marquee:hover {

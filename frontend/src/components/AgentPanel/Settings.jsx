@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
 import { FaPowerOff, FaHome } from "react-icons/fa";
-import { RiUserSettingsLine, RiLockPasswordFill } from "react-icons/ri";
+import { RiLockPasswordFill } from "react-icons/ri";
 import { BiSolidBank } from "react-icons/bi";
-import { SiPluscodes } from "react-icons/si";
-import axios from 'axios';
+import { useService } from '../../hooks/useService';
 
 function AgentsSettings() {
-
+  const service = useService();
   const [showForm, setShowForm] = useState(false);
   const [showPromoForm, setShowPromoForm] = useState(false);
   const [showBankForm, setShowBankForm] = useState(false);
@@ -30,7 +29,7 @@ function AgentsSettings() {
       if (newPassword.length < 8) {
         throw new Error('Frontend Error: Password should be a minimum of 8 characters long.');
       }
-      const response = await axios.put('/login', {
+      const response = await service.put('/login', {
         mobileNumber: mobile2,
         otp: otp2,
         newPassword: newPassword,
@@ -52,7 +51,7 @@ function AgentsSettings() {
       if (newUpiID.length < 13) {
         throw new Error('Frontend Error: UPI-ID should be a minimum of 14 characters long.');
       }
-      const response = await axios.put('/agent/settings', {
+      const response = await service.put('/agent/settings', {
         mobileNumber: mobile,
         otp: otp,
         newUpiID: newUpiID,
@@ -64,7 +63,7 @@ function AgentsSettings() {
       }
     } catch (error) {
       console.error('UPI-ID change failed:', error);
-      console.log('Axios Response:', error.response);
+      console.log('service Response:', error.response);
       alert(error.response?.data?.error || error.message || 'Failed to update UPI details. Please try again.');
     }
   };
@@ -72,7 +71,7 @@ function AgentsSettings() {
   // const handlePromoChange = async (e) => {
   //   e.preventDefault();
   //   try {
-  //     const response = await axios.patch("/agent/settings", {
+  //     const response = await service.patch("/agent/settings", {
   //       mobileNumber: mobile,
   //       otp,
   //       newPromoCode: newPromo,
@@ -86,7 +85,7 @@ function AgentsSettings() {
   //     }
   //   } catch (error) {
   //     console.error('PromoCode change failed:', error);
-  //     console.log('Axios Response:', error.response);
+  //     console.log('service Response:', error.response);
   //     alert(error.response?.data?.error || error.message || 'Failed to update UPI details. Please try again.');
   //   }
   // };

@@ -61,11 +61,6 @@ const createGame = async (req, res) => {
         Math.floor(Date.now() / 1000)
       );
       await updateBetsAndGame(newGame.gameID);
-      // if (res) {
-      //   res.status(201).json(newGame);
-      // } else {
-      //   console.log("New game created from controller !");
-      // }
     }
   } catch (error) {
     if (res) {
@@ -302,32 +297,3 @@ module.exports = {
 //     console.error("Error fetching game for game update:", error.message);
 //   }
 // };
-
-// cron.schedule("10 */5 * * * *", async () => {
-//   try {
-//     await createGame();
-//     console.log("Double Digit Lottery Game Request Created from router");
-//   } catch (error) {
-//     console.error("Error creating a new game:", error.message);
-//   }
-// });
-
-// function scheduleGameCreation() {
-//   setTimeout(async () => {
-//     try {
-//       const games = await GameModel.find();
-//       if (!games || games.length === 0) await createGame();
-//       else {
-//         await createGame();
-//         console.log(
-//           "Double Digit Lottery Game Request Created from Controller",
-//           Math.floor(Date.now() * 1000)
-//         );
-//       }
-//     } catch (error) {
-//       console.error("Error creating a new game:", error.message);
-//     }
-//   }, 15 * 60 * 1000); // 15 minutes and 10 seconds delay
-// }
-
-// scheduleGameCreation();

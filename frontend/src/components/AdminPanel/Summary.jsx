@@ -14,7 +14,7 @@ function AdminSummary() {
     };
 
     const navigateToAdminPage = () => {
-        navigate('/admin');
+        navigate(-1);
     }
 
     const handleshowUserSettings = () => {

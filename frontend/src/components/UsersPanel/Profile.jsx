@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { FaPowerOff, FaHome } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
-import axios from "axios";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useLogout } from "../../hooks/useLogout";
+import { useService } from "../../hooks/useService";
 
 // The ProfileComponent that has three sections: User History, Change Password and Logout
 const Profile = () => {
+    const service = useService()
     const { user } = useAuthContext();
     const { logout } = useLogout();
     // States
@@ -71,7 +72,7 @@ const Profile = () => {
             if (newPassword.length < 8) {
                 throw new Error('Frontend Error: Password should be a minimum of 8 characters long.');
             }
-            const response = await axios.put('/login', {
+            const response = await service.put('/login', {
                 mobileNumber: mobile,
                 otp: otp,
                 newPassword: newPassword,
@@ -97,7 +98,7 @@ const Profile = () => {
             if (newUpiID.length < 13) {
                 throw new Error('Frontend Error: UPI-ID should be a minimum of 14 characters long.');
             }
-            const response = await axios.put('/user/profile', {
+            const response = await service.put('/user/profile', {
                 mobileNumber: mobile,
                 otp: otp,
                 newUpiID: newUpiID,
@@ -109,7 +110,7 @@ const Profile = () => {
             }
         } catch (error) {
             console.error('UPI-ID change failed:', error);
-            console.log('Axios Response:', error.response);
+            console.log('service Response:', error.response);
             alert(error.response?.data?.error || error.message || 'Failed to update UPI details. Please try again.');
         }
     };

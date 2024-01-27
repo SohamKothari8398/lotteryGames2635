@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { TiThMenu } from 'react-icons/ti';
 import { FaWindowClose, FaWallet, FaPowerOff, FaUserCircle } from 'react-icons/fa';
 import { FaMobileRetro } from 'react-icons/fa6';

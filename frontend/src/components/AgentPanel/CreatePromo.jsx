@@ -5,7 +5,7 @@ import { FaHome } from 'react-icons/fa';
 function AgentsCreatePromo() {
     const [promoCode, setpromoCode] = useState('');
     const navigate = useNavigate();
-    const navigateToAdminPage = () => {
+    const navigateToHomePage = () => {
         navigate('/agent/home');
     }
 
@@ -40,7 +40,7 @@ function AgentsCreatePromo() {
                 </div>
             </div>
             <div className="absolute top-1 right-1 bg-black hover:bg-green-600 text-white shadow-md shadow-white m-2 p-2 rounded-lg">
-                <button onClick={navigateToAdminPage}>
+                <button onClick={navigateToHomePage}>
                     <FaHome size={30} />
                 </button>
             </div>

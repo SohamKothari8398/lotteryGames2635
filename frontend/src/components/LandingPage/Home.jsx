@@ -4,7 +4,6 @@ import MarqueeText from './MarqueeText';
 import Slider from './GamesSlider'
 import LandingPageSubscriptions from './Subscriptions'
 import GamesCards from '../Games/GamesCards'
-import GamesResult from './MainResultsComponent'
 import ResultGamesColorComponent from './ResultPageGamesColorChange'
 import LandingPageImagesMarquee from './ImagesMarquee'
 import MainBodyScroller from './MainBodyScroller'

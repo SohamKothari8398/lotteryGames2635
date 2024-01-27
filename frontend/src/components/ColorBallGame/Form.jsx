@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { IoMdClock } from "react-icons/io";
 import { BiSolidWalletAlt, BiUserCircle } from 'react-icons/bi';
 import { MdLockClock, MdArrowDropDownCircle } from 'react-icons/md';
-import axios from 'axios';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import GetWalletBalance from '../UsersPanel/WalletBalance';
+import { useService } from '../../hooks/useService';
 
 const gameTimer = 600;
 let totalRewardAmount = 0;
@@ -22,6 +22,7 @@ function formatTimer(seconds) {
     return `${hoursStr}:${minutesStr}:${secondsStr}`;
 }
 function Form() {
+    const service = useService();
     const { user } = useAuthContext();
     const [countdownTimer, setCountdownTimer] = useState(0); // Initially 10 seconds
     const [cooldown, setCooldown] = useState(10);
@@ -46,7 +47,7 @@ function Form() {
             setBetCount((prevCount) => prevCount + 1);
             // setTotalAmountBet((prevAmount) => (prevAmount + betAmount));
             console.log(userID, number, betAmount);
-            const response = await axios.post("/games/colorBallLottery/createBet", {
+            const response = await service.post("/games/colorBallLottery/createBet", {
                 userID: userID,
                 betNumber: number,
                 betColor: selectColor,

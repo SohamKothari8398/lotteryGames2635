@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { CgGames } from 'react-icons/cg';
-import { PiPokerChipBold } from 'react-icons/pi';
-import { ImTicket } from 'react-icons/im';
 import { LuPhoneCall } from 'react-icons/lu';
 import { TiThMenu } from 'react-icons/ti';
 import { FaWindowClose } from 'react-icons/fa';

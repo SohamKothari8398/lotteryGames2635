@@ -7,12 +7,22 @@ import LandingPageMarqueeText from '../LandingPage/MarqueeText';
 import LandingPageGamesSlider from '../LandingPage/GamesSlider';
 import LandingPageImagesMarquee from '../LandingPage/ImagesMarquee';
 import GamesCards from '../Games/GamesCards';
-import axios from 'axios';
+import { useService } from '../../hooks/useService';
 
+//src="https://www.youtube.com/embed/tgbNymZ7vqY?
+//src="https://www.youtube.com/embed/tgbNymZ7vqY"
+//src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1"
+// src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"
+// src="https://www.youtube.com/embed/O5hShUO6wxs"
+// src="https://www.youtube.com/embed/O5hShUO6wxs?autoplay=1"
+// src="https://www.youtube.com/embed/i8n1gSw_o_8"
+// src="https://www.youtube.com/embed/i8n1gSw_o_8?controls=0"
+// src="https://www.youtube.com/embed/i8n1gSw_o_8?playlist=tgbNymZ7vqY&loop=1"
 
 function AdminThemesPanel() {
+    const service = useService();
     const [gameName, setGameName] = useState('');
-    const [yotubeVideoLink, setYotubeVideoLink] = useState('');
+    const [yotubeVideoLink, setYotubeVideoLink] = useState('https://www.youtube.com/embed/');
     const [showMarqueeTextForm, setShowMarqueeTextForm] = useState(false);
     const [showMarqueeImageForm, setShowMarqueeImageForm] = useState(false);
     const [showSliderImageForm, setShowSliderImageForm] = useState(false);
@@ -46,7 +56,7 @@ function AdminThemesPanel() {
             return;
         }
         try {
-            const response = await axios.put("/admin/setThemes/link", { gameName, yotubeVideoLink });
+            const response = await service.put("/admin/setThemes/link", { gameName, yotubeVideoLink });
             if (response.data.status === "Game Link Updated") {
                 alert(`Youtube Link Changed for ${gameName}.\nLink = ${yotubeVideoLink}.`);
             } else {
@@ -62,7 +72,7 @@ function AdminThemesPanel() {
         e.preventDefault();
 
         try {
-            const response = await axios.put("/admin/setThemes/text", { adsSliderText });
+            const response = await service.put("/admin/setThemes/text", { adsSliderText });
             if (response.data.status === "Updated Slider Text") {
                 console.log(adsSliderText);
                 alert(`The new slider text = ${adsSliderText}\nSlider Text Changed successfully!`);

@@ -4,10 +4,6 @@ import { AiFillRightSquare, AiFillLeftSquare } from 'react-icons/ai';
 import { RxDotFilled } from 'react-icons/rx';
 import img3 from '../../assets/img3.jpg';
 import img4 from '../../assets/img4.jpg';
-import img6 from '../../assets/img6.jpg';
-import img7 from '../../assets/img7.jpg';
-import img8 from '../../assets/img8.jpg';
-import img9 from '../../assets/img9.jpg';
 import lottery from '../../assets/lotteryBg.jpg';
 import ludo from '../../assets/ludoBgImg.png';
 import poker from '../../assets/pokerBg.jpg';
@@ -26,7 +22,7 @@ function LandingPageGamesSlider() {
     useEffect(() => {
         const interval = setInterval(() => {
             nextImage();
-        }, 5000); // Change image every 3 seconds (adjust as needed)
+        }, 5000); // Change image every 5 seconds (adjust as needed)
 
         return () => clearInterval(interval);
     }, [currentImageIndex]);

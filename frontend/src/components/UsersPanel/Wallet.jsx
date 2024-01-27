@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { FaWindowClose } from 'react-icons/fa';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import axios from "axios";
 import { format } from 'date-fns';
 import GetWalletBalance from '../UsersPanel/WalletBalance';
+import { useService } from '../../hooks/useService';
 
 function UserWallet() {
     const { user } = useAuthContext();
+    const service = useService()
     const [tableData, setTableData] = useState([]);
     const navigate = useNavigate();
     const navigateToUserHome = () => {
@@ -16,7 +17,7 @@ function UserWallet() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`/user/wallet?userId=${user.userID}`);
+                const response = await service.get(`/user/wallet?userId=${user.userID}`);
                 if (!response) alert("Response Data Not Received.");
                 setTableData(response.data);
             } catch (error) {
