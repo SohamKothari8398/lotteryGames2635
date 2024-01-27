@@ -16,6 +16,7 @@ function OffersSettings() {
             alert('Action Cancelled');
         }
     };
+    // This will be for future
     const navigateToAdminPage = () => {
         navigate('/admin');
     }

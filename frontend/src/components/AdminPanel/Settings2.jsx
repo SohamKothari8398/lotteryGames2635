@@ -20,7 +20,6 @@ function AdminSettings2() {
     // States
     const [mobile, setMobile] = useState("");
     const navigate = useNavigate();
-    const [settingsAccess, setSettingsAccess] = useState(false);
     const [deleteSubAdmin, setDeleteSubAdmin] = useState('');
     const [userDetails, setUserDetails] = useState({
         userID: '',
