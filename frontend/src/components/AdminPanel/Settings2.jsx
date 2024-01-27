@@ -717,4 +717,3 @@ function AdminSettings2() {
 };
 
 export default AdminSettings2;
-
