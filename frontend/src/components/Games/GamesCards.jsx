@@ -9,10 +9,12 @@ import { ImYoutube } from 'react-icons/im';
 import { FaWindowClose, FaHome } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useService } from '../../hooks/useService';
 
 
 const GamesCards = () => {
     const { user } = useAuthContext();
+    const service = useService();
     const [showVideo, setShowVideo] = useState(false);
     const [showVideo2, setShowVideo2] = useState(false);
     const [showVideo3, setShowVideo3] = useState(false);
@@ -44,8 +46,9 @@ const GamesCards = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/promoLinks'); // Assuming your backend route is /api/promoLinks
-                const data = await response.json();
+                const response = await service.get('/promoLinks'); // Assuming your backend route is /api/promoLinks
+                // Axios automatically parses JSON, so you can directly access the data property
+                const data = response.data;
                 // Update the videoLink states based on the fetched promoLinks
                 if (data) {
                     setVideoLink(data.singleDigitLottery);
@@ -59,7 +62,7 @@ const GamesCards = () => {
         };
 
         fetchData();
-    }, []); // Empty dependency array ensures the effect runs only once on component mount
+    }, []);    // Empty dependency array ensures the effect runs only once on component mount
 
 
     const handleShowVideoClick = () => {

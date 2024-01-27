@@ -69,7 +69,7 @@ function App() {
     <div className='bg-slate-900'>
       <BrowserRouter>
         <Routes>
-          {/* Landing Page Routes */}
+          {/* Landing Page */}
           <Route path='/' element={isUser ? <UserHome /> : isAgent ? <AgentsHome /> : isAdmin ? <AdminHome /> : <LandingPage />} />
           <Route path='/helpCenter' element={<HelpCenter />} />
           <Route path='/login' element={<Login />} />

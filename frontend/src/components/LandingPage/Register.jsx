@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { FaWindowClose, FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons
 import { useNavigate } from 'react-router-dom';
-import { useRegister } from '../../hooks/useRegister';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useService } from '../../hooks/useService';
 
 function Register() {
     const { message } = useAuthContext();
-    const { register, isLoading, error } = useRegister();
+    const service = useService();
     const [mobileNumber, setMobileNumber] = useState(null);
     const [password, setPassword] = useState('');
     const [promoCode, setPromoCode] = useState('');
@@ -18,22 +18,35 @@ function Register() {
         e.preventDefault();
         try {
             if (mobileNumber >= 1000000000 && mobileNumber <= 9999999999) {
-                register(userId, mobileNumber, password, promoCode);
-                if (message === "Registration Successful") {
+                const response = await service.post("/register", {
+                    userID: userId,
+                    mobileNumber: mobileNumber,
+                    password: password,
+                    promoCode: promoCode
+                });
+
+                if (response.data.status === "Success") {
                     alert("Registration Successful");
+                    setUserID("");
+                    setMobileNumber(null);
+                    setPassword("");
+                    setPromoCode("");
+                    // navigate to login or any other page as needed
+                } else {
+                    alert(`Registration failed: ${response.data.error}`);
                 }
-                setUserID("");
-                setMobileNumber(null);
-                setPassword("");
-                setPromoCode("");
-                navigate('/login');
             } else if (!mobileNumber || !password || !promoCode || !userId) {
                 alert(`Fill all fields`);
             } else {
                 alert('Invalid Credentials.');
             }
         } catch (error) {
-            console.error('Error:', error);
+            if (error.response && error.response.data) {
+                alert(`Registration failed: ${error.response.data.error}`);
+            } else {
+                console.error('Error:', error);
+                alert('An unexpected error occurred.');
+            }
         }
     };
 
@@ -96,11 +109,11 @@ function Register() {
                                 Register
                             </button>
                         </div>
-                        {error && (
+                        {/* {error && (
                             <div className="text-red-900 mt-4 bg-red-200 w-full text-center">
                                 {error}
                             </div>
-                        )}
+                        )} */}
                     </div>
                 </form>
                 <div className='flex flex-col mt-8 mb-10'>
