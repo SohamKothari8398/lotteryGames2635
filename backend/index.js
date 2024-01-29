@@ -58,7 +58,7 @@ io.on("connection", (socket) => {
 });
 
 mongoose
-  .connect(process.env.MONGO)
+  .connect(process.env.MONGO || "mongodb://localhost:27017/up365gaming")
   .then(() => {
     console.log("Connected to MongoDB");
     server.listen(process.env.PORT || 4000, () => {
