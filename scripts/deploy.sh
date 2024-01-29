@@ -1,13 +1,15 @@
 #!/bin/bash
 
-PATH=$PATH:/etc/nodejs/current/bin
+NODE_PATH=/etc/nodejs/current
+YARN=$NODE_PATH/bin/yarn
+PM2=$NODE_PATH/bin/pm2
 
 cd frontend
-yarn install
-yarn build
-pm2 restart frontend
+${YARN} install
+${YARN} build
+${PM2} restart frontend
 
 cd ../backend
-yarn install
-pm2 restart backend
+${YARN} install
+${PM2} restart backend
 
