@@ -2,7 +2,7 @@
 
 GIT_REPO=git@github.com:XSAVLAB/UP365-Gaming.git
 GIT_BRANCH=dev
-NODEJS_PATH=/etc/nodejs/current/
+NODEJS_PATH=/etc/nodejs/current
 
 git pull origin $GIT_BRANCH
 
