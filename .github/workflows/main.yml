@@ -1,0 +1,26 @@
+name: Deploy Node.js App to VPS
+
+on:
+  push:
+    branches:
+      - main  # Set to the branch you want to deploy from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: up365gaming.com
+        username: tushar
+        password: chee1zixacha7Aifieroh8ii6io1Waig0Efo7ofai4gaikouGai1Aitee2eithai
+        port: 22
+        script: |
+          cd ~/UP365-Gaming
+          git pull
+          scripts/deploy.sh
