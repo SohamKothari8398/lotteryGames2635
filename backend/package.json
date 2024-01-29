@@ -1,4 +1,5 @@
 {
+  "proxy": "https://api.up365gaming.com",
   "name": "up365_backend",
   "version": "1.0.0",
   "description": "Backend",

@@ -7,11 +7,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
-app.use(
-  cors({
-    origin: false,
-  })
-);
+app.use(cors());
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -62,7 +58,9 @@ mongoose
   .then(() => {
     console.log("Connected to MongoDB");
     server.listen(process.env.PORT || 4000, () => {
-      console.log(`Backend Server is running on port ${process.env.PORT}`);
+      console.log(
+        `Backend Server is running on port ${process.env.PORT || 4000}`
+      );
     });
   })
   .catch((err) => {
