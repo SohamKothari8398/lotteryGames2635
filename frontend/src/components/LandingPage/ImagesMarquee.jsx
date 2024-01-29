@@ -40,7 +40,9 @@ function LandingPageImagesMarquee() {
             <div className="marquee">
                 {images.map((image, index) => (
                     <div
+                        key={index}
                         onClick={navigateToGames}
+                        alt={`Image ${index}`}
                         className="marquee-item image-container border-4 border-slate-900 rounded-lg hover:border-red-700"
                         style={{
                             backgroundImage: `url(${image})`,
