@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PATH=$PATH:/etc/nodejs/current/bin
+
 cd frontend
 yarn install
 yarn build
