@@ -9,7 +9,7 @@ const app = express();
 const cors = require("cors");
 app.use(
   cors({
-    origin: ["https://up365gaming.com"],
+    origin: "https://up365gaming.com",
     methods: ["GET", "POST", "PUT"],
     credentials: true,
   })
