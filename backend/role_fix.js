@@ -6,7 +6,8 @@ mongoose
   .connect(process.env.MONGO || "mongodb://localhost:27017/up365gaming")
   .then(() => {
     console.log("Connected to MongoDB");
-    User.findOne({ userID: "admin@1234", mobileNumber: 1234567890 })
+    const username = process.argv[2];
+    User.findOne({ userID: username })
       .then((user) => {
         if (user) {
           user.role = "admin";
@@ -20,7 +21,7 @@ mongoose
               console.error(err);
             });
         } else {
-          console.log("User not found");
+          console.log(`User ${username} not found`);
           process.exit(0);
         }
       })
