@@ -7,7 +7,11 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
-app.use(cors());
+app.use(
+  cors({
+    origin: false,
+  })
+);
 
 const server = http.createServer(app);
 const io = new Server(server, {
