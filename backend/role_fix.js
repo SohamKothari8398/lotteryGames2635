@@ -14,10 +14,14 @@ mongoose
             .save()
             .then(() => {
               console.log("Role updated");
+              process.exit(0);
             })
             .catch((err) => {
               console.error(err);
             });
+        } else {
+          console.log("User not found");
+          process.exit(0);
         }
       })
       .catch((err) => {
