@@ -8,10 +8,16 @@ git pull origin $GIT_BRANCH
 cd frontend
 yarn install
 yarn build
-pm2 --name frontend -i max restart yarn -- start
+# Stop existing frontend process
+pm2 stop frontend
+# Start frontend process
+pm2 --name frontend -i max start "yarn start"
 
 cd ../backend
 yarn install
 yarn build
-pm2 --name backend -i max restart yarn -- start
+# Stop existing backend process
+pm2 stop backend
+# Start backend process
+pm2 --name backend -i max start "yarn start"
 
