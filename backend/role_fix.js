@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-const User = require("./models/userModel");
+const User = require("./models/User");
 
 mongoose
   .connect(process.env.MONGO || "mongodb://localhost:27017/up365gaming")
