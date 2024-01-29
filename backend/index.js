@@ -7,7 +7,14 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://up365gaming.com"],
+    methods: ["GET", "POST", "PUT"],
+    credentials: true,
+  })
+);
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
