@@ -18,7 +18,7 @@ function LandingPageNavbar() {
             return null;
         }
         return (
-            <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center">
+            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black flex justify-center items-center">
                 <div className="absolute w-[60vw] h-[65vh] m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
                     <ul className="m-auto font-bold flex flex-col space-x-4">
                         {/* <li className="ml-4 mt-2 flex flex-row p-2 outline outline-2 hover:bg-white hover:text-slate-900 outline-white rounded-lg h-10" >
@@ -98,7 +98,7 @@ function LandingPageNavbar() {
                         </li>
                     </ul>
                 </div> */}
-                <div className='hidden font-bold lg:flex xl:flex  space-x-4'>
+                <div className='hidden font-bold lg:flex xl:flex space-x-4'>
                     <ul className="flex flex-row">
                         <li>
                             <button onClick={handleHelpClick} className=" w-32 mt-2 hover:bg-white hover:text-slate-900 p-2 outline outline-2 outline-white ml-4 font-semibold text-xl rounded-sm h-10 flex flex-ro">
