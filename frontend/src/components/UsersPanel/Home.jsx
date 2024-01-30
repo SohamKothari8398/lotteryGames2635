@@ -5,10 +5,10 @@ import UserStickyFooter from './StickyFooter';
 
 function User() {
     return (
-        <div className='bg-slate-500'>
+        <div className=''>
             <Navbar />
             <GamesCards />
-            <UserStickyFooter />
+            {/* <UserStickyFooter /> */}
         </div >
     )
 }

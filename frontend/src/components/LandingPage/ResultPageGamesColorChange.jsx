@@ -92,7 +92,7 @@ const ResultGamesColorComponent = () => {
     const filteredData = filterData();
 
     return (
-        <div className="py-10 my-10 rounded-lg shadow-lg w-full m-auto h-auto bg-slate-600 border-4 flex flex-col">
+        <div className="py-10 my-10 rounded-lg shadow-lg w-full m-auto h-auto border-4 flex flex-col">
             <div className="text-4xl lg:text-6xl italic text-white border-b-4 font-bold m-auto mb-10">
                 All Games Results
             </div>

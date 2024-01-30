@@ -147,15 +147,15 @@ const GamesCards = () => {
     }
 
     return (
-        <div className='w-full py-[5rem] bg-slate-500 flex flex-col'>
-            <div className='text-7xl italic text-white font-bold m-auto'>
+        <div className='w-full py-[5rem] flex flex-col'>
+            <div className='text-7xl italic font-bold m-auto'>
                 Games
             </div>
-            <div className='text-2xl italic text-white mt-10 w-[70%] text-start font-medium m-auto'>
-                Numbered Lottery Games
+            <div className='text-2xl italic mt-10 w-[70%] text-start font-medium m-auto'>
+                Lottery Games
             </div>
-            <div className='w-[94%] mx-auto mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-2'>
-                <div className='w-[98%] m-auto  h-[25rem] shadow-2xl cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-125 duration-300 relative'
+            <div className='w-[94%] mx-auto mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
+                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lottery})`,
                     }}>
@@ -163,19 +163,9 @@ const GamesCards = () => {
                     <div onClick={handleShowVideoClick} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
                         How to Play?<ImYoutube size={25} className='ml-4' />
                     </div>
-                    {/* <ul className='text-xs lg:text-md list-decimal ml-10 lg:mt-4'>
-                                <li className='py-1  mx-auto mt-1'>Select a number between range 0 to 999</li>
-                                <li className='py-1  mx-auto'>Enter Bet Amount</li>
-                                <li className='py-1  mx-auto'>Check the Results Section</li>
-                                <li className='py-1  mx-auto'>Winner 8x Bet Amount</li>
-                            </ul> */}
                     <button onClick={navigateToSingleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
-                    <div className='flex bg-slate-900 w-[90%] rounded-lg text-xs font-bold md:text-md lg:text-lg m-auto'>
-                        <p className='py-2 mx-8'>Players 4000 </p>
-                        <p className='py-2 mx-8'>Prize 1000000 </p>
-                    </div>
                 </div>
-                <div className='w-[98%] m-auto  h-[25rem] shadow-2xl cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-125 duration-300 relative'
+                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lottery})`,
                     }}>
@@ -190,12 +180,12 @@ const GamesCards = () => {
                                     <li className='py-1  mx-auto'>Winner 88x Bet Amount</li>
                                 </ul> */}
                     <button onClick={navigateToDoubleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
-                    <div className='flex bg-slate-900 w-[90%] rounded-lg text-xs font-bold md:text-md lg:text-lg m-auto'>
+                    {/* <div className='flex bg-slate-900 w-[90%] rounded-lg text-xs font-bold md:text-md lg:text-lg m-auto'>
                         <p className='py-2 mx-8'>Players 4000 </p>
                         <p className='py-2 mx-8'>Prize 1000000 </p>
-                    </div>
+                    </div> */}
                 </div>
-                <div className='w-[96%] m-auto  h-[25rem] shadow-2xl cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-125 duration-300 relative'
+                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lottery})`,
                     }}>
@@ -210,38 +200,28 @@ const GamesCards = () => {
                                 <li className='py-1  mx-auto'>Winner 888x Bet Amount</li>
                             </ul> */}
                     <button onClick={navigateToTripleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
-                    <div className='flex bg-slate-900 w-[90%] rounded-lg text-xs font-bold md:text-md lg:text-lg m-auto'>
+                    {/* <div className='flex bg-slate-900 w-[90%] rounded-lg text-xs font-bold md:text-md lg:text-lg m-auto'>
                         <p className='py-2 mx-8'>Players 4000 </p>
                         <p className='py-2 mx-8'>Prize 1000000 </p>
+                    </div> */}
+                </div>
+                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
+                    style={{
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${colorball})`,
+                    }}>
+                    <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Colour Ball Game</div>
+                    <div onClick={handleShowVideo4Click} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
+                        How to Play?<ImYoutube size={25} className='ml-4' />
                     </div>
+                    <button onClick={navigateToColorBallLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
                 </div>
             </div>
 
             <div className='text-2xl italic text-white mt-10 w-[70%] text-start font-medium m-auto'>
                 Other Games
             </div>
-            <div className='w-[94%] mx-auto mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-2'>
-                <div className='w-[98%] m-auto  h-[25rem] shadow-2xl cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-125 duration-300 relative'
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${colorball})`,
-                    }}>
-                    <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>ColourBall Game</div>
-                    <div onClick={handleShowVideo4Click} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
-                        How to Play?<ImYoutube size={25} className='ml-4' />
-                    </div>
-                    {/* <ul className='text-sm list-decimal ml-10 lg:mt-4'>
-                                <li className='py-1  mx-auto mt-1'>Select a number between range 0 to 36</li>
-                                <li className='py-1  mx-auto'>Enter the Bet Amount</li>
-                                <li className='py-1  mx-auto'>Check the Results Section</li>
-                                <li className='py-1  mx-auto'>Winner 200x Bet Amount</li>
-                            </ul> */}
-                    <button onClick={navigateToColorBallLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
-                    <div className='flex bg-slate-900 w-[98%] rounded-lg text-xs font-bold md:text-md lg:text-lg m-auto'>
-                        <p className='py-2 mx-8'>Players 4000 </p>
-                        <p className='py-2 mx-8'>Prize 1000000 </p>
-                    </div>
-                </div>
-                <div className='w-[98%] m-auto  h-[25rem] shadow-2xl cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-125 duration-300 relative'
+            <div className='w-[94%] mx-auto mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
+                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${ludo})`,
                     }}>
@@ -249,25 +229,9 @@ const GamesCards = () => {
                     <div onClick={handleShowVideoClick} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
                         How to Play?<ImYoutube size={35} className='ml-4' />
                     </div>
-                    {/* <ul className='text-sm list-decimal ml-10 lg:mt-4'>
-                                <li className='py-1  mx-auto mt-1'>Select a number between range 0 to 36</li>
-                                <li className='py-1  mx-auto'>Enter the Bet Amount</li>
-                                <li className='py-1  mx-auto'>Check the Results Section</li>
-                                <li className='py-1  mx-auto'>Winner 30x Bet Amount</li>
-                            </ul> */}
                     <button onClick={navigateToSingleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
-                    <div className='flex bg-slate-900 w-[90%] rounded-lg text-xs font-bold md:text-md lg:text-xl m-auto'>
-                        <p className='py-2 mx-8'>Players 4000 </p>
-                        <p className='py-2 mx-8'>Prize 1000000 </p>
-                    </div>
                 </div>
-            </div >
-
-            <div className='text-2xl italic text-white mt-10 w-[70%] text-start font-medium m-auto'>
-                Casino
-            </div>
-            <div className='w-[94%] mx-auto mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-2'>
-                <div className='w-[98%] m-auto  h-[25rem] shadow-2xl cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-125 duration-300 relative'
+                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${poker})`,
                     }}>
@@ -275,19 +239,9 @@ const GamesCards = () => {
                     <div onClick={handleShowVideoClick} className='text-xs md:text-sm lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
                         How to Play?<ImYoutube size={25} className='ml-4' />
                     </div>
-                    {/* <ul className='text-sm list-decimal ml-10 lg:mt-4'>
-                                <li className='py-1  mx-auto mt-1'>Select a number between range 0 to 36</li>
-                                <li className='py-1  mx-auto'>Enter the Bet Amount</li>
-                                <li className='py-1  mx-auto'>Check the Results Section</li>
-                                <li className='py-1  mx-auto'>Winner 30x Bet Amount</li>
-                            </ul> */}
                     <button onClick={navigateToSingleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
-                    <div className='flex bg-slate-900 w-[90%] rounded-lg text-xs font-bold md:text-md lg:text-xl m-auto'>
-                        <p className='py-2 mx-8'>Players 4000 </p>
-                        <p className='py-2 mx-8'>Prize 1000000 </p>
-                    </div>
                 </div>
-                <div className='w-[98%] m-auto  h-[25rem] shadow-2xl cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-125 duration-300 relative'
+                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${andarBahar})`,
                     }}>
@@ -295,19 +249,9 @@ const GamesCards = () => {
                     <div onClick={handleShowVideoClick} className='text-xs md:text-sm lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
                         How to Play?<ImYoutube size={25} className='ml-4' />
                     </div>
-                    {/* <ul className='text-sm list-decimal ml-10 lg:mt-4'>
-                                <li className='py-1  mx-auto mt-1'>Select a colour from Red, Green and Purple</li>
-                                <li className='py-1  mx-auto'>Enter the Bet Amount</li>
-                                <li className='py-1  mx-auto'>Check the Results Section</li>
-                                <li className='py-1  mx-auto'>Winner 2x Bet Amount</li>
-                            </ul> */}
                     <button onClick={navigateToSingleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
-                    <div className='flex bg-slate-900 w-[90%] rounded-lg text-xs font-bold md:text-md lg:text-xl m-auto'>
-                        <p className='py-2 mx-8'>Players 4000 </p>
-                        <p className='py-2 mx-8'>Prize 1000000 </p>
-                    </div>
                 </div>
-                <div className='w-[98%] m-auto  h-[25rem] shadow-2xl cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-125 duration-300 relative'
+                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${teenpatti})`,
                     }}>
@@ -315,17 +259,7 @@ const GamesCards = () => {
                     <div onClick={handleShowVideoClick} className='text-xs md:text-sm lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
                         How to Play?<ImYoutube size={25} className='ml-4' />
                     </div>
-                    {/* <ul className='text-sm list-decimal ml-10 lg:mt-4'>
-                                <li className='py-1  mx-auto mt-1'>Select a number between range 0 to 36</li>
-                                <li className='py-1  mx-auto'>Select a color from options red, green and purple</li>
-                                <li className='py-1  mx-auto'>Enter the Bet Amount</li>
-                                <li className='py-1  mx-auto'>Check the Results Section</li>
-                            </ul> */}
                     <button onClick={navigateToSingleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
-                    <div className='flex bg-slate-900 w-[90%] rounded-lg text-xs font-bold md:text-md lg:text-xl m-auto'>
-                        <p className='py-2 mx-8'>Players 4000 </p>
-                        <p className='py-2 mx-8'>Prize 1000000 </p>
-                    </div>
                 </div>
             </div >
             <div className="fixed top-1 right-1 bg-black hover:bg-green-600 text-white shadow-md shadow-white m-2 p-2 rounded-lg">

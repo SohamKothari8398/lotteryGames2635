@@ -36,7 +36,7 @@ function LandingPageImagesMarquee() {
     };
 
     return (
-        <div className="marquee-container bg-slate-900 z-0 cursor-pointer my-3 mt-5 flex flex-col">
+        <div className="marquee-container cursor-pointer my-3 mt-5 flex flex-col">
             <div className="marquee">
                 {images.map((image, index) => (
                     <div

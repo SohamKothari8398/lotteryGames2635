@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaGamepad } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import { BiSolidOffer } from 'react-icons/bi';

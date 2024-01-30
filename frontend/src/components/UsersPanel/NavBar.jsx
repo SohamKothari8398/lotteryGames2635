@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { TiThMenu } from 'react-icons/ti';
-import { FaWindowClose, FaWallet, FaPowerOff, FaUserCircle } from 'react-icons/fa';
+import { FaWindowClose, FaWallet, FaGamepad, FaPowerOff, FaUserCircle } from 'react-icons/fa';
 import { FaMobileRetro } from 'react-icons/fa6';
-import { MdQrCode2, MdOutlineReportProblem } from "react-icons/md";
+import { MdQrCode2, MdHelp, MdOutlineReportProblem } from "react-icons/md";
 import logo from '../../assets/up365Logo.jpeg';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { BsDatabaseFillAdd } from 'react-icons/bs';
-import { BiMoneyWithdraw } from 'react-icons/bi';
+import { BiMoneyWithdraw, BiSolidOffer } from 'react-icons/bi';
 import { PiFilesBold } from 'react-icons/pi';
+import { GiWallet } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
+import { CgProfile } from 'react-icons/cg';
+import { AiFillHome } from 'react-icons/ai';
 import GetWalletBalance from '../UsersPanel/WalletBalance';
 
 function UserNavbar() {
@@ -39,12 +42,30 @@ function UserNavbar() {
     const navigateToUserSummaryPage = () => {
         navigate('/user/summary');
     };
+    const navigateToProfile = () => {
+        navigate('/user/profile');
+    };
+    const navigateToGames = () => {
+        navigate('/games');
+    };
+    const navigateToUserWallet = () => {
+        navigate('/user/wallet');
+    };
+    const navigateToHelpCenter = () => {
+        navigate('/helpCenter');
+    };
+    const navigateToUserResult = () => {
+        navigate('/user/result');
+    };
+    const navigateToUserOffers = () => {
+        navigate('/user/offers');
+    };
     const renderMenu = () => {
         if (!isMenuOpen) {
             return null;
         }
         return (
-            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/30 justify-center items-center">
+            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black justify-center items-center">
                 <div className="bg-slate-500 absolute w-[65vw] h-[65vh] m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
                     <ul className="flex flex-col">
                         <li className="flex border-b-4 pb-2">
@@ -81,7 +102,7 @@ function UserNavbar() {
     };
 
     return (
-        <nav className="bg-slate-900 text-white grid grid-cols-1 p-4 sticky top-0 z-20">
+        <nav className=" bg-black text-white grid grid-cols-1 p-4 sticky top-0 z-20">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="text-xl flex text-white items-center">
                     <div>
@@ -141,7 +162,7 @@ function UserNavbar() {
                 </div>
                 {renderMenu()}
             </div>
-            <div className="container bg-slate-900 text-white p-4 md:top-[6vh] lg:top-[11vh] xl:top-[2vh] top-[11vh] z-10 mx-auto rounded-lg grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 justify-between items-center text-2xl sm:text-xl md:text-xl">
+            {/* <div className="container text-white p-4 md:top-[6vh] lg:top-[11vh] xl:top-[2vh] top-[11vh] mx-auto rounded-lg grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 justify-between items-center text-2xl sm:text-xl md:text-xl">
                 <div className="flex flex-col text-white items-center m-auto hover:bg-slate-900 text-white-600 font-bold p-2 text-sm lg:text-xl rounded-lg  focus:outline-none  transition duration-300 ease-in-out">
                     <span className='p-2 flex flex-row border-b-4'>
                         <FaWallet size={25} />
@@ -167,6 +188,50 @@ function UserNavbar() {
                     <button onClick={navigateToUserSummaryPage} className=" w-auto mt-2 hover:bg-white hover:text-slate-900 p-2  outline outline-2 outline-white ml-4 font-semibold text-sm lg:text-xl rounded-lg flex flex-row   focus:outline-none  transition duration-300 ease-in-out">
                         <PiFilesBold size={25} /> <span className='p-1'></span> Summary
                     </button>
+                </div>
+            </div> */}
+            <div className="flex font-bold justify-evenly space-x-4 overflow-x-auto md:overflow-hidden">
+                <div className="w-full h-full text-sm md:text-lg lg:text-xl grid grid-cols-9 gap-20 md:gap-10">
+                    <div onClick={navigateToUserWallet} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                        <GiWallet size={35} />
+                        <span><GetWalletBalance /></span>
+                    </div>
+                    <div onClick={navigateToUserDepositPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                        <BsDatabaseFillAdd size={35} />
+                        <span>Deposit</span>
+                    </div>
+                    <div onClick={navigateToUserWithdrawPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                        <BiMoneyWithdraw size={35} />
+                        <span>Withdraw</span>
+                    </div>
+                    <div onClick={navigateToUserAddComplaintsPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                        <MdOutlineReportProblem size={35} />
+                        <span>Complaint</span>
+                    </div>
+                    <div onClick={navigateToUserSummaryPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                        <PiFilesBold size={35} />
+                        <span>Summary</span>
+                    </div>
+                    <div onClick={navigateToGames} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                        <FaGamepad size={35} />
+                        <span>Games</span>
+                    </div>
+                    <div onClick={navigateToProfile} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                        <CgProfile size={35} />
+                        <span>Profile</span>
+                    </div>
+                    {/* <div onClick={navigateToUserResult} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                        <TbFileAnalytics size={35} />
+                        <span>History</span>
+                    </div> */}
+                    <div onClick={navigateToUserOffers} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                        <BiSolidOffer size={35} />
+                        <span>Offers</span>
+                    </div>
+                    <div onClick={navigateToHelpCenter} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                        <MdHelp size={35} />
+                        <span>Help</span>
+                    </div>
                 </div>
             </div>
         </nav >
