@@ -1,17 +1,14 @@
 import React from 'react';
 import { FaFacebookSquare, FaInstagram, FaTelegram } from 'react-icons/fa';
 import { BsWhatsapp } from 'react-icons/bs';
-import { TbSquareRoundedNumber0, TbSquareRoundedNumber3, TbSquareRoundedNumber6 } from 'react-icons/tb';
-import upilogo from '../../assets/upi-logo.jpg';
-import gpayLogo from '../../assets/g-pay_logo.jpg';
-import paytmLogo from '../../assets/paytm_logo.jpg';
-import whatsappPay from '../../assets/whatsappPay_logo.png';
-import amazonPay_logo from '../../assets/amazonPay_logo.jpg';
-import netBanking_Logo from '../../assets/netBanking_Logo.png';
-import card_payments from '../../assets/Visa_Inc._logo.png';
-import card_payments2 from '../../assets/MasterCard_Logo.png';
-import card_payments3 from '../../assets/Discover-logo.png';
+import upilogo from '../../assets/upiLogo.jpg';
+import gpayLogo from '../../assets/gpayLogo.png';
 import phonepe from '../../assets/phonePe-logo.png';
+import paytmLogo from '../../assets/paytm_Logo.png';
+import netBanking_Logo from '../../assets/netBanking_Logo.png';
+import card_payments from '../../assets/visaLogo.png';
+import card_payments2 from '../../assets/masterCardLogo.png';
+import card_payments3 from '../../assets/discoverLogo.png';
 import logo from '../../assets/up365Logo.jpeg';
 
 const LandingPageFooter = () => {
@@ -49,13 +46,11 @@ const LandingPageFooter = () => {
       {/** Payment Methods Page*/}
       <div className='mt-4'>
         <h1 className='w-full text-2xl flex flex-row gap-2 mb-10 font-bold italic text-white'> PAYMENT METHODS </h1>
-        <div className='my-2 grid grid-cols-5 md:grid-cols-10 gap-4'>
+        <div className='my-2 grid grid-cols-4 md:grid-cols-8 gap-4'>
           <img src={upilogo} alt='Upi Payments' className='mr-2  mb-2 border-2 rounded-lg w-full h-[3rem]' />
           <img src={gpayLogo} alt='Upi Payments' className='mr-2 mb-2 bg-white border-2 rounded-lg w-full h-[3rem]' />
           <img src={phonepe} alt='Upi Payments' className='mr-2 mb-2  border-2 rounded-lg w-full h-[3rem]' />
           <img src={paytmLogo} alt='Upi Payments' className='mr-2 bg-white border-2 rounded-lg w-full h-[3rem]' />
-          <img src={amazonPay_logo} alt='Upi Payments' className='mr-2 border-2 rounded-lg w-full h-[3rem]' />
-          <img src={whatsappPay} alt='Upi Payments' className='mr-2 border-2 rounded-lg w-full h-[3rem]' />
           <img src={netBanking_Logo} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem]' />
           <img src={card_payments} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem]' />
           <img src={card_payments2} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem]' />
@@ -67,10 +62,10 @@ const LandingPageFooter = () => {
         <div className='m-10'>
           <h6 className='italic text-white font-semibold underline'>Lottery Numbers and Colours</h6>
           <ul>
-            <li className='py-2 text-sm flex flex-row gap-2'>Single Digit <TbSquareRoundedNumber0 size={20} /></li>
-            <li className='py-2 text-sm flex flex-row gap-2'>Double Digit <TbSquareRoundedNumber0 size={20} /> <TbSquareRoundedNumber0 size={20} /> </li>
-            <li className='py-2 text-sm flex flex-row gap-2'>Triple Digit <TbSquareRoundedNumber0 size={20} /> <TbSquareRoundedNumber0 size={20} /> <TbSquareRoundedNumber0 size={20} /></li>
-            <li className='py-2 text-sm flex flex-row gap-2'>Colour Ball Lottery <TbSquareRoundedNumber3 size={20} /> <TbSquareRoundedNumber6 size={20} /> </li>
+            <li className='py-2 text-sm flex flex-row gap-2'>Single Digit </li>
+            <li className='py-2 text-sm flex flex-row gap-2'>Double Digit </li>
+            <li className='py-2 text-sm flex flex-row gap-2'>Triple Digit </li>
+            <li className='py-2 text-sm flex flex-row gap-2'>Colour Ball Lottery </li>
           </ul>
         </div>
         <div className='m-10'>

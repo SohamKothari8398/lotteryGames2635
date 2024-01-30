@@ -24,16 +24,26 @@ const AdminDepositApprovals = () => {
         setTableData(filteredData);
     };
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await service.get('/admin/adminDepositApprovalsPage');
+    //             setTableData(response.data);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, []);
+
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await service.get('/admin/adminDepositApprovalsPage');
+        service.get('/admin/adminDepositApprovalsPage')
+            .then(response => {
                 setTableData(response.data);
-            } catch (error) {
+            })
+            .catch(error => {
                 console.error('Error fetching data:', error);
-            }
-        };
-        fetchData();
+            });
     }, []);
 
     const navigateToAdminPage = () => {

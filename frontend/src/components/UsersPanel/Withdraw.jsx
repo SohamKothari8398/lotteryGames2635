@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FaWindowClose } from 'react-icons/fa';
-import upilogo from '../../assets/upi-logo.jpg';
-import gpayLogo from '../../assets/g-pay_logo.jpg';
-import paytmLogo from '../../assets/paytm_logo.jpg';
+import upilogo from '../../assets/upiLogo.jpg';
+import gpayLogo from '../../assets/gpayLogo.png';
+import paytmLogo from '../../assets/paytm_logo.png';
 import whatsappPay from '../../assets/whatsappPay_logo.png';
 import amazonPay_logo from '../../assets/amazonPay_logo.jpg';
 import netBanking_Logo from '../../assets/netBanking_Logo.png';

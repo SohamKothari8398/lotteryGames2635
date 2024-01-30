@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import lottery from '../../assets/lotteryBg.jpg';
+import lottery2 from '../../assets/doubledigitLottery.jpg';
+import lottery3 from '../../assets/3DLottery3.jpg';
 import ludo from '../../assets/ludoBgImg.png';
 import poker from '../../assets/pokerBg.jpg';
 import andarBahar from '../../assets/andarBaharBg.jpg';
@@ -167,7 +169,7 @@ const GamesCards = () => {
                 </div>
                 <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lottery})`,
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lottery2})`,
                     }}>
                     <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Double Digit Lottery</div>
                     <div onClick={handleShowVideo2Click} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
@@ -187,7 +189,7 @@ const GamesCards = () => {
                 </div>
                 <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lottery})`,
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lottery3})`,
                     }}>
                     <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Triple Digit Lottery</div>
                     <div onClick={handleShowVideo3Click} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
