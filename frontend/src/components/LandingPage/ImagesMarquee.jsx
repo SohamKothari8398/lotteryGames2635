@@ -4,9 +4,9 @@ import './AdsSlider.css';
 // Import your images here
 import img3 from '../../assets/img3.jpg';
 import img4 from '../../assets/img4.jpg';
-import img6 from '../../assets/img6.jpg';
+import img6 from '../../assets/discoverLogo.png';
 import img7 from '../../assets/img7.jpg';
-import img8 from '../../assets/img8.jpg';
+import img8 from '../../assets/3DLottery.jpg';
 import lottery from '../../assets/lotteryBg.jpg';
 import ludo from '../../assets/ludoBgImg.png';
 import poker from '../../assets/pokerBg.jpg';

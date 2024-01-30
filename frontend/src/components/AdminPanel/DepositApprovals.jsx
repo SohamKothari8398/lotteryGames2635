@@ -24,16 +24,26 @@ const AdminDepositApprovals = () => {
         setTableData(filteredData);
     };
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await service.get('/admin/adminDepositApprovalsPage');
+    //             setTableData(response.data);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, []);
+
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await service.get('/admin/adminDepositApprovalsPage');
+        service.get('/admin/adminDepositApprovalsPage')
+            .then(response => {
                 setTableData(response.data);
-            } catch (error) {
+            })
+            .catch(error => {
                 console.error('Error fetching data:', error);
-            }
-        };
-        fetchData();
+            });
     }, []);
 
     const navigateToAdminPage = () => {
@@ -202,46 +212,3 @@ const AdminDepositApprovals = () => {
 };
 
 export default AdminDepositApprovals;
-
-
-
-
-// const handleDepositSearch = () => {
-//     if (tableData.trim() === '') {
-//         s(tableData);
-//         return;
-//     }
-//     const filteredData = tableData.filter((row) =>
-//         row.id.toString().includes(depositSearchInput) ||
-//         row.userId.includes(depositSearchInput) ||
-//         row.date.toLocaleDateString('en-GB').includes(depositSearchInput) ||
-//         row.date.toLocaleTimeString('en-GB').includes(depositSearchInput)
-//     );
-//     setDepositSearchResults(filteredData);
-// };
-
-// const handleSubmit = (index) => {
-//     const row = depositSearchResults[index];
-//     if (row.status === 'Status') {
-//         alert('Invalid Request!!! Please Select any one of the Status.');
-//     } else if (row.status === 'Pending' && (!row.remarks || row.remarks.trim() === '')) {
-//         alert('Remarks are required for Pending status.');
-//     } else if (row.status === 'Rejected' && (!row.remarks || row.remarks.trim() === '')) {
-//         alert('Remarks are required for Rejected status.');
-//     } else if (row.status === 'Received' && (!row.remarks || row.remarks.trim() === '')) {
-//         alert('Remarks are required for Received status.');
-//     } else {
-//         const status = row.status;
-//         const enteredRemark = row.remarks;
-//         function action() {
-//             if (row.status === 'Received') return 'Approved 👍';
-//             else if (row.status === 'Rejected') return 'Rejected ❌';
-//             else return 'Pending ⏳';
-//         }
-//         if (window.confirm(`Status: ${status}, \n Remark: ${enteredRemark}, \n Action: ${action()} \nConfirm Submission....?`)) {
-//             const updatedData = [...depositSearchResults];
-//             updatedData[index].action = action;
-//             setDepositSearchResults(updatedData);
-//         }
-//     }
-// };

@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { FaWindowClose } from 'react-icons/fa';
-import upilogo from '../../assets/upi-logo.jpg';
-import gpayLogo from '../../assets/g-pay_logo.jpg';
-import paytmLogo from '../../assets/paytm_logo.jpg';
-import whatsappPay from '../../assets/whatsappPay_logo.png';
-import amazonPay_logo from '../../assets/amazonPay_logo.jpg';
+import upilogo from '../../assets/upiLogo.jpg';
+import gpayLogo from '../../assets/gpayLogo.png';
+import paytmLogo from '../../assets/paytmLogo.png';
 import netBanking_Logo from '../../assets/netBanking_Logo.png';
-import card_payments from '../../assets/Visa_Inc._logo.png';
-import card_payments2 from '../../assets/MasterCard_Logo.png';
+import card_payments from '../../assets/visaLogo.png';
+import card_payments2 from '../../assets/masterCardLogo.png';
 import phonepe from '../../assets/phonePe-logo.png';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
@@ -119,7 +117,7 @@ function Withdraw() {
                     </form>
                     <div className="flex flex-col w-[90%] md:w-3/4 lg:w-1/2 mx-auto justify-between items-center mb-4">
                         <div className="text-gray-900 font-bold mt-2 mr-2">Payment Methods </div>
-                        <div className="grid grid-cols-5 text-white h-[18vh] w-[90%] mx-auto overflow-x-auto rounded-lg border-4 border-black m-4 p-4">
+                        <div className="grid grid-cols-4 text-white h-[18vh] w-[90%] mx-auto overflow-x-auto rounded-lg border-4 border-black m-4 p-4">
                             {/* <FcGoogle size={30} className='mr-2' /> */}
                             {/* <img src={upiMiniLogo} className='w-10 h-8 bg-white mr-2' alt="Upi Logo" />
                                 <img src={phonePeMiniLogo} className='w-20 h-10 bg-white mr-2 rounded-md' alt="Upi Logo" />
@@ -129,8 +127,6 @@ function Withdraw() {
                             <img src={gpayLogo} alt='Upi Payments' className='mr-2 mb-2 bg-white border-2 rounded-lg' style={{ width: '7rem', height: '3rem' }} />
                             <img src={phonepe} alt='Upi Payments' className='mr-2 mb-2  border-2 rounded-lg' style={{ width: '7rem', height: '3rem' }} />
                             <img src={paytmLogo} alt='Upi Payments' className='mr-2 bg-white border-2 rounded-lg' style={{ width: '7rem', height: '3rem' }} />
-                            <img src={amazonPay_logo} alt='Upi Payments' className='mr-2 border-2 rounded-lg' style={{ width: '7rem', height: '3rem' }} />
-                            <img src={whatsappPay} alt='Upi Payments' className='mr-2 border-2 rounded-lg' style={{ width: '7rem', height: '3rem' }} />
                             <img src={netBanking_Logo} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg' style={{ width: '7rem', height: '3rem' }} />
                             <img src={card_payments} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg' style={{ width: '7rem', height: '3rem' }} />
                             <img src={card_payments2} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg' style={{ width: '7rem', height: '3rem' }} />

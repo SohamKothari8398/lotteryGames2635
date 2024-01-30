@@ -8,6 +8,7 @@ import logo from '../../assets/up365Logo.jpeg';
 function LandingPageNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
+    const navigateNull = () => { navigate(0) };
     const navigateToLoginForm = () => { navigate('/login'); };
     const handleRegisterClick = () => { navigate('/register'); };
     const handleMenuClick = () => { setIsMenuOpen(!isMenuOpen); };
@@ -65,9 +66,9 @@ function LandingPageNavbar() {
             <div className="container mx-auto flex justify-between items-center">
                 <div className="text-xl flex text-white items-center">
                     <div>
-                        <img src={logo} alt="logo not available" className='h-16 md:h-20 w-44 mr-4 rounded-xl' />
+                        <img src={logo} alt="logo not available" className='h-[4rem] cursor-pointer w-[10rem] mr-4 rounded-xl' />
                     </div>
-                    <div className='hover:text-yellow-600 flex italic font-bold mr-10'>
+                    <div onClick={navigateNull} className='hover:text-yellow-600 flex italic font-bold cursor-pointer mr-10'>
                         <div className='text-3xl md:text-5xl lg:text-6xl'>UP</div>
                         <div className='flex flex-col mt-2 ml-2 text-xs md:text-sm lg:text-lg'>
                             <div>

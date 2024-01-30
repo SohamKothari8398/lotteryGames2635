@@ -13,16 +13,26 @@ const AdminWithdrawalApprovals = () => {
     // States
     const [withdrawSearchInput, setWithdrawSearchInput] = useState('');
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await service.get('/admin/adminWithdrawalApprovalsPage');
+    //             setTableData(response.data);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, []);
+
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await service.get('/admin/adminWithdrawalApprovalsPage');
+        service.get('/admin/adminWithdrawalApprovalsPage')
+            .then(response => {
                 setTableData(response.data);
-            } catch (error) {
+            })
+            .catch(error => {
                 console.error('Error fetching data:', error);
-            }
-        };
-        fetchData();
+            });
     }, []);
 
     // Navigators
