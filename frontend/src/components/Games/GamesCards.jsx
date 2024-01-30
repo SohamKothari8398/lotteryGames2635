@@ -157,9 +157,9 @@ const GamesCards = () => {
                 Lottery Games
             </div>
             <div className='w-[94%] mx-auto mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
-                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
+                <div className='w-[90%] m-auto  h-[20rem] shadow-white shadow-lg cursor-pointer bg-contain text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lottery})`,
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${lottery})`,
                     }}>
                     <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Single Digit Lottery</div>
                     <div onClick={handleShowVideoClick} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
@@ -167,9 +167,9 @@ const GamesCards = () => {
                     </div>
                     <button onClick={navigateToSingleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
                 </div>
-                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
+                <div className='w-[90%] m-auto  h-[20rem] shadow-white shadow-lg cursor-pointer bg-contain text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lottery2})`,
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${lottery2})`,
                     }}>
                     <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Double Digit Lottery</div>
                     <div onClick={handleShowVideo2Click} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
@@ -187,9 +187,9 @@ const GamesCards = () => {
                         <p className='py-2 mx-8'>Prize 1000000 </p>
                     </div> */}
                 </div>
-                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
+                <div className='w-[90%] m-auto  h-[20rem] shadow-white shadow-lg cursor-pointer bg-contain text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${lottery3})`,
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${lottery3})`,
                     }}>
                     <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Triple Digit Lottery</div>
                     <div onClick={handleShowVideo3Click} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
@@ -207,9 +207,9 @@ const GamesCards = () => {
                         <p className='py-2 mx-8'>Prize 1000000 </p>
                     </div> */}
                 </div>
-                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
+                <div className='w-[90%] m-auto  h-[20rem] shadow-white shadow-lg cursor-pointer bg-contain text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${colorball})`,
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${colorball})`,
                     }}>
                     <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Colour Ball Game</div>
                     <div onClick={handleShowVideo4Click} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
@@ -223,9 +223,9 @@ const GamesCards = () => {
                 Other Games
             </div>
             <div className='w-[94%] mx-auto mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
-                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
+                <div className='w-[90%] m-auto h-[20rem] shadow-white shadow-lg cursor-pointer bg-contain text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${ludo})`,
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${ludo})`,
                     }}>
                     <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Ludo : Multiplayer </div>
                     <div onClick={handleShowVideoClick} className='text-md md:text-md lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
@@ -233,9 +233,9 @@ const GamesCards = () => {
                     </div>
                     <button onClick={navigateToSingleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
                 </div>
-                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
+                <div className='w-[90%] m-auto h-[20rem] shadow-white shadow-lg cursor-pointer bg-contain text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${poker})`,
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${poker})`,
                     }}>
                     <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Poker</div>
                     <div onClick={handleShowVideoClick} className='text-xs md:text-sm lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
@@ -243,9 +243,9 @@ const GamesCards = () => {
                     </div>
                     <button onClick={navigateToSingleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
                 </div>
-                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
+                <div className='w-[90%] m-auto h-[20rem] shadow-white shadow-lg cursor-pointer bg-contain text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${andarBahar})`,
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${andarBahar})`,
                     }}>
                     <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Andar Bahar</div>
                     <div onClick={handleShowVideoClick} className='text-xs md:text-sm lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
@@ -253,11 +253,11 @@ const GamesCards = () => {
                     </div>
                     <button onClick={navigateToSingleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
                 </div>
-                <div className='w-[90%] m-auto  h-[25rem] shadow-white shadow-lg cursor-pointer text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
+                <div className='w-[90%] m-auto h-[20rem] shadow-white shadow-lg cursor-pointer bg-contain text-white flex flex-col p-4 my-4 rounded-lg hover:scale-110 duration-300 border-4 '
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${teenpatti})`,
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${teenpatti})`,
                     }}>
-                    <div className='text-2xl md:text-3xl font-bold text-center  underline underline-offset-2 py-8'>Teenpatti</div>
+                    <div className='text-2xl md:text-3xl font-bold text-center underline underline-offset-2 py-8'>Teenpatti</div>
                     <div onClick={handleShowVideoClick} className='text-xs md:text-sm lg:text-xl mb-12  font-bold underline text-center flex flex-row justify-center'>
                         How to Play?<ImYoutube size={25} className='ml-4' />
                     </div>
