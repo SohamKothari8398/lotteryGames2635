@@ -12,9 +12,9 @@ function MainBodyScroller() {
         navigate('/games');
     }
     return (
-        <nav className="bg-slate-900 text-white p-2 pt-4 sticky top-24 z-10">
+        <nav className="bg-black text-white p-2 pt-4 sticky top-24 z-10">
             <div className="container mx-auto flex justify-between items-center">
-                <div className="flex space-x-4 overflow-x-auto max-w-screen-md">
+                <div className="flex space-x-4 overflow-x-auto">
                     <div className="flex space-x-5">
                         <div className="flex flex-col ml-2 items-center border-b-2 border-transparent hover:border-white cursor-pointer">
                             <AiFillHome size={25} />

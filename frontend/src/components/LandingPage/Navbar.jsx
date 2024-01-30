@@ -18,8 +18,8 @@ function LandingPageNavbar() {
             return null;
         }
         return (
-            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/40 flex justify-center items-center">
-                <div className="bg-slate-900 absolute w-[60vw] h-[65vh] m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
+            <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center">
+                <div className="absolute w-[60vw] h-[65vh] m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
                     <ul className="m-auto font-bold flex flex-col space-x-4">
                         {/* <li className="ml-4 mt-2 flex flex-row p-2 outline outline-2 hover:bg-white hover:text-slate-900 outline-white rounded-lg h-10" >
                             <CgGames size={30} /> <span className='p-1'> </span> Games
@@ -61,7 +61,7 @@ function LandingPageNavbar() {
 
 
     return (
-        <nav className="bg-slate-900 text-white p-4 sticky top-0 z-20">
+        <nav className="bg-black text-white p-4 sticky top-0 z-20">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="text-xl flex text-white items-center">
                     <div>

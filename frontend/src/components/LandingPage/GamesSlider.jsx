@@ -42,7 +42,7 @@ function LandingPageGamesSlider() {
     }
 
     return (
-        <div className='flex flex-col h-[70vh] w-full m-auto oy-16 bg-slate-900 px-4 relative group'>
+        <div className='flex flex-col h-[70vh] w-full m-auto oy-16 px-4 relative group'>
             {/* Left Fade Effect */}
             <div className='absolute left-0 h-full w-[40%] bg-gradient-to-r from-black to-transparent'></div>
 

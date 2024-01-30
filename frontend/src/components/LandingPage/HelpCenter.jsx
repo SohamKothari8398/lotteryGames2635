@@ -23,7 +23,7 @@ function HelpCenter() {
     };
 
     return (
-        <div className="fixed top-0 left-[-1rem] right-0 bottom-0 bg-slate-900 flex justify-center items-center">
+        <div className="fixed top-0 bg-black/50 left-[-1rem] right-0 bottom-0 flex justify-center items-center">
             <div className="bg-slate-200 absolute lg:w-[60%] md:w-[60%] h-[60%] w-[80%] rounded-lg">
                 <div className="flex-col w-[100%] h-[100%] p-8">
                     <div className="flex flex-row justify-center mb-4 mt-4 text-green-700 text-2xl md:text-4xl w-auto font-bold">

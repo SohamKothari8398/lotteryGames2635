@@ -10,7 +10,7 @@ import MainBodyScroller from './MainBodyScroller'
 
 function Home() {
     return (
-        <div className='bg-slate-900'>
+        <div className=''>
             <Navbar />
             <MarqueeText />
             <MainBodyScroller />
