@@ -125,17 +125,17 @@ function UserComplaintsForm() {
     };
 
     return (
-        <div className="flex w-full h-auto" style={{ backgroundColor: 'rgb(23, 37, 84)' }}>
+        <div className="flex w-full h-auto">
             <div className="flex flex-col items-center justify-center w-full p-2 mb-16">
                 <div className="text-center font-bold text-white text-2xl md:text-4xl lg:text-6xl my-4">Complaint</div>
 
                 {/* Complaint Form */}
                 <div className="w-full flex flex-col items-center">
                     {/* Complaint Form Section */}
-                    <div onClick={handleshowComplaintsForm} className="text-center font-semibold text-white bg-black rounded-lg text-md md:text-lg lg:text-2xl p-4 my-4 flex flex-row">Complaint Form <MdOutlineArrowDropDownCircle size={35} className='ml-4' /></div>
+                    <div onClick={handleshowComplaintsForm} className="text-center font-semibold text-white border-4 rounded-lg text-md md:text-lg lg:text-2xl p-4 my-4 flex flex-row">Complaint Form <MdOutlineArrowDropDownCircle size={35} className='ml-4' /></div>
                     {showComplaintsForm ? (
                         <div className='w-full lg:w-1/2'>
-                            <form className='text-white border-4 rounded-lg p-2'>
+                            <form className='border-4 rounded-lg p-2'>
                                 <div className='text-xl md:text-2xl font-bold text-center'>Fill and Confirm Details</div>
                                 {/* Selected Game Dropdown */}
                                 <div className='flex flex-col text-center font-semibold'>
@@ -144,13 +144,11 @@ function UserComplaintsForm() {
                                         name="selected_game"
                                         value={selectedGame}
                                         onChange={(e) => setSelectedGame(e.target.value)}
-                                        className='p-2 m-2 text-center font-semibold rounded-lg bg-black shadow-lg shadow-black'>
+                                        className='p-2 m-2 text-center font-semibold rounded-lg bg-white text-black shadow-md shadow-white'>
                                         <option value="Select Option">Select Option</option>
                                         <option value="Single Digit Lottery">Single Digit Lottery</option>
                                         <option value="Double Digit Lottery">Double Digit Lottery</option>
                                         <option value="Triple Digit Lottery">Triple Digit Lottery</option>
-                                        <option value="ColourBall Number Game">ColourBall Number Game</option>
-                                        <option value="ColourBall Colour Game">ColourBall Colour Game</option>
                                         <option value="ColourBall Game">ColourBall Game</option>
                                         <option value="Other">Other</option>
                                     </select>
@@ -163,7 +161,7 @@ function UserComplaintsForm() {
                                         name="complaint_type"
                                         value={complaintType}
                                         onChange={(e) => setComplaintType(e.target.value)}
-                                        className='p-2 m-2 text-center font-semibold rounded-lg bg-black shadow-lg shadow-black'>
+                                        className='p-2 m-2 text-center font-semibold rounded-lg bg-white text-black shadow-md shadow-white'>
                                         <option value="Select Subject">Select Complaint Subject</option>
                                         <option value="Deposit">Deposit</option>
                                         <option value="Withdrawal">Withdrawal</option>
@@ -172,6 +170,7 @@ function UserComplaintsForm() {
                                         <option value="Transactions">Transactions</option>
                                         <option value="Statements">Statements</option>
                                         <option value="Ledger">Ledger</option>
+                                        <option value="Other">Other</option>
                                     </select>
                                 </div>
 
@@ -185,7 +184,7 @@ function UserComplaintsForm() {
                                         rows={1}
                                         maxLength={100}
                                         placeholder="Describe in less than 50 words..."
-                                        className="p-2 m-2 text-center shadow-lg font-semibold rounded-lg bg-black shadow-black"
+                                        className="p-2 m-2 text-center font-semibold rounded-lg bg-white text-black shadow-md shadow-white"
                                     ></textarea>
                                 </div>
 
@@ -193,9 +192,8 @@ function UserComplaintsForm() {
                                 <div className='flex justify-center'>
                                     <button onClick={(e) => handleSubmit(e)} className='w-auto h-auto bg-blue-500 font-bold rounded-lg p-2 m-2 hover-bg-white hover-text-blue-900 shadow-sm shadow-white'>Submit</button>
                                 </div>
-
-                                <div className='text-center text-xs md:text-sm'>Date and Time are autogenerated.</div>
-                                <div className='text-center text-xs md:text-sm'>You can view Complaint Status and History as below.</div>
+                                <div className='text-center text-xs'>Date and Time are autogenerated.</div>
+                                <div className='text-center text-xs'>You can view Complaint Status and History as below.</div>
                             </form>
                         </div>
                     ) : (<></>)}
@@ -203,11 +201,11 @@ function UserComplaintsForm() {
                 {/* Complaint Status */}
                 <div className="w-full flex flex-col items-center">
                     {/* Complaint Status Section */}
-                    <div onClick={handleshowComplaintsStatus} className="text-center font-semibold text-white bg-black rounded-lg text-md md:text-lg lg:text-xl p-4 my-4 flex flex-row">Complaint Status<MdOutlineArrowDropDownCircle size={35} className='ml-4' /></div>
+                    <div onClick={handleshowComplaintsStatus} className="text-center font-semibold text-white border-4 rounded-lg text-md md:text-lg lg:text-xl p-4 my-4 flex flex-row">Complaint Status<MdOutlineArrowDropDownCircle size={35} className='ml-4' /></div>
                     {showComplaintsStatus ? (
-                        <div className='w-[90%] mx-auto grid overflow-x-auto'>
+                        <div className='w-auto mx-auto grid overflow-x-auto'>
                             <table className="border-collapse table-auto">
-                                <thead className="bg-black text-white font-bold border-4">
+                                <thead className="bg-black font-bold border-4">
                                     <tr className='border-4'>
                                         <th className="text-center border-4">ID</th>
                                         <th className="text-center border-4">Complaint-ID</th>
@@ -222,7 +220,7 @@ function UserComplaintsForm() {
                                         <th className="text-center border-4">Status</th>
                                     </tr>
                                 </thead>
-                                <tbody className="bg-white font-semibold border-4">
+                                <tbody className="bg-white text-xs md:text-base text-black font-semibold border-4">
                                     {filteredPendingComplaints.map((complaint, index) => (
                                         <tr key={complaint.id}>
                                             <td className="text-center border-4">{index + 1}</td>
@@ -262,9 +260,9 @@ function UserComplaintsForm() {
                 {/* Complaint History */}
                 <div className="w-full flex flex-col items-center">
                     {/* Complaints History Section */}
-                    <div onClick={handleshowComplaintsHistory} className="text-center font-semibold text-white bg-black rounded-lg text-md md:text-lg lg:text-xl p-4 my-4 flex flex-row">Complaints History<MdOutlineArrowDropDownCircle size={35} className='ml-4' /></div>
+                    <div onClick={handleshowComplaintsHistory} className="text-center font-semibold text-white border-4 rounded-lg text-md md:text-lg lg:text-xl p-4 my-4 flex flex-row">Complaints History<MdOutlineArrowDropDownCircle size={35} className='ml-4' /></div>
                     {showComplaintsHistory ? (
-                        <div className='w-[90%] grid mx-auto overflow-x-auto'>
+                        <div className='w-auto grid mx-auto overflow-x-auto'>
                             <table className="border-collapse table-auto">
                                 <thead className="bg-black text-white font-bold">
                                     <tr>
@@ -281,7 +279,7 @@ function UserComplaintsForm() {
                                         <th className="text-center border-4">Status</th>
                                     </tr>
                                 </thead>
-                                <tbody className="bg-white font-semibold">
+                                <tbody className="bg-white text-black text-xs md:text-base font-semibold">
                                     {filteredSolvedAndRejectedComplaints.map((complaint, index) => (
                                         <tr key={index} >
                                             <td className="text-center border-4">{index}</td>

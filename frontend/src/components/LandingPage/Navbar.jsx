@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LuPhoneCall } from 'react-icons/lu';
+// import { LuPhoneCall } from 'react-icons/lu';
 import { TiThMenu } from 'react-icons/ti';
 import { FaWindowClose } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,7 @@ function LandingPageNavbar() {
     const navigateToLoginForm = () => { navigate('/login'); };
     const handleRegisterClick = () => { navigate('/register'); };
     const handleMenuClick = () => { setIsMenuOpen(!isMenuOpen); };
-    const handleHelpClick = () => { navigate('/helpCenter'); };
+    // const handleHelpClick = () => { navigate('/helpCenter'); };
 
     const renderMenu = () => {
         if (!isMenuOpen) {
@@ -35,18 +35,18 @@ function LandingPageNavbar() {
                                 <ImTicket size={25} /> <span className='p-1'> </span> Lottery
                             </a>
                         </li> */}
-                        <li>
+                        {/* <li>
                             <button onClick={handleHelpClick} className="hover:bg-white hover:text-slate-900 mt-2 p-2 font-bold flex flex-row outline outline-2 outline-white rounded-lg h-10">
                                 <LuPhoneCall size={25} /> <span className='p-1'> </span> Help Center
                             </button>
-                        </li>
+                        </li> */}
                         <li>
-                            <button onClick={navigateToLoginForm} className="w-32  hover:bg-white hover:text-slate-900 mt-2 outline outline-2 outline-white  p-2 text-xl font-semibold rounded-lg h-10">
+                            <button onClick={navigateToLoginForm} className="w-32  hover:bg-white hover:text-slate-900 mt-2 outline outline-2 outline-white p-2 text-xl font-semibold rounded-sm h-10">
                                 Log In
                             </button>
                         </li>
                         <li>
-                            <button onClick={handleRegisterClick} className=" w-32 mt-2 hover:bg-white hover:text-slate-900 p-2 outline outline-2 outline-white font-semibold text-xl rounded-lg h-10">
+                            <button onClick={handleRegisterClick} className=" w-32 mt-2 hover:bg-white hover:text-slate-900 p-2 outline outline-2 outline-white font-semibold text-xl rounded-sm h-10">
                                 Register
                             </button>
                         </li>
@@ -102,17 +102,12 @@ function LandingPageNavbar() {
                 <div className='hidden font-bold lg:flex xl:flex  space-x-4'>
                     <ul className="flex flex-row">
                         <li>
-                            <button onClick={handleHelpClick} className=" w-32 mt-2 hover:bg-white hover:text-slate-900 p-2 outline outline-2 outline-white ml-4 font-semibold text-xl rounded-sm h-10 flex flex-ro">
-                                <LuPhoneCall size={25} /> <span className='p-2'> </span> Help
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={navigateToLoginForm} className=" w-32 mt-2 hover:bg-white hover:text-slate-900 p-2 outline outline-2 outline-white ml-4 font-semibold text-xl rounded-lg h-10">
+                            <button onClick={navigateToLoginForm} className=" w-32 mt-2 hover:bg-white hover:text-slate-900 p-2 outline outline-2 outline-white ml-4 font-semibold text-xl rounded-sm h-10">
                                 Log In
                             </button>
                         </li>
                         <li>
-                            <button onClick={handleRegisterClick} className="  w-32 mt-2 hover:bg-white hover:text-slate-900 p-2 outline outline-2 outline-white ml-4 font-semibold text-xl rounded-lg h-10">
+                            <button onClick={handleRegisterClick} className="  w-32 mt-2 hover:bg-white hover:text-slate-900 p-2 outline outline-2 outline-white ml-4 font-semibold text-xl rounded-sm h-10">
                                 Register
                             </button>
                         </li>

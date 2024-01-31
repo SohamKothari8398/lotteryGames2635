@@ -65,8 +65,8 @@ function Deposit() {
     };
 
     return (
-        <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-auto bg-black/40 flex justify-center items-center z-20">
-            <div className="bg-slate-600 absolute w-full h-auto mx-auto py-10 rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
+        <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-auto flex justify-center items-center z-20">
+            <div className="bg-black absolute w-full h-auto mx-auto py-10 rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
                 <div className="flex flex-col items-center w-[90%] lg:w-4/5 h-auto bg-white shadow-lg  shadow-slate-900  rounded-lg border-4 border-slate-900">
                     <div className="flex justify-between items-center mb-4">
                         <div className="text-slate-900 font-bold text-3xl md:text-4xl lg:text-5xl ">

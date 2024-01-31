@@ -52,8 +52,8 @@ function Withdraw() {
     };
 
     return (
-        <div className="fixed top-0 left-0 right-0 bottom-0  w-full h-full bg-black/50 flex justify-center items-center z-20">
-            <div className="bg-slate-600 absolute w-full m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
+        <div className="fixed top-0 left-0 right-0 bottom-0  w-full h-full  flex justify-center items-center z-20">
+            <div className="bg-black absolute w-full m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
                 <div className="flex flex-col items-center p-4 bg-white shadow-lg border-4 border-black w-[80%] h-auto shadow-slate-900  rounded-lg">
                     <h1 className="text-slate-900 font-bold text-3xl md:text-4xl lg:text-5xl">Withdraw</h1>
                     <h1 className="text-xl font-bold flex text-black mt-4 mb-4">Wallet Balance = <GetWalletBalance /> </h1>

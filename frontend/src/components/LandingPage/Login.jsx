@@ -63,24 +63,23 @@ function LoginSignin() {
     };
 
     return (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-slate-900 flex items-center">
-            <div className="bg-slate-600 absolute w-full md:w-1/2 lg:w-1/2 h-[90%] m-auto overflow-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
-                <div className="rounded-lg m-auto text-slate-100 w-full h-auto">
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black flex items-center">
+            <div className=" absolute w-full md:w-1/2 lg:w-1/2 h-[90%] m-auto overflow-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
+                <div className="rounded-lg m-auto w-full h-auto">
                     <div className="italic m-auto text-center text-3xl md:text-5xl lg:text-6xl cursor-pointer font-bold">Login</div>
                     <div onClick={handleShowForgotPasswordForm}
-                        className="flex my-8 text-red-900 font-bold text-xl w-full justify-center h-auto hover:scale-125 underline underline-offset-2" >
+                        className="flex my-8 text-red-900 font-bold text-sm w-full cursor-pointer justify-center h-auto hover:scale-125 underline underline-offset-2" >
                         Forgot Password
                         {showForgotPassword ? (<div>
-                            <FaArrowAltCircleUp size={30} className="ml-4" />
+                            <FaArrowAltCircleUp size={20} className="ml-4" />
                         </div>) : (
                             <div>
-                                <FaArrowCircleDown size={30} className="ml-4" />
+                                <FaArrowCircleDown size={20} className="ml-4" />
                             </div>)}
                     </div>
                     {showForgotPassword ? (
                         <form action={`/login?mobileNumber=${mobileNumber2}&otp=${otp}&newPassword=${newPassword}`} className="flex flex-col text-md md:text-lg lg:text-xl font-medium w-full h-auto">
                             <div className="forgotPassword border-4 w-[90%] mx-auto mb-10 py-10">
-                                <div className="italic m-auto text-center text-2xl md:text-3xl lg:text-4xl mb-4 font-bold">Change Password</div>
                                 <label htmlFor="mobile_number2" className="flex font-bold mb-2 flex-col text-center">
                                     Mobile Number
                                     <input
@@ -156,7 +155,7 @@ function LoginSignin() {
                                 <div className="flex justify-center">
                                     <button
                                         onClick={handleChangePasswordClick}
-                                        className="shadow-md shadow-slate-100 bg-slate-900 hover:bg-green-800 text-white rounded-xl h-auto w-1/2 mt-8 p-2 font-bold my-2"
+                                        className=" bg-white text-black hover:bg-green-800 hover:text-white border-2 rounded-xl h-auto w-1/2 mt-8 p-2 font-bold my-2"
                                     >
                                         Change Password
                                     </button>
@@ -164,7 +163,7 @@ function LoginSignin() {
                             </div>
                         </form>
                     ) : (
-                        <form action="/login" className="flex flex-col text-white w-full h-auto border-4 rounded-lg my-10 py-10">
+                        <form action="/login" className="flex flex-col text-white w-[80%] mx-auto h-auto border-4 rounded-lg my-10 py-10">
                             <div className="flex flex-col text-md md:text-lg lg:text-xl font-semibold">
                                 <label htmlFor="user_ID" className="flex font-bold mb-2 flex-col text-center">
                                     User-ID
@@ -204,7 +203,7 @@ function LoginSignin() {
                                 <div className="flex justify-center">
                                     <button
                                         onClick={handleLoginClick}
-                                        className="shadow-md shadow-slate-100 mt-8 bg-slate-900 hover:bg-green-800 text-white rounded-md h-[3rem] w-1/2 hover:border-4 font-bold"
+                                        className="shadow-sm shadow-slate-100 mt-8 bg-white text-black hover:bg-green-800 hover:text-white border-2 rounded-md h-[3rem] w-1/2 font-bold"
                                     >
                                         Submit
                                     </button>
@@ -215,7 +214,7 @@ function LoginSignin() {
                     <div className="flex flex-col mb-10">
                         <div className="text-md md:text-xl flex font-bold mx-auto">
                             <div className="p-2 underline underline-offset-2">No Account</div>
-                            <div onClick={navigateToRegisterPage} className="ml-10 bg-slate-900 text-white px-4 py-2 rounded-md hover:bg-green-800 hover:border-4">
+                            <div onClick={navigateToRegisterPage} className="ml-10  px-4 py-2 rounded-md bg-white text-black hover:bg-green-800 hover:text-white border-2">
                                 Register
                             </div>
                         </div>

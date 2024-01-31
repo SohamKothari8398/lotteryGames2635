@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { TiThMenu } from 'react-icons/ti';
-import { FaWindowClose, FaPowerOff } from 'react-icons/fa';
+import { TbSettingsShare } from 'react-icons/tb';
+import { BsDatabaseFillAdd, BsFillClipboard2DataFill } from 'react-icons/bs';
+import { GiWallet } from 'react-icons/gi';
+import { CgProfile } from 'react-icons/cg';
+import { PiFilesBold } from 'react-icons/pi';
+import { FaWindowClose, FaUserCircle, FaGamepad, FaPowerOff } from 'react-icons/fa';
 import { FaMobileRetro } from 'react-icons/fa6';
-import { MdQrCode2 } from 'react-icons/md';
-import { BiSolidMessageSquareEdit } from 'react-icons/bi';
+import { MdQrCode2, MdOutlineReportProblem } from 'react-icons/md';
+import { BiSolidMessageSquareEdit, BiMoneyWithdraw, BiSolidOffer } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/up365Logo.jpeg';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import GetWalletBalance from '../UsersPanel/WalletBalance';
 
 function AgentsNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +24,43 @@ function AgentsNavbar() {
         setIsMenuOpen(!isMenuOpen);
     }
     const navigate = useNavigate();
+    // const navigateToCreateGiftCardPage = () => {
+    //     navigate('/agent/createGiftCard');
+    // }
+    const navigateToAgentSettingsPage = () => {
+        navigate('/agent/settings');
+    }
+    const navigateToAgentUserRecords = () => {
+        navigate('/agent/userRecords');
+    }
+    const navigateToAddUserCredentials = () => {
+        navigate('/agent/addUserCredentials');
+    }
+    const navigateToAllRecords = () => {
+        navigate('/agent/allRecords');
+    }
+    const navigateToAgentSummaryPage = () => {
+        navigate('/agent/summary');
+    }
+    const navigateToUserDepositPage = () => {
+        navigate('/deposit');
+    };
+    const navigateToUserWallet = () => {
+        navigate('/user/wallet');
+    };
+    const navigateToUserAddComplaintsPage = () => {
+        navigate('/user/complaints');
+    };
+    const navigateToUserOffers = () => {
+        navigate('/user/offers');
+    };
+
+    const navigateToUserWithdrawPage = () => {
+        navigate('/withdraw');
+    };
+    const navigateToGames = () => {
+        navigate('/games');
+    };
     const handleLogout = () => {
         logout();
     };
@@ -28,7 +71,7 @@ function AgentsNavbar() {
             return null;
         }
         return (
-            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/30 flex justify-center items-center">
+            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black justify-center items-center">
                 <div className="bg-slate-500 absolute w-[65vw] h-[65vh] m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
                     <ul className="flex flex-col items-center">
                         <li className="flex border-b-4 pb-2">
@@ -53,13 +96,13 @@ function AgentsNavbar() {
                                 {user.promoCode}
                             </div>
                         </li>
-                        <li>
+                        {/* <li>
                             <div className=" flex flex-col text-white">
                                 <button className=" w-auto mt-2 hover:bg-white hover:text-slate-900 p-2 ml-4 font-semibold text-sm lg:text-xl rounded-lg flex flex-row   focus:outline-none  transition duration-300 ease-in-out">
                                     <BiSolidMessageSquareEdit size={25} /> <span className='p-1'></span> Notifications
                                 </button>
                             </div>
-                        </li>
+                        </li> */}
                         <li>
                             <button onClick={handleLogout} className="w-auto ml-2 mt-2 border-transparent text-sm underline underline-offset-2 hover:border-red-600 flex text-red-600 font-bold flex-row p-2 rounded-lg transition duration-300 ease-in-out">
                                 <FaPowerOff size={25} style={{ color: 'red' }} /> <span className="p-1"> </span> Logout
@@ -75,11 +118,11 @@ function AgentsNavbar() {
     };
 
     return (
-        <nav className="bg-slate-900 text-white p-4 sticky top-0 z-20">
+        <nav className=" bg-black text-white grid grid-cols-1 p-4 sticky top-0 z-20">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="text-xl flex text-white items-center">
                     <div>
-                        <img src={logo} alt="logo not available" className='h-16 md:h-20 w-44 mr-4 rounded-xl' />
+                        <img src={logo} alt="logo not available" className='h-16 md:h-20 w-[10rem] mr-4 rounded-xl' />
                     </div>
                     <div className='hover:text-yellow-600 flex italic font-bold mr-10'>
                         <div className='text-3xl md:text-5xl lg:text-6xl'>UP</div>
@@ -92,7 +135,6 @@ function AgentsNavbar() {
                             </div>
                         </div>
                     </div>
-                    {/* <div className='hover:text-yellow-800 border-none italic text-2xl md:text-4xl lg:text-6xl font-bold mr-10'>UP365</div> */}
                 </div>
 
                 <div className="hidden font-bold md:flex lg:flex xl:flex  space-x-4">
@@ -117,13 +159,13 @@ function AgentsNavbar() {
                             <div className='w-full text-center text-lg'>
                                 {user.promoCode}</div>
                         </li>
-                        <li>
+                        {/* <li>
                             <div className=" flex flex-col text-white items-center">
                                 <button className=" w-auto mt-2 hover:bg-white hover:text-slate-900 p-2 ml-4 font-semibold text-sm lg:text-xl rounded-lg flex flex-row   focus:outline-none  transition duration-300 ease-in-out">
                                     <BiSolidMessageSquareEdit size={25} /> <span className='p-1'></span> Notifications
                                 </button>
                             </div>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
 
@@ -136,13 +178,57 @@ function AgentsNavbar() {
                         </li>
                     </ul>
                 </div>
-                <div className="flex md:hidden lg:hidden">
-                    <button onClick={handleMenuClick} className="w-10 h-10 rounded-full">
-                        <TiThMenu size={30} />
-                    </button>
-                </div>
-                {renderMenu()}
             </div>
+            <div className="flex font-bold justify-evenly mt-8 space-x-4 overflow-x-auto md:overflow-hidden">
+                <div className="w-full h-full text-sm md:text-base grid grid-cols-10 gap-20 md:gap-10">
+                    <div className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <GiWallet size={35} />
+                        <span><GetWalletBalance /></span>
+                    </div>
+                    <div onClick={navigateToUserDepositPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <BsDatabaseFillAdd size={35} />
+                        <span>Deposit</span>
+                    </div>
+                    <div onClick={navigateToUserWithdrawPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <BiMoneyWithdraw size={35} />
+                        <span>Withdraw</span>
+                    </div>
+                    <div onClick={navigateToUserAddComplaintsPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <MdOutlineReportProblem size={35} />
+                        <span>Complaint</span>
+                    </div>
+                    <div onClick={navigateToGames} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <FaGamepad size={35} />
+                        <span>Games</span>
+                    </div>
+                    <div onClick={navigateToUserOffers} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <BiSolidOffer size={35} />
+                        <span>Offers</span>
+                    </div>
+                    <div onClick={navigateToAgentUserRecords} className="flex flex-col mt-2 ml-4 items-center text-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <BsFillClipboard2DataFill size={35} />
+                        <span>User Records</span>
+                    </div>
+                    <div onClick={navigateToAddUserCredentials} className="flex flex-col mt-2 ml-4 items-center text-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <FaUserCircle size={35} />
+                        <span>User Settings</span>
+                    </div>
+                    <div onClick={navigateToAgentSettingsPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <TbSettingsShare size={35} />
+                        <span>Settings</span>
+                    </div>
+                    <div onClick={navigateToAgentSummaryPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <PiFilesBold size={35} />
+                        <span>Summary</span>
+                    </div>
+                </div>
+            </div>
+            <div className="flex md:hidden lg:hidden">
+                <button onClick={handleMenuClick} className="w-10 h-10 rounded-full">
+                    <TiThMenu size={30} />
+                </button>
+            </div>
+            {renderMenu()}
         </nav >
     );
 }

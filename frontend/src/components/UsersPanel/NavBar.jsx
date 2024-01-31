@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { TiThMenu } from 'react-icons/ti';
-import { FaWindowClose, FaWallet, FaGamepad, FaPowerOff, FaUserCircle } from 'react-icons/fa';
+import { FaWindowClose, FaGamepad, FaPowerOff, FaUserCircle } from 'react-icons/fa';
 import { FaMobileRetro } from 'react-icons/fa6';
-import { MdQrCode2, MdHelp, MdOutlineReportProblem } from "react-icons/md";
+import { MdQrCode2, MdOutlineReportProblem } from "react-icons/md";
 import logo from '../../assets/up365Logo.jpeg';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
@@ -51,12 +51,12 @@ function UserNavbar() {
     const navigateToUserWallet = () => {
         navigate('/user/wallet');
     };
-    const navigateToHelpCenter = () => {
-        navigate('/helpCenter');
-    };
-    const navigateToUserResult = () => {
-        navigate('/user/result');
-    };
+    // const navigateToHelpCenter = () => {
+    //     navigate('/helpCenter');
+    // };
+    // const navigateToUserResult = () => {
+    //     navigate('/user/result');
+    // };
     const navigateToUserOffers = () => {
         navigate('/user/offers');
     };
@@ -119,10 +119,10 @@ function UserNavbar() {
                             </div>
                         </div>
                     </div>
-                    {/* <div className='hover:text-yellow-800 border-none italic text-2xl md:text-4xl lg:text-6xl font-bold mr-10'>UP365</div> */}
                 </div>
 
-                <div className="hidden font-bold md:flex lg:flex xl:flex  space-x-4">
+
+                <div className="hidden font-bold md:flex lg:flex xl:flex space-x-4">
                     <ul className="ml-4 font-semibold md:text-xl lg:text-xl flex space-x-4">
                         <li className="flex border-b-4 pb-2">
                             <div className='w-full mr-4'>
@@ -190,48 +190,48 @@ function UserNavbar() {
                     </button>
                 </div>
             </div> */}
-            <div className="flex font-bold justify-evenly space-x-4 overflow-x-auto md:overflow-hidden">
-                <div className="w-full h-full text-sm md:text-lg lg:text-xl grid grid-cols-9 gap-20 md:gap-10">
-                    <div onClick={navigateToUserWallet} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+            <div className="flex font-bold justify-evenly mt-8 space-x-4 overflow-x-auto md:overflow-hidden">
+                <div className="w-full h-full text-sm md:text-base grid grid-cols-8 gap-20 md:gap-10">
+                    <div onClick={navigateToUserWallet} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white w-10 h-30 md:w-24 lg:w-30 ">
                         <GiWallet size={35} />
                         <span><GetWalletBalance /></span>
                     </div>
-                    <div onClick={navigateToUserDepositPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                    <div onClick={navigateToUserDepositPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white w-10 h-30 md:w-24 lg:w-30 ">
                         <BsDatabaseFillAdd size={35} />
                         <span>Deposit</span>
                     </div>
-                    <div onClick={navigateToUserWithdrawPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                    <div onClick={navigateToUserWithdrawPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white w-10 h-30 md:w-24 lg:w-30 ">
                         <BiMoneyWithdraw size={35} />
                         <span>Withdraw</span>
                     </div>
-                    <div onClick={navigateToUserAddComplaintsPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                    <div onClick={navigateToUserAddComplaintsPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white w-10 h-30 md:w-24 lg:w-30 ">
                         <MdOutlineReportProblem size={35} />
                         <span>Complaint</span>
                     </div>
-                    <div onClick={navigateToUserSummaryPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                    <div onClick={navigateToUserSummaryPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white w-10 h-30 md:w-24 lg:w-30 ">
                         <PiFilesBold size={35} />
                         <span>Summary</span>
                     </div>
-                    <div onClick={navigateToGames} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                    <div onClick={navigateToGames} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white w-10 h-30 md:w-24 lg:w-30 ">
                         <FaGamepad size={35} />
                         <span>Games</span>
                     </div>
-                    <div onClick={navigateToProfile} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                    <div onClick={navigateToProfile} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white w-10 h-30 md:w-24 lg:w-30 ">
                         <CgProfile size={35} />
                         <span>Profile</span>
                     </div>
-                    {/* <div onClick={navigateToUserResult} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                    {/* <div onClick={navigateToUserResult} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white w-10 h-30 md:w-24 lg:w-30 ">
                         <TbFileAnalytics size={35} />
                         <span>History</span>
                     </div> */}
-                    <div onClick={navigateToUserOffers} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                    <div onClick={navigateToUserOffers} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white w-10 h-30 md:w-24 lg:w-30 ">
                         <BiSolidOffer size={35} />
                         <span>Offers</span>
                     </div>
-                    <div onClick={navigateToHelpCenter} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
+                    {/* <div onClick={navigateToHelpCenter} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white w-10 h-30 md:w-24 lg:w-30 ">
                         <MdHelp size={35} />
                         <span>Help</span>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </nav >
