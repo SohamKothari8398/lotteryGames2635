@@ -69,7 +69,7 @@ function AdminControlBar() {
     }
 
     return (
-        <nav className="bg-slate-900 text-white mb-1 p-4 md:top-[6vh] lg:top-[11vh] xl:top-[2vh] top-[11vh] z-10">
+        <nav className=" text-white mb-1 p-4 md:top-[6vh] lg:top-[11vh] xl:top-[2vh] top-[11vh] z-10">
             <div className="container mx-auto grid grid-cols-3 md:grid-cols-6 gap-8 justify-between items-center text-2xl sm:text-xl md:text-xl">
                 <div className="flex flex-col text-white items-center m-auto hover:bg-slate-900 text-white-600 font-bold p-2 text-sm lg:text-xl rounded-lg  focus:outline-none  transition duration-300 ease-in-out">
                     <span className='p-2 flex flex-row border-b-4'><FaWallet size={25} />

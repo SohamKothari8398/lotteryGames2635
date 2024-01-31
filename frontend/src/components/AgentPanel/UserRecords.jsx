@@ -56,19 +56,18 @@ function AgentsUserRecords() {
                 Users Record
             </div>
 
-            <div className='mx-auto h-auto p-4 w-full'>
+            <div className='mx-auto h-auto p-4 w-full flex flex-col items-center justify-center'>
                 <div onClick={handleShowUserRecordsTable} className="mx-auto w-1/2 md:w-1/4 flex font-semibold justify-between text-white bg-black border-4 rounded-lg text-md md:text-xl lg:text-2xl p-4 my-4">
                     Records Table <MdOutlineArrowDropDownCircle size={35} className='ml-4' />
                 </div>
-                {showUserRecordsTable ? (<div className='w-full mx-auto overflow-x-auto grid'>
-                    <table className="table-auto text-sm text-slate-900 border-4">
-                        <thead className="bg-black text-white font-bold">
+                {showUserRecordsTable ? (<div className="w-full md:w-auto flex h-auto overflow-x-auto lg:overflow-hidden rounded-lg text-white items-center">
+                    <table className="table-auto h-auto text-sm text-slate-900 border-4">
+                        <thead className="text-white bg-black font-bold text-sm md:text-xl">
                             <tr>
                                 <th className="text-center border-4 p-1">ID</th>
                                 <th className="text-center border-4 p-1">User-ID</th>
                                 <th className="text-center border-4 p-1">Mobile</th>
                                 <th className="text-center border-4 p-1">Promo Code</th>
-                                {/* <th className="text-center border-4 p-1">Gift Card</th> */}
                                 <th className="text-center border-4 p-1">Wallet Balance(in INR)</th>
                                 <th className="text-center border-4 p-1">Date and Time</th>
                                 <th className="text-center border-4 p-1">Account Status</th>
@@ -78,14 +77,13 @@ function AgentsUserRecords() {
                                 <th className="text-center border-4 p-1 bg-red-500">Lost</th>
                             </tr>
                         </thead>
-                        <tbody >
+                        <tbody className='font-bold text-xs md:text-sm'>
                             {tableData.map((row, index) => (
                                 <tr key={index} className="bg-white font-semibold">
                                     <td className='text-center border-2 p-1'>{index}</td>
                                     <td className='text-center border-2 p-1'>{row.userID}</td>
                                     <td className='text-center border-2 p-1'>{row.mobileNumber}</td>
                                     <td className='text-center border-2 p-1'>{row.promoCode}</td>
-                                    {/* <td className='text-center border-2 p-1'>{row.giftCardCode}</td> */}
                                     <td className='text-center border-2 p-1'>{row.walletBalance}</td>
                                     <td className='text-center border-2 p-1'>{format(new Date(row.createdAt), "HH:mm:ss dd/MM/yyyy")}</td>
                                     <td className='text-center border-2 p-1'>{row.accountStatus}</td>
@@ -113,13 +111,14 @@ function AgentsUserRecords() {
                 </div>) : (<></>)}
             </div>
 
-            <div className='mx-auto h-auto p-4 w-full'>
+            <div className='mx-auto h-auto p-4 w-full flex flex-col justify-center items-center'>
                 <div onClick={handleShowTransactionsRecord} className="mx-auto w-1/2 md:w-1/4 flex font-semibold justify-between text-white bg-black border-4 rounded-lg text-md md:text-xl lg:text-2xl p-4 my-4">
                     Transactions Table<MdOutlineArrowDropDownCircle size={35} className='ml-4' />
                 </div>
-                {showTransactionsRecord ? (<div className='w-full mx-auto overflow-x-auto grid'>
-                    <table className="w-full text-sm text-slate-900 rounded-xl border-4">
-                        <thead className="bg-black text-white font-bold">
+
+                {showTransactionsRecord ? (<div className="w-full md:w-auto flex h-auto overflow-x-auto lg:overflow-hidden rounded-lg text-white items-center">
+                    <table className="table-auto h-auto text-sm text-slate-900 border-4">
+                        <thead className="text-white bg-black font-bold text-sm md:text-xl">
                             <tr>
                                 <th className="w-1/12 text-center border-4 p-1">ID</th>
                                 <th className="w-2/12 text-center border-4 p-1">User-ID</th>
@@ -131,7 +130,7 @@ function AgentsUserRecords() {
                                 <th className="w-3/12 text-center border-4 p-1">Status</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='font-bold text-xs md:text-sm'>
                             {tableData.map((row, index) => (
                                 <tr key={index} className="bg-white font-semibold">
                                     <td className="text-center border-2 p-1">{index}</td>
@@ -148,14 +147,14 @@ function AgentsUserRecords() {
                                     </td>
                                 </tr>
                             ))}
-                            <tr className='bg-black'>
-                                <th className="w-1/12 text-center border-4 p-2"></th>
-                                <th className="w-1/12 text-center border-4 p-2"></th>
-                                <th className="w-1/12 text-center border-4 p-2"></th>
-                                <th className="w-1/12 text-center border-4 p-2"></th>
-                                <th className="w-1/12 text-center border-4 p-2"></th>
-                                <th className="w-1/12 text-center border-4 p-2"></th>
-                                <th className="w-1/12 text-center border-4 p-2"></th>
+                            <tr className="bg-black">
+                                <td className='border-4 p-4'></td>
+                                <td className='border-4 p-4'></td>
+                                <td className='border-4 p-4'></td>
+                                <td className='border-4 p-4'></td>
+                                <td className='border-4 p-4'></td>
+                                <td className='border-4 p-4'></td>
+                                <td className='border-4 p-4'></td>
                             </tr>
                         </tbody>
                     </table>

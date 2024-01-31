@@ -137,8 +137,8 @@ const Profile = () => {
 
     return (
         <div className="mx-auto px-4 py-8 bg-slate-900">
-            <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-center text-white underline underline-offset-8 italic">My Profile</h1>
-            <div className="mt-8 w-[90%] md:w-[80%] m-auto">
+            <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-center text-white underline underline-offset-8 italic">Settings</h1>
+            {/* <div className="mt-8 w-[90%] md:w-[80%] m-auto">
                 <div className="text-xl md:text-2xl flex justify-center lg:text-4xl font-semibold w-full mt-16 text-white">
                     My Status
                 </div>
@@ -192,7 +192,7 @@ const Profile = () => {
                         <div className="bg-white rounded-lg text-black p-4 m-2">Value</div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             {/* <div className="mt-8 flex flex-col w-[90%] md:w-[80%] lg:w-[60%]  mx-auto">
                 <div className="w-full">
                     <button onClick={handleToggleMobileForm} className="text-xl flex items-center mx-auto border-4 md:text-2xl lg:text-4xl font-semibold w-auto p-4 m-4 text-white rounded-lg bg-black">
