@@ -12,7 +12,7 @@ function Game() {
         navigate(-1);
     }
     return (
-        <div className='bg-blue-400 text-white font-bold'>
+        <div className=' text-white font-bold'>
             <Form />
             <GameTable />
             <BetsTable />

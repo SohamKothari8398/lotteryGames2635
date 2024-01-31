@@ -65,24 +65,24 @@ function UserNavbar() {
             return null;
         }
         return (
-            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black justify-center items-center">
-                <div className="bg-slate-500 absolute w-[65vw] h-[65vh] m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
-                    <ul className="flex flex-col">
-                        <li className="flex border-b-4 pb-2">
-                            <div className='w-full mr-4'>
+            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/50">
+                <div className="flex bg-slate-800 absolute w-[50%] h-auto m-auto rounded-lg top-0 bottom-0 right-0 left-50 justify-center items-center">
+                    <ul className="flex flex-col text-sm md:text-base">
+                        <li className="flex border-2 p-2 m-2 rounded-lg">
+                            <div className='w-full mr-1 md:mr-4'>
                                 <FaUserCircle size={30} />
                             </div>
                             <div className='w-full text-center text-lg'>
                                 {user.userID}</div>
                         </li>
-                        <li className="flex border-b-4 pb-2">
-                            <div className='w-full mr-4'>
+                        <li className="flex border-2 p-2 m-2 rounded-lg">
+                            <div className='w-full mr-1 md:mr-4'>
                                 <FaMobileRetro size={30} /></div>
                             <div className='w-full text-center text-lg'>
                                 {user.mobileNumber}</div>
                         </li>
-                        <li className="flex border-b-4 pb-2">
-                            <div className='w-full mr-4'>
+                        <li className="flex border-2 p-2 m-2 rounded-lg">
+                            <div className='w-full mr-1 md:mr-4'>
                                 <MdQrCode2 size={30} /></div>
                             <div className='w-full text-center text-lg'>
                                 {user.promoCode}</div>
@@ -121,24 +121,23 @@ function UserNavbar() {
                     </div>
                 </div>
 
-
-                <div className="hidden font-bold md:flex lg:flex xl:flex space-x-4">
+                {/* <div className="hidden font-bold md:flex lg:flex xl:flex space-x-4">
                     <ul className="ml-4 font-semibold md:text-xl lg:text-xl flex space-x-4">
-                        <li className="flex border-b-4 pb-2">
-                            <div className='w-full mr-4'>
+                        <li className="flex border-2 p-2 m-2 rounded-lg">
+                            <div className='w-full mr-1 md:mr-4'>
                                 <FaUserCircle size={30} />
                             </div>
                             <div className='w-full text-center text-lg'>
                                 {user.userID}</div>
                         </li>
-                        <li className="flex border-b-4 pb-2">
-                            <div className='w-full mr-4'>
+                        <li className="flex border-2 p-2 m-2 rounded-lg">
+                            <div className='w-full mr-1 md:mr-4'>
                                 <FaMobileRetro size={30} /></div>
                             <div className='w-full text-center text-lg'>
                                 {user.mobileNumber}</div>
                         </li>
-                        <li className="flex border-b-4 pb-2">
-                            <div className='w-full mr-4'>
+                        <li className="flex border-2 p-2 m-2 rounded-lg">
+                            <div className='w-full mr-1 md:mr-4'>
                                 <MdQrCode2 size={30} /></div>
                             <div className='w-full text-center text-lg'>
                                 {user.promoCode}</div>
@@ -154,10 +153,13 @@ function UserNavbar() {
                             </button>
                         </li>
                     </ul>
-                </div>
-                <div className="flex md:hidden lg:hidden">
-                    <button onClick={handleMenuClick} className="w-10 h-10 rounded-full">
-                        <TiThMenu size={30} />
+                </div> */}
+                <div className="flex">
+                    <button onClick={handleMenuClick} className="w-10 h-10 rounded-full mr-10">
+                        <FaUserCircle size={35} />
+                    </button>
+                    <button onClick={handleLogout} className="w-10 h-10 rounded-full mr-10">
+                        <FaPowerOff size={30} style={{ color: 'red' }} />
                     </button>
                 </div>
                 {renderMenu()}

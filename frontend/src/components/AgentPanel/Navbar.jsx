@@ -5,7 +5,7 @@ import { BsDatabaseFillAdd, BsFillClipboard2DataFill } from 'react-icons/bs';
 import { GiWallet } from 'react-icons/gi';
 import { CgProfile } from 'react-icons/cg';
 import { PiFilesBold } from 'react-icons/pi';
-import { FaWindowClose, FaUserCircle, FaGamepad, FaPowerOff } from 'react-icons/fa';
+import { FaWindowClose, FaUserSecret, FaUserCircle, FaGamepad, FaPowerOff } from 'react-icons/fa';
 import { FaMobileRetro } from 'react-icons/fa6';
 import { MdQrCode2, MdOutlineReportProblem } from 'react-icons/md';
 import { BiSolidMessageSquareEdit, BiMoneyWithdraw, BiSolidOffer } from 'react-icons/bi';
@@ -71,38 +71,28 @@ function AgentsNavbar() {
             return null;
         }
         return (
-            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black justify-center items-center">
-                <div className="bg-slate-500 absolute w-[65vw] h-[65vh] m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
-                    <ul className="flex flex-col items-center">
-                        <li className="flex border-b-4 pb-2">
-                            <div className='w-full mr-4'>
-                                Agent-ID:
+            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/50">
+                <div className="flex bg-slate-800 absolute w-[50%] h-auto m-auto rounded-lg top-0 bottom-0 right-0 left-50 justify-center items-center">
+                    <ul className="flex flex-col text-sm md:text-base">
+                        <li className="flex border-2 p-2 m-2 rounded-lg">
+                            <div className='w-full mr-1 md:mr-4'>
+                                <FaUserSecret size={30} />
                             </div>
                             <div className='w-full text-center text-lg'>
-                                {user.userID}
-                            </div>
+                                {user.userID}</div>
                         </li>
-                        <li className="flex border-b-4 pb-2">
-                            <div className='w-full mr-4'>
+                        <li className="flex border-2 p-2 m-2 rounded-lg">
+                            <div className='w-full mr-1 md:mr-4'>
                                 <FaMobileRetro size={30} /></div>
                             <div className='w-full text-center text-lg'>
-                                {user.mobileNumber}
-                            </div>
+                                {user.mobileNumber}</div>
                         </li>
-                        <li className="flex border-b-4 pb-2">
-                            <div className='w-full mr-4'>
+                        <li className="flex border-2 p-2 m-2 rounded-lg">
+                            <div className='w-full mr-1 md:mr-4'>
                                 <MdQrCode2 size={30} /></div>
                             <div className='w-full text-center text-lg'>
-                                {user.promoCode}
-                            </div>
+                                {user.promoCode}</div>
                         </li>
-                        {/* <li>
-                            <div className=" flex flex-col text-white">
-                                <button className=" w-auto mt-2 hover:bg-white hover:text-slate-900 p-2 ml-4 font-semibold text-sm lg:text-xl rounded-lg flex flex-row   focus:outline-none  transition duration-300 ease-in-out">
-                                    <BiSolidMessageSquareEdit size={25} /> <span className='p-1'></span> Notifications
-                                </button>
-                            </div>
-                        </li> */}
                         <li>
                             <button onClick={handleLogout} className="w-auto ml-2 mt-2 border-transparent text-sm underline underline-offset-2 hover:border-red-600 flex text-red-600 font-bold flex-row p-2 rounded-lg transition duration-300 ease-in-out">
                                 <FaPowerOff size={25} style={{ color: 'red' }} /> <span className="p-1"> </span> Logout
@@ -137,7 +127,7 @@ function AgentsNavbar() {
                     </div>
                 </div>
 
-                <div className="hidden font-bold md:flex lg:flex xl:flex  space-x-4">
+                {/* <div className="hidden font-bold md:flex lg:flex xl:flex  space-x-4">
                     <ul className="ml-4 font-semibold text-xs md:text-xl lg:text-xl flex space-x-4">
                         <li className="flex border-b-4 pb-2">
                             <div className='w-full mr-4'>
@@ -159,24 +149,23 @@ function AgentsNavbar() {
                             <div className='w-full text-center text-lg'>
                                 {user.promoCode}</div>
                         </li>
-                        {/* <li>
+                        <li>
                             <div className=" flex flex-col text-white items-center">
                                 <button className=" w-auto mt-2 hover:bg-white hover:text-slate-900 p-2 ml-4 font-semibold text-sm lg:text-xl rounded-lg flex flex-row   focus:outline-none  transition duration-300 ease-in-out">
                                     <BiSolidMessageSquareEdit size={25} /> <span className='p-1'></span> Notifications
                                 </button>
                             </div>
-                        </li> */}
-                    </ul>
-                </div>
-
-                <div className='hidden font-bold md:flex lg:flex xl:flex'>
-                    <ul className="flex flex-row">
-                        <li>
-                            <button onClick={handleLogout} className="w-auto ml-2 mt-2 border-transparent text-sm underline underline-offset-2 hover:border-red-600 flex text-red-600 font-bold flex-row p-2 rounded-lg transition duration-300 ease-in-out">
-                                <FaPowerOff size={25} style={{ color: 'red' }} /> <span className="p-1"> </span> Logout
-                            </button>
                         </li>
                     </ul>
+                </div> */}
+
+                <div className="flex">
+                    <button onClick={handleMenuClick} className="w-10 h-10 rounded-full mr-10">
+                        <FaUserCircle size={35} />
+                    </button>
+                    <button onClick={handleLogout} className="w-10 h-10 rounded-full mr-10">
+                        <FaPowerOff size={30} style={{ color: 'red' }} />
+                    </button>
                 </div>
             </div>
             <div className="flex font-bold justify-evenly mt-8 space-x-4 overflow-x-auto md:overflow-hidden">

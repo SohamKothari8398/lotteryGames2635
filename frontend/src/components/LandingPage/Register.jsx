@@ -65,10 +65,10 @@ function Register() {
 
     return (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-black flex justify-center items-center text-white">
-            <div className=" absolute w-[90vw] md:w-[60vw] lg:w-[50vw] h-full m-auto rounded-lg">
+            <div className=" absolute w-[80vw] md:w-[45vw] lg:w-[30vw] h-full m-auto rounded-lg">
                 {/* <div className='italic m-auto w-1/2 text-center text-white font-bold text-5xl md:text-7xl rounded-xl my-8 bg-gradient-to-r from-red-700 from-10% via-orange-500 via-30% to-yellow-500 to-90%'>UP365</div> */}
                 <div className='italic m-auto text-center text-3xl md:text-5xl font-bold mt-10 mb-8'>Register</div>
-                <form className='flex flex-col text-sm font-medium w-full h-auto border-4 rounded-lg py-8'>
+                <form className='flex flex-col text-sm font-medium w-full h-auto border-4 rounded-lg py-4'>
                     <div className='flex flex-col w-full text-md md:text-lg lg:text-xl'>
                         <label htmlFor="user_id" className='flex mb-2 flex-col text-center'>User-ID
                             <input type="text" placeholder='John1234, Sam123,...' value={userId} onChange={(e) => setUserID(e.target.value)} className='m-auto mt-2 rounded-lg h-8 text-center w-[70%] bg-black p-4 border-2' name="user_id" id="user_id" maxLength={16} />

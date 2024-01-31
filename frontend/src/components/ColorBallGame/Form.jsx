@@ -34,9 +34,16 @@ function Form() {
     let [betCount, setBetCount] = useState(0);
     // const [totalAmountBet, setTotalAmountBet] = useState(0);
     const userID = user.userID;
+    const [showRules, setShowRules] = useState(false);
 
+    const handleShowRules = () => {
+        setShowRules(!showRules);
+    }
+    const handleNumberClick = (value) => {
+        setNumber(parseInt(value, 10));
+    }
     const handleBetClick = (value) => {
-        setBetAmount(value);
+        setBetAmount(parseInt(value, 10));
     }
 
     const handleSubmitBet = async (e) => {
@@ -80,150 +87,132 @@ function Form() {
     }, [countdownTimer, cooldown, userID, number, betAmount]);
 
     return (
-        <div className="px-4 pb-10 flex flex-col bg-blue-900 items-center">
-            <div className="text-2xl md:text-4xl font-bold text-center mt-28 text-white underline underline-offset-8 italic mb-10">ColorBall Lottery Game</div>
+        <div className="px-4 pb-10 flex flex-col items-center">
+            <div className="text-2xl md:text-4xl font-bold text-center mt-28 text-white underline underline-offset-8 italic mb-10">Color Ball Game</div>
             <div className="fixed w-full text-white bg-black/70 h-auto p-2 rounded-xl border-4 overflow-x-auto md:overflow-hidden ">
-                <div className="w-auto md:w-full h-auto text-xs md:text-sm grid grid-cols-5 overflow-x-auto md:overflow-hidden gap-32 md:gap-10">
+                <div className="w-auto md:w-full h-auto text-xs md:text-sm grid grid-cols-4 overflow-x-auto md:overflow-hidden gap-32 md:gap-10">
                     <div className={`p-2 rounded-lg font-bold w-40 md:w-auto h-auto flex flex-col text-center justify-center align-items-center items-center
                     ${countdownTimer === 0 ? 'text-white' : 'text-green-500'}`}>
                         <div>Game Timer</div>
                         <div className='flex items-center mt-2'><IoMdClock size={30} className='mr-2' />{formatTimer(countdownTimer)}</div>
                     </div>
-                    <div className={`p-2 rounded-lg font-bold w-40 md:w-auto h-auto flex flex-col text-center justify-center align-items-center items-center
-                   ${cooldown !== 0 ? 'text-red-700' : 'text-white'}`}>
-                        <div>Lock Timer</div>
-                        <div className='flex items-center mt-2'><MdLockClock size={30} className='mr-2' />{formatTimer(cooldown)}</div>
-                    </div>
-                    {/* <div className="p-2 rounded-lg font-bold w-40 md:w-auto h-auto flex flex-col text-center justify-center align-items-center items-center">
-                        <div>Total Bet</div>
-                        <div>Rs.{totalAmountBet}</div>
-                    </div> */}
                     <div className="p-2 rounded-lg font-bold w-40 md:w-auto h-auto flex text-center justify-center align-items-center items-center">
                         <BiUserCircle size={30} className='mr-2' />{userID}
                     </div>
                     <div className="p-2 rounded-lg font-bold w-40 md:w-auto h-auto flex text-center justify-center align-items-center items-center">
-                        <BiSolidWalletAlt size={30} className='mr-2' />
+                        <BiSolidWalletAlt size={30} />
                         <GetWalletBalance />
                     </div>
                     <div className="p-2 rounded-lg font-bold w-40 md:w-auto h-auto flex flex-col text-center justify-center align-items-center items-center">
                         <div>Reward</div>
                         <div>Rs.{rewardAmount}</div>
                     </div>
-                    {/* <div className="p-2 rounded-lg font-bold w-40 md:w-auto h-auto flex flex-col text-center justify-center align-items-center items-center">
-                        <div>Max Bets</div>
-                        <div>{maxBet}</div>
-                    </div> */}
                 </div>
             </div>
-            {/* <nav className="fixed w-full text-white left-0 right-0 bottom-0 bg-black/70 h-[5rem] border-4 rounded-xl">
-                <div className="w-auto md:w-full h-auto text-xs md:text-sm grid grid-cols-3 overflow-x-auto md:overflow-hidden p-4 gap-32 md:gap-10">
-                    <div className="p-2 rounded-lg font-bold w-40 md:w-auto h-auto flex text-center justify-center align-items-center items-center">
-                        <BiUserCircle size={30} className='mr-2' />{userID}
-                    </div>
-                    <div className="p-2 rounded-lg font-bold w-40 md:w-auto h-auto flex text-center justify-center align-items-center items-center">
-                        <BiSolidWalletAlt size={30} className='mr-2' /> {walletBalance}
-                    </div>
-                    <div className="p-2 rounded-lg font-bold w-40 md:w-auto h-auto flex flex-col text-center justify-center align-items-center items-center">
-                        <div>Reward</div>
-                        <div>Rs.{rewardAmount}</div>
+
+
+            <div className=' items-center mb-10 border-4 py-2 grid grid-cols-1 w-auto lg:w-[50%] h-auto text-center rounded-xl text-white font-bold shadow-red-600 shadow-lg'>
+                <div className="text-center w-full font-semibold bg-black text-white rounded-xl text-lg md:text-xl underline underline-offset-4">Place Your Bets</div>
+                <div className="mx-2 p-2 bg-black rounded-lg w-auto h-auto flex flex-col">
+                    <div className='grid grid-cols-3 gap-4 justify-center text-black text-xs md:text-xl lg:text-2xl items-center my-4 py-2'>
+                        <div className='text-white flex flex-col w-full shadow-lg shadow-red-600 rounded-lg'>
+                            <div className=' text-sm md:text-base'>Bet Number</div>
+                            <select
+                                name="betNumber"
+                                value={number}
+                                onChange={(e) => handleNumberClick(e.target.value)}
+                                className='p-2 m-2 text-center font-semibold rounded-lg bg-white text-black shadow-md shadow-white'>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="21">21</option>
+                                <option value="22">22</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="25">25</option>
+                                <option value="26">26</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="29">29</option>
+                                <option value="30">30</option>
+                                <option value="31">31</option>
+                                <option value="32">32</option>
+                                <option value="33">33</option>
+                                <option value="34">34</option>
+                                <option value="35">35</option>
+                                <option value="36">36</option>
+                            </select>
+                        </div>
+                        <div className='text-white flex flex-col w-full shadow-lg shadow-red-600 rounded-lg'>
+                            <div className=' text-sm md:text-base'>Bet Amount</div>
+                            <select
+                                name="betAmount"
+                                value={betAmount}
+                                onChange={(e) => handleBetClick(e.target.value)}
+                                className='p-2 m-2 text-center font-semibold rounded-lg bg-white text-black shadow-md shadow-white'>
+                                <option value="no-value">Select Value</option>
+                                <option value="100">100</option>
+                                <option value="250">250</option>
+                                <option value="500">500</option>
+                                <option value="750">750</option>
+                                <option value="1000">1000</option>
+                            </select>
+                        </div>
+                        <div className='text-white flex flex-col w-full shadow-lg shadow-red-600 rounded-lg'>
+                            <div className=' text-sm md:text-base'>Custom Bet</div>
+                            <div className='w-auto'>
+                                <input type='number' onChange={(e) => setBetAmount(parseInt(e.target.value, 10))}
+                                    value={betAmount} placeholder='100, 200, 300, 500, etc.'
+                                    className='p-2 m-2 w-10/12 md:w-11/12 text-center font-semibold rounded-lg bg-white text-black shadow-md shadow-white' />
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </nav> */}
-
-            <div className="text-center font-semibold bg-black text-white border-4 rounded-xl text-lg md:text-xl p-4 mb-4 flex flex-row items-center">Place Your Bet Below <MdArrowDropDownCircle size={30} className='ml-4' /></div>
-            <div className={`w-full flex-col text-white h-auto items-center mb-10 ${cooldown !== 0 ? 'hidden' : 'flex'}`}>
-                <div className="grid grid-cols-1 w-full lg:w-[50%] h-[30%] text-center border-4 rounded-xl bg-slate-600 text-white font-bold">
-                    <div className="bg-black m-2 p-1 rounded-lg w-auto h-auto flex flex-col border-4">
-                        <div className='border-4 w-full md:w-3/6 mx-auto border-white text-md md:text-xl rounded-md'>Select a Number from 1 to 36</div>
-                        {/* <div className="rounded-lg text-md md:text-xl flex overflow-x-auto p-4 text-black text-center">
-                            <div value={1} onClick={() => handleNumberClick(1)} className='flex h cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>1</div>
-                            <div value={2} onClick={() => handleNumberClick(2)} className='flex h cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>2</div>
-                            <div value={3} onClick={() => handleNumberClick(3)} className='flex h cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>3</div>
-                            <div value={4} onClick={() => handleNumberClick(4)} className='flex h cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>4</div>
-                            <div value={5} onClick={() => handleNumberClick(5)} className='flex h cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>5</div>
-                            <div value={6} onClick={() => handleNumberClick(6)} className='flex h cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>6</div>
-                            <div value={7} onClick={() => handleNumberClick(7)} className='flex h cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>7</div>
-                            <div value={8} onClick={() => handleNumberClick(8)} className='flex h cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>8</div>
-                            <div value={9} onClick={() => handleNumberClick(9)} className='flex h cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>9</div>
-                            <div value={10} onClick={() => handleNumberClick(10)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>10</div>
-                            <div value={11} onClick={() => handleNumberClick(11)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>11</div>
-                            <div value={12} onClick={() => handleNumberClick(12)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>12</div>
-                            <div value={13} onClick={() => handleNumberClick(13)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>13</div>
-                            <div value={14} onClick={() => handleNumberClick(14)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>14</div>
-                            <div value={15} onClick={() => handleNumberClick(15)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>15</div>
-                            <div value={16} onClick={() => handleNumberClick(16)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>16</div>
-                            <div value={17} onClick={() => handleNumberClick(17)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>17</div>
-                            <div value={18} onClick={() => handleNumberClick(18)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>18</div>
-                            <div value={19} onClick={() => handleNumberClick(19)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>19</div>
-                            <div value={20} onClick={() => handleNumberClick(20)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>20</div>
-                            <div value={21} onClick={() => handleNumberClick(21)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>21</div>
-                            <div value={22} onClick={() => handleNumberClick(22)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>22</div>
-                            <div value={23} onClick={() => handleNumberClick(23)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>23</div>
-                            <div value={24} onClick={() => handleNumberClick(24)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>24</div>
-                            <div value={25} onClick={() => handleNumberClick(25)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>25</div>
-                            <div value={26} onClick={() => handleNumberClick(26)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>26</div>
-                            <div value={27} onClick={() => handleNumberClick(27)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>27</div>
-                            <div value={28} onClick={() => handleNumberClick(28)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>28</div>
-                            <div value={29} onClick={() => handleNumberClick(29)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>29</div>
-                            <div value={30} onClick={() => handleNumberClick(30)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>30</div>
-                            <div value={31} onClick={() => handleNumberClick(31)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>31</div>
-                            <div value={32} onClick={() => handleNumberClick(32)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>32</div>
-                            <div value={33} onClick={() => handleNumberClick(33)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>33</div>
-                            <div value={34} onClick={() => handleNumberClick(34)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>34</div>
-                            <div value={35} onClick={() => handleNumberClick(35)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>35</div>
-                            <div value={36} onClick={() => handleNumberClick(36)} className='flex cursor-pointer justify-center items-center border-4 border-white p-2 md:p-1 font-bold m-1 rounded-full shadow-md shadow-white bg-white hover:scale-150 h-8 md:h-10'>36</div>
-                        </div> */}
-                        <div className='grid grid-cols-2 justify-center text-xl items-center border-2 border-black m-4 p-2'>
-                            Your Selection
-                            <input type="number" onChange={(e) => setNumber(e.target.value)} maxLength={2} max={36} className='p-2 border-4 font-bold outline-none shadow-md shadow-white text-black text-center w-1/2 h-auto rounded-lg bg-green-600 ml-2' name="gameNumber" id="gameNumber" />
-                        </div>
+                <div className="mx-2 mb-4 p-2 bg-black rounded-lg w-auto h-auto flex flex-col shadow-lg shadow-red-600">
+                    <div className="text-center w-full font-semibold bg-black text-white rounded-xl text-lg md:text-xl underline underline-offset-4">Bet Colour</div>
+                    <div className="rounded-lg grid grid-cols-5 gap-4 md:gap-8 text-md md:text-xl mx-auto w-full md:w-7/12 my-4 text-white">
+                        <div value={'Red'} onClick={() => setSelectColor('Red')} className='flex justify-center cursor-pointer items-center p-1 border-white bg-red-700  font-bold m-1 rounded-full shadow-lg shadow-white  hover:scale-150 h-8 md:h-12'>R</div>
+                        <div value={'Blue'} onClick={() => setSelectColor('Blue')} className='flex justify-center items-center cursor-pointer p-1 border-white bg-blue-800 font-bold m-1 rounded-full shadow-lg shadow-white  hover:scale-150 h-8 md:h-12'>B</div>
+                        <div value={'Green'} onClick={() => setSelectColor('Green')} className='flex justify-center items-center cursor-pointer p-1 border-white bg-green-700 font-bold m-1 rounded-full shadow-lg shadow-white  hover:scale-150 h-8 md:h-12'>G</div>
+                        <div value={'Yellow'} onClick={() => setSelectColor('Yellow')} className='flex justify-center items-center cursor-pointer p-1 border-white bg-yellow-500 font-bold m-1 rounded-full shadow-lg shadow-white  hover:scale-150 h-8 md:h-12'>Y</div>
+                        <div value={'Purple'} onClick={() => setSelectColor('Purple')} className='flex justify-center items-center cursor-pointer p-1 border-white bg-purple-800 font-bold m-1 rounded-full shadow-lg shadow-white  hover:scale-150 h-8 md:h-12'>P</div>
                     </div>
-                    <div className="m-2 p-2 bg-black rounded-lg w-auto h-auto flex flex-col border-4">
-                        <div className='border-4 w-full md:w-2/6 mx-auto mb-2 border-white text-md md:text-xl rounded-md'>Select Color</div>
-                        <div className="rounded-lg grid grid-cols-5 gap-1 md:gap-4 text-md md:text-xl mx-auto w-full md:w-2/4 text-white">
-                            <div value={'Red'} onClick={() => setSelectColor('Red')} className='flex justify-center cursor-pointer items-center p-1 border-white bg-red-700  font-bold m-1 rounded-full shadow-lg shadow-white  hover:scale-150 h-8 md:h-12'>R</div>
-                            <div value={'Blue'} onClick={() => setSelectColor('Blue')} className='flex justify-center items-center cursor-pointer p-1 border-white bg-blue-800 font-bold m-1 rounded-full shadow-lg shadow-white  hover:scale-150 h-8 md:h-12'>B</div>
-                            <div value={'Green'} onClick={() => setSelectColor('Green')} className='flex justify-center items-center cursor-pointer p-1 border-white bg-green-700 font-bold m-1 rounded-full shadow-lg shadow-white  hover:scale-150 h-8 md:h-12'>G</div>
-                            <div value={'Yellow'} onClick={() => setSelectColor('Yellow')} className='flex justify-center items-center cursor-pointer p-1 border-white bg-yellow-500 font-bold m-1 rounded-full shadow-lg shadow-white  hover:scale-150 h-8 md:h-12'>Y</div>
-                            <div value={'Purple'} onClick={() => setSelectColor('Purple')} className='flex justify-center items-center cursor-pointer p-1 border-white bg-purple-800 font-bold m-1 rounded-full shadow-lg shadow-white  hover:scale-150 h-8 md:h-12'>P</div>
-                        </div>
+                </div>
+                <div className='w-auto h-auto text-xs md:text-base my-2 mb-4'>
+                    <div onClick={handleSubmitBet} className={`bg-blue-700 w-[70%] md:w-1/2 border-2 shadow-md hover:scale-125 shadow-white border-white p-1 rounded-lg h-auto flex flex-col cursor-pointer mx-auto ${betCount < 1 ? '' : 'hidden'}`}>
+                        Place Bet
                     </div>
-                    <div className="mx-2 p-2 rounded-lg bg-black w-auto h-auto flex flex-col border-4">
-                        <div className='border-4 w-full md:w-2/6 mx-auto mb-2 border-white text-md md:text-xl rounded-md'>Bet Amount</div>
-                        <div className="rounded-lg grid grid-cols-5 gap-2 md:gap-4 w-full mx-auto h-auto text-xs md:text-xl text-white px-2 border-white">
-                            <div value={100} onClick={() => handleBetClick(100)} className='flex justify-center items-center border-4 border-white bg-black p-1 rounded-lg  shadow-md shadow-white hover:bg-green-500'>100</div>
-                            <div value={250} onClick={() => handleBetClick(250)} className='flex justify-center items-center border-4 border-white bg-black p-1 rounded-lg  shadow-md shadow-white  hover:bg-green-500'>250</div>
-                            <div value={500} onClick={() => handleBetClick(500)} className='flex justify-center items-center border-4 border-white bg-black p-1 rounded-lg  shadow-md shadow-white  hover:bg-green-500'>500</div>
-                            <div value={750} onClick={() => handleBetClick(750)} className='flex justify-center items-center border-4 border-white bg-black p-1 rounded-lg  shadow-md shadow-white  hover:bg-green-500'>750</div>
-                            <div value={1000} onClick={() => handleBetClick(1000)} className='flex justify-center items-center border-4 border-white bg-black p-1 rounded-lg shadow-md shadow-white  hover:bg-green-500'>1000</div>
-                        </div>
-                        <div className='w-10/12 mx-auto h-12 mt-4 border-4 rounded-xl'>
-                            <input type='number' onChange={(e) => setBetAmount(parseInt(e.target.value, 10))} value={betAmount} placeholder='100, 200, 300, 500, etc.' className="bg-white w-full h-full text-center font-bold rounded-lg text-black" />
-                        </div>
+                    <div onClick={handleSubmitBet} className={`bg-blue-700 w-[70%] md:w-1/2 border-2 shadow-md hover:scale-125 shadow-white border-white p-1 rounded-lg h-auto flex flex-col cursor-pointer mx-auto ${betCount >= 1 ? '' : 'hidden'}`}>
+                        Place More Bets
                     </div>
-                    <div className="m-2 p-2 bg-black rounded-lg w-auto h-auto flex flex-col border-4">
-                        <div className='grid grid-cols-3 gap-2 justify-center text-xs md:text-xl items-center'>
-                            <div className={`p-2 mx-auto border-4 font-bold outline-none shadow-md shadow-white text-white text-center w-full h-auto rounded-lg
-                              ${selectColor === 'Red' ? 'bg-red-700' : selectColor === 'Purple' ? 'bg-purple-800' : selectColor === 'Green' ? 'bg-green-700' : selectColor === 'Blue' ? 'bg-blue-800' : selectColor === 'Yellow' ? 'bg-yellow-500' : 'bg-black'}`}>{number}
-                            </div>
-                            <div className={`p-2 mx-auto border-4 border-white shadow-md shadow-white font-bold text-center w-full h-auto rounded-lg
-                             ${selectColor === 'Red' ? 'bg-red-700' : selectColor === 'Purple' ? 'bg-purple-800' : selectColor === 'Green' ? 'bg-green-700' : selectColor === 'Blue' ? 'bg-blue-800' : selectColor === 'Yellow' ? 'bg-yellow-500' : 'bg-black'}`}>
-                                {selectColor}
-                            </div>
-                            <div className={`p-2 mx-auto border-4 border-white shadow-md shadow-white font-bold text-center w-full h-auto rounded-lg
-                             ${selectColor === 'Red' ? 'bg-red-700' : selectColor === 'Purple' ? 'bg-purple-800' : selectColor === 'Green' ? 'bg-green-700' : selectColor === 'Blue' ? 'bg-blue-800' : selectColor === 'Yellow' ? 'bg-yellow-500' : 'bg-black'}`}>
-                                {betAmount}
-                            </div>
+                </div>
+                <div className="bg-black mx-2 p-1 rounded-lg w-auto h-auto flex flex-col">
+                    <div onClick={handleShowRules} className='border-white text-sm rounded-md flex w-full cursor-pointer justify-center align-content-center '>Rules <MdArrowDropDownCircle size={20} className='ml-4' /></div>
+                    {showRules ? (
+                        <div className='border-2 border-red-700 rounded-lg'>
+                            <div className='border-white text-sm rounded-md'>1. Select a Number from 1 to 36</div>
+                            <div className='border-white text-sm rounded-md mt-2'>2. Minimum Bet Amount is 100</div>
+                            <div className='border-white text-sm rounded-md mt-2'>3. Select a colour from the colour options</div>
                         </div>
-                    </div>
-                    <div className='w-5/6 md:w-1/2 h-auto cursor-pointer mx-auto my-4'>
-                        <div onClick={handleSubmitBet} className={`bg-green-900 p-2 rounded-lg h-auto flex flex-col mx-auto hover:scale-125 border-4 cursor-pointer hover:bg-blue-500 ${betCount < 1 ? '' : 'hidden'}`}>
-                            Place Bet
-                        </div>
-                        <div onClick={handleSubmitBet} className={`bg-green-900 p-2 rounded-lg h-auto flex flex-col mx-auto hover:scale-125 border-4 cursor-pointer hover:bg-blue-500 ${betCount >= 1 ? '' : 'hidden'}`}>
-                            Place More Bets
-                        </div>
-                    </div>
+                    ) : (<></>)
+                    }
                 </div>
             </div>
         </div >

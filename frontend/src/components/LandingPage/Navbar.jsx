@@ -21,7 +21,7 @@ function LandingPageNavbar() {
         return (
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-black flex justify-center items-center">
                 <div className="absolute w-[60vw] h-[65vh] m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
-                    <ul className="m-auto font-bold flex flex-col space-x-4">
+                    <ul className="m-auto font-bold flex flex-col">
                         {/* <li className="ml-4 mt-2 flex flex-row p-2 outline outline-2 hover:bg-white hover:text-slate-900 outline-white rounded-lg h-10" >
                             <CgGames size={30} /> <span className='p-1'> </span> Games
                         </li>
@@ -41,7 +41,7 @@ function LandingPageNavbar() {
                             </button>
                         </li> */}
                         <li>
-                            <button onClick={navigateToLoginForm} className="w-32  hover:bg-white hover:text-slate-900 mt-2 outline outline-2 outline-white p-2 text-xl font-semibold rounded-sm h-10">
+                            <button onClick={navigateToLoginForm} className=" w-32 mt-2 hover:bg-white hover:text-slate-900 p-2 outline outline-2 outline-white font-semibold text-xl rounded-sm h-10">
                                 Log In
                             </button>
                         </li>
@@ -52,7 +52,7 @@ function LandingPageNavbar() {
                         </li>
                     </ul>
 
-                    <button onClick={handleMenuClick} className="absolute top-4 right-4 z-50">
+                    <button onClick={handleMenuClick} className="absolute top-4 right-4 z-50 bg-white rounded-sm shadow-sm shadow-white">
                         <FaWindowClose size={30} style={{ color: 'red' }} />
                     </button>
                 </div>
