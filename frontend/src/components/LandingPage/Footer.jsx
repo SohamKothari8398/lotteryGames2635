@@ -1,6 +1,8 @@
 import React from 'react';
-import { FaFacebookSquare, FaInstagram, FaTelegram } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
 import { BsWhatsapp } from 'react-icons/bs';
+import { LiaFacebook } from "react-icons/lia";
+import { PiTelegramLogoDuotone } from "react-icons/pi";
 import upilogo from '../../assets/upiLogo.jpg';
 import gpayLogo from '../../assets/gpayLogo.png';
 import phonepe from '../../assets/phonePe-logo.png';
@@ -12,7 +14,7 @@ import card_payments3 from '../../assets/discoverLogo.png';
 
 const LandingPageFooter = () => {
   return (
-    <div className='w-full mx-auto flex flex-col pt-8 pb-4 px-8 text-white'>
+    <div className='w-full mx-auto flex flex-col pt-8 pb-4 px-8 text-white md:mb-96 lg:mb-0'>
       {/** App Description, Social Media Links*/}
       <div>
         <div className="text-xl grid md:grid-cols-2 text-white items-center">
@@ -29,15 +31,15 @@ const LandingPageFooter = () => {
               </div>
             </div>
           </div>
-          <p className='text-sm py-4 lg:-ml-72 hover:scale-125'>We have a well established presence in the casino industry with successful establishments in India, Dubai, Malta and many more. And now we are setting our sights on the online gaming arena. We provide our services to the individuals, who seek excitement, entertainment, and pleasure of earning hefty through gaming and risks. </p>
+          <p className='text-xs lg:text-base py-4 md:-ml-48 lg:-ml-96'>We have a well established presence in the casino industry with successful establishments in India, Dubai, Malta and many more. And now we are setting our sights on the online gaming arena. We provide our services to the individuals, who seek excitement, entertainment, and pleasure of earning hefty through gaming and risks. </p>
         </div>
         <div className='grid grid-cols-1 mt-10'>
           <div className='w-full text-2xl flex flex-row gap-2 mb-4 font-bold italic text-white'> SOCIAL MEDIA </div>
           <div className='grid grid-cols-4 w-full md:w-1/2 my-4'>
-            <a href="https://www.facebook.com" target='_blank' rel="noreferrer"><FaFacebookSquare size={30} className=' cursor-pointer hover:scale-150 hover:text-blue-700' /></a>
-            <a href="https://www.instagram.com" target='_blank' rel="noreferrer"><FaInstagram size={30} className=' cursor-pointer hover:scale-150 hover:text-pink-600' />     </a>
+            <a href="https://www.facebook.com" target='_blank' rel="noreferrer"><LiaFacebook size={36} className=' cursor-pointer hover:scale-150 hover:text-blue-700' /></a>
+            <a href="https://www.instagram.com" target='_blank' rel="noreferrer"><FaInstagram size={30} className=' cursor-pointer hover:scale-150  bg-gradient-to-r hover:from-violet-600  hover:via-red-500 hover:to-yellow-500 rounded-lg' />     </a>
             <a href="https://web.whatsapp.com/" target='_blank' rel="noreferrer"><BsWhatsapp size={30} className=' cursor-pointer hover:scale-150 hover:text-green-700' />      </a>
-            <a href="https://telegram.org/login" target='_blank' rel="noreferrer"> <FaTelegram size={30} className=' cursor-pointer hover:scale-150 hover:text-sky-400' />     </a>
+            <a href="https://telegram.org/login" target='_blank' rel="noreferrer"> <PiTelegramLogoDuotone size={30} className=' cursor-pointer hover:scale-150 hover:text-sky-500' />     </a>
           </div>
         </div>
       </div>
@@ -45,14 +47,14 @@ const LandingPageFooter = () => {
       <div className='mt-4'>
         <h1 className='w-full text-2xl flex flex-row gap-2 mb-10 font-bold italic text-white'> PAYMENT METHODS </h1>
         <div className='my-2 grid grid-cols-4 md:grid-cols-8 gap-4 md:gap-10'>
-          <img src={upilogo} alt='Upi Payments' className='mr-2  mb-2 border-2 rounded-lg w-full h-[3rem]' />
-          <img src={gpayLogo} alt='Upi Payments' className='mr-2 mb-2 bg-white border-2 rounded-lg w-full h-[3rem]' />
-          <img src={phonepe} alt='Upi Payments' className='mr-2 mb-2  border-2 rounded-lg w-full h-[3rem]' />
-          <img src={paytmLogo} alt='Upi Payments' className='mr-2 bg-white border-2 rounded-lg w-full h-[3rem]' />
-          <img src={netBanking_Logo} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem]' />
-          <img src={card_payments} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem]' />
-          <img src={card_payments2} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem]' />
-          <img src={card_payments3} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem]' />
+          <img src={upilogo} alt='Upi Payments' className='mr-2  mb-2 border-2 rounded-lg w-full h-[3rem] hover:scale-125' />
+          <img src={gpayLogo} alt='Upi Payments' className='mr-2 mb-2 bg-white border-2 rounded-lg w-full h-[3rem] hover:scale-125' />
+          <img src={phonepe} alt='Upi Payments' className='mr-2 mb-2  border-2 rounded-lg w-full h-[3rem] hover:scale-125' />
+          <img src={paytmLogo} alt='Upi Payments' className='mr-2 bg-white border-2 rounded-lg w-full h-[3rem] hover:scale-125' />
+          <img src={netBanking_Logo} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem] hover:scale-125' />
+          <img src={card_payments} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem] hover:scale-125' />
+          <img src={card_payments2} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem] hover:scale-125' />
+          <img src={card_payments3} alt='Upi Payments' className='mr-2 border-2 bg-white rounded-lg w-full h-[3rem] hover:scale-125' />
         </div>
       </div>
       {/**All Important Links */}

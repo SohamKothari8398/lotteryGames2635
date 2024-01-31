@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { TiThMenu } from 'react-icons/ti';
 import { TbSettingsShare } from 'react-icons/tb';
-import { BsDatabaseFillAdd, BsFillClipboard2DataFill } from 'react-icons/bs';
-import { GiWallet } from 'react-icons/gi';
-import { CgProfile } from 'react-icons/cg';
+import { BsDatabaseAdd } from 'react-icons/bs';
+import { FaRegCircleUser } from "react-icons/fa6";
+import { LuGamepad2, LuWallet, LuUserCircle } from "react-icons/lu";
 import { PiFilesBold } from 'react-icons/pi';
-import { FaWindowClose, FaUserSecret, FaUserCircle, FaGamepad, FaPowerOff } from 'react-icons/fa';
+import { FaWindowClose, FaUserSecret, FaPowerOff, FaRegAddressBook } from 'react-icons/fa';
 import { FaMobileRetro } from 'react-icons/fa6';
-import { MdQrCode2, MdOutlineReportProblem } from 'react-icons/md';
-import { BiSolidMessageSquareEdit, BiMoneyWithdraw, BiSolidOffer } from 'react-icons/bi';
+import { MdQrCode2, MdOutlineReportProblem, MdOutlineLocalOffer } from 'react-icons/md';
+import { BiMoneyWithdraw } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/up365Logo.jpeg';
 import { useLogout } from '../../hooks/useLogout';
@@ -161,21 +161,18 @@ function AgentsNavbar() {
 
                 <div className="flex">
                     <button onClick={handleMenuClick} className="w-10 h-10 rounded-full mr-10">
-                        <FaUserCircle size={35} />
-                    </button>
-                    <button onClick={handleLogout} className="w-10 h-10 rounded-full mr-10">
-                        <FaPowerOff size={30} style={{ color: 'red' }} />
+                        <LuUserCircle size={35} />
                     </button>
                 </div>
             </div>
-            <div className="flex font-bold justify-evenly mt-8 space-x-4 overflow-x-auto md:overflow-hidden">
+            <div className="flex font-bold justify-evenly mt-8 space-x-4 overflow-x-auto lg:overflow-hidden">
                 <div className="w-full h-full text-sm md:text-base grid grid-cols-10 gap-20 md:gap-10">
-                    <div className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
-                        <GiWallet size={35} />
+                    <div onClick={navigateToUserWallet} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
+                        <LuWallet size={35} />
                         <span><GetWalletBalance /></span>
                     </div>
                     <div onClick={navigateToUserDepositPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
-                        <BsDatabaseFillAdd size={35} />
+                        <BsDatabaseAdd size={35} />
                         <span>Deposit</span>
                     </div>
                     <div onClick={navigateToUserWithdrawPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
@@ -187,19 +184,19 @@ function AgentsNavbar() {
                         <span>Complaint</span>
                     </div>
                     <div onClick={navigateToGames} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
-                        <FaGamepad size={35} />
+                        <LuGamepad2 size={35} />
                         <span>Games</span>
                     </div>
                     <div onClick={navigateToUserOffers} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
-                        <BiSolidOffer size={35} />
+                        <MdOutlineLocalOffer size={35} />
                         <span>Offers</span>
                     </div>
                     <div onClick={navigateToAgentUserRecords} className="flex flex-col mt-2 ml-4 items-center text-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
-                        <BsFillClipboard2DataFill size={35} />
+                        <FaRegAddressBook size={35} />
                         <span>User Records</span>
                     </div>
                     <div onClick={navigateToAddUserCredentials} className="flex flex-col mt-2 ml-4 items-center text-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">
-                        <FaUserCircle size={35} />
+                        <FaRegCircleUser size={35} />
                         <span>User Settings</span>
                     </div>
                     <div onClick={navigateToAgentSettingsPage} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white cursor-pointer w-10 h-30 md:w-24 lg:w-30 ">

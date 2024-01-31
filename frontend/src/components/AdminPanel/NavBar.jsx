@@ -42,8 +42,8 @@ function AdminNavbar() {
     };
 
     return (
-        <nav className="bg-slate-900 text-white p-4 sticky top-0 z-20">
-            <div className="container mx-auto flex justify-between items-center">
+        <nav className="text-white p-4 sticky top-0 z-20">
+            < div className="container mx-auto flex justify-between items-center" >
                 <div className="text-xl flex text-white items-center">
                     <div>
                         <img src={logo} alt="logo not available" className='h-16 md:h-20 w-40 lg:w-44 mr-4 rounded-xl' />
@@ -91,7 +91,7 @@ function AdminNavbar() {
                     </button>
                 </div>
                 {renderMenu()}
-            </div>
+            </div >
         </nav >
     );
 };
