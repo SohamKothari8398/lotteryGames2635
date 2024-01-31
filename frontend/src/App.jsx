@@ -83,7 +83,7 @@ function App() {
           <Route path='/user/home' element={(isUser) ? <UserHome /> : <Login />} />
           <Route path='/user/wallet' element={(isLogin) ? <UserWallet /> : <Login />} />
           <Route path='/user/report' element={(isUser) ? <UserReport /> : <Login />} />
-          <Route path='/user/offers' element={(isUser) ? <UserOffers /> : <Login />} />
+          <Route path='/user/offers' element={(isUser || isAgent) ? <UserOffers /> : <Login />} />
           <Route path='/user/result' element={(isUser) ? <UserHistory /> : <Login />} />
           <Route path="/user/profile" element={(isUser) ? <UserProfile /> : <Login />} />
           <Route path="/user/complaints" element={(isLogin) ? <UserComplaints /> : <Login />} />

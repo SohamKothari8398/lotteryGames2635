@@ -107,7 +107,7 @@ function AgentsCreateUser() {
     return (
         <div className="bg-slate-600 flex w-full text-white h-auto">
             <div className="flex flex-col items-center justify-center w-full p-2 mb-40">
-                <div className="text-center font-bold text-2xl md:text-4xl lg:text-6xl my-4">User</div>
+                <div className="text-center font-bold text-2xl md:text-4xl lg:text-6xl my-4">User Settings</div>
                 <div className="w-4/5 m-auto">
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 text-start text-white font-bold mt-8">
                         <div className="bg-slate-900 text-white hover:scale-125 hover:border-4 m-2 p-2 rounded-lg w-auto h-auto flex flex-col">

@@ -64,10 +64,10 @@ function Register() {
     }
 
     return (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-slate-900 flex justify-center items-center text-white">
-            <div className="bg-slate-600 absolute overflow-auto w-[90vw] md:w-[60vw] lg:w-[50vw] h-[90vh] m-auto rounded-lg">
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black flex justify-center items-center text-white">
+            <div className=" absolute w-[90vw] md:w-[60vw] lg:w-[50vw] h-full m-auto rounded-lg">
                 {/* <div className='italic m-auto w-1/2 text-center text-white font-bold text-5xl md:text-7xl rounded-xl my-8 bg-gradient-to-r from-red-700 from-10% via-orange-500 via-30% to-yellow-500 to-90%'>UP365</div> */}
-                <div className='italic m-auto text-center text-3xl md:text-5xl font-bold mt-4 mb-8'>Register</div>
+                <div className='italic m-auto text-center text-3xl md:text-5xl font-bold mt-10 mb-8'>Register</div>
                 <form className='flex flex-col text-sm font-medium w-full h-auto border-4 rounded-lg py-8'>
                     <div className='flex flex-col w-full text-md md:text-lg lg:text-xl'>
                         <label htmlFor="user_id" className='flex mb-2 flex-col text-center'>User-ID
@@ -105,7 +105,7 @@ function Register() {
                             <input type="text" placeholder='Harry10, AgentX5,...' value={promoCode} onChange={(e) => setPromoCode(e.target.value)} className='m-auto mt-2 rounded-lg h-8 text-center w-[70%] bg-black p-4 border-2' name="promo_code" id="promo_code" maxLength={16} />
                         </label>
                         <div className='flex justify-center'>
-                            <button type='submit' onClick={handleRegisterClick} className='my-4 font-bold hover:bg-green-800 hover:border-4 shadow-lg shadow-white  bg-slate-900 text-white rounded-lg h-10 w-[50%]'>
+                            <button type='submit' onClick={handleRegisterClick} className='my-4 font-bold hover:bg-green-800 border-4 bg-white text-black rounded-lg h-10 w-[50%]'>
                                 Register
                             </button>
                         </div>
@@ -119,7 +119,7 @@ function Register() {
                 <div className='flex flex-col mt-8 mb-10'>
                     <div className='text-md md:text-xl flex font-bold mx-auto'>
                         <div className='p-2 underline underline-offset-2'>Already registered</div>
-                        <div onClick={navigateToLoginPage} className='ml-10 bg-slate-900  hover:bg-green-800 cursor-pointer  text-white px-4 py-2 rounded-md hover:border-4'>Login</div>
+                        <div onClick={navigateToLoginPage} className='ml-10 hover:bg-green-800 border-2 bg-white text-black cursor-pointer px-4 py-2 rounded-md '>Login</div>
                     </div>
                 </div>
             </div>

@@ -48,7 +48,7 @@ function AgentsControlBar() {
     };
 
     return (
-        <nav className="bg-slate-900 text-white mb-1 p-4 md:top-[6vh] lg:top-[11vh] xl:top-[2vh] top-[11vh] z-10">
+        <nav className=" mb-1 p-4 md:top-[6vh] lg:top-[11vh] xl:top-[2vh] top-[11vh] z-10">
             <div className="container mx-auto grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-4 justify-between items-center text-2xl sm:text-xl md:text-xl">
                 <div className="flex flex-col text-white items-center m-auto hover:bg-slate-900 text-white-600 font-bold p-2 text-sm lg:text-xl rounded-lg  focus:outline-none  transition duration-300 ease-in-out">
                     <span className='p-2 flex flex-row border-b-4'><FaWallet size={25} />
@@ -75,10 +75,6 @@ function AgentsControlBar() {
                         <MdOutlineReportProblem size={25} /> <span className='p-2'> </span>  Complaint
                     </button>
                 </div>
-                {/* <div onClick={navigateToUserWallet} className="flex flex-col mt-2 ml-4 items-center border-b-4 border-transparent hover:border-white text-sm md:text-lg lg:text-xl w-10 h-30 md:w-24 lg:w-30 ">
-                    <GiWallet size={35} />
-                    <span>Wallet</span>
-                </div> */}
                 <div className="flex flex-col text-white items-center hover:bg-white hover:text-slate-900 rounded-lg">
                     <button onClick={navigateToAddUserCredentials} className="p-2 m-2 font-semibold rounded-lg flex flex-row">
                         <FaUserSecret size={35} className='mr-2' />
@@ -104,7 +100,7 @@ function AgentsControlBar() {
                     </button>
                 </div>
                 <div className="flex flex-col text-white items-center">
-                    <button onClick={navigateToUserWallet} className="  w-auto mt-2 hover:bg-white text-sm lg:text-xl hover:text-slate-900 p-2 flex flex-row outline outline-2 outline-white ml-4 font-semibold  rounded-lg  focus:outline-none  transition duration-300 ease-in-out">
+                    <button onClick={navigateToAgentSummaryPage} className="  w-auto mt-2 hover:bg-white text-sm lg:text-xl hover:text-slate-900 p-2 flex flex-row outline outline-2 outline-white ml-4 font-semibold  rounded-lg  focus:outline-none  transition duration-300 ease-in-out">
                         <PiFilesBold size={25} /> <span className='p-2'> </span>  Summary
                     </button>
                 </div>
