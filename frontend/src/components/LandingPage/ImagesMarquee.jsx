@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import './AdsSlider.css';
 
 // Import your images here
-import img3 from '../../assets/img3.jpg';
-import img4 from '../../assets/img4.jpg';
-import img6 from '../../assets/discoverLogo.png';
-import img7 from '../../assets/img7.jpg';
-import img8 from '../../assets/3DLottery.jpg';
-import lottery from '../../assets/lotteryBg.jpg';
-import ludo from '../../assets/ludoBgImg.png';
-import poker from '../../assets/pokerBg.jpg';
-import andarbahar from '../../assets/andarBaharBg.jpg';
-import teenpatti from '../../assets/teenpattiBg.jpg';
-import colorball from '../../assets/colorballBg.jpg';
+import img3 from '../../assets/img3.webp';
+import img4 from '../../assets/img4.webp';
+import img6 from '../../assets/discoverLogo.webp';
+import img7 from '../../assets/img7.webp';
+import img8 from '../../assets/3DLottery.webp';
+import lottery from '../../assets/lotteryBg.webp';
+import ludo from '../../assets/ludoBgImg.webp';
+import poker from '../../assets/pokerBg.webp';
+import andarbahar from '../../assets/andarBaharBg.webp';
+import teenpatti from '../../assets/teenpattiBg.webp';
+import colorball from '../../assets/colorballBg.webp';
 import { useNavigate } from 'react-router-dom';
 
 const images = [img3, img4, lottery, ludo, poker, andarbahar, teenpatti, colorball, img6, img7, img8];

@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiFillRightSquare, AiFillLeftSquare } from 'react-icons/ai';
 import { RxDotFilled } from 'react-icons/rx';
-import img3 from '../../assets/img3.jpg';
-import img4 from '../../assets/img4.jpg';
-import lottery from '../../assets/lotteryBg.jpg';
+import img3 from '../../assets/img3.webp';
+import img4 from '../../assets/img4.webp';
+import lottery from '../../assets/lotteryBg.webp';
 import ludo from '../../assets/ludoBgImg.png';
-import poker from '../../assets/pokerBg.jpg';
-import andarbahar from '../../assets/andarBaharBg.jpg';
-import teenpatti from '../../assets/teenpattiBg.jpg';
-import colorball from '../../assets/colorballBg.jpg';
+import poker from '../../assets/pokerBg.webp';
+import andarbahar from '../../assets/andarBaharBg.webp';
+import teenpatti from '../../assets/teenpattiBg.webp';
+import colorball from '../../assets/colorballBg.webp';
 
 function LandingPageGamesSlider() {
     const imageArray = [img3, img4, lottery, ludo, poker, andarbahar, teenpatti, colorball];

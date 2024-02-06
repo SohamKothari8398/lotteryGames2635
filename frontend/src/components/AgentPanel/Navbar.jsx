@@ -10,7 +10,7 @@ import { FaMobileRetro } from 'react-icons/fa6';
 import { MdQrCode2, MdOutlineReportProblem, MdOutlineLocalOffer } from 'react-icons/md';
 import { BiMoneyWithdraw } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/up365Logo.jpeg';
+import logo from '../../assets/up365Logo.wepb';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import GetWalletBalance from '../UsersPanel/WalletBalance';

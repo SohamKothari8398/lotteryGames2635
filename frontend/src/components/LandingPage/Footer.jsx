@@ -3,14 +3,14 @@ import { FaInstagram } from 'react-icons/fa';
 import { BsWhatsapp } from 'react-icons/bs';
 import { LiaFacebook } from "react-icons/lia";
 import { PiTelegramLogoDuotone } from "react-icons/pi";
-import upilogo from '../../assets/upiLogo.jpg';
-import gpayLogo from '../../assets/gpayLogo.png';
-import phonepe from '../../assets/phonePe-logo.png';
-import paytmLogo from '../../assets/paytmLogo.png';
-import netBanking_Logo from '../../assets/netBanking_Logo.png';
-import card_payments from '../../assets/visaLogo.png';
-import card_payments2 from '../../assets/masterCardLogo.png';
-import card_payments3 from '../../assets/discoverLogo.png';
+import upilogo from '../../assets/upiLogo.webp';
+import gpayLogo from '../../assets/gpayLogo.webp';
+import phonepe from '../../assets/phonePe-logo.webp';
+import paytmLogo from '../../assets/paytmLogo.webp';
+import netBanking_Logo from '../../assets/netBanking_Logo.webp';
+import card_payments from '../../assets/visaLogo.webp';
+import card_payments2 from '../../assets/masterCardLogo.webp';
+import card_payments3 from '../../assets/discoverLogo.webp';
 
 const LandingPageFooter = () => {
   return (

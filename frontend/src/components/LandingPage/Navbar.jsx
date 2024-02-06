@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { TiThMenu } from 'react-icons/ti';
 import { FaWindowClose } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/up365Logo.jpeg';
+import logo from '../../assets/up365Logo.webp';
 
 function LandingPageNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
