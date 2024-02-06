@@ -7,13 +7,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
-app.use(
-  cors({
-    origin: "https://up365gaming.com",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -60,35 +54,15 @@ io.on("connection", (socket) => {
 });
 
 mongoose
-  .connect(process.env.MONGO)
+  .connect(process.env.MONGO || "mongodb://localhost:27017/up365gaming")
   .then(() => {
     console.log("Connected to MongoDB");
     server.listen(process.env.PORT || 4000, () => {
-      console.log(`Backend Server is running on port ${process.env.PORT}`);
+      console.log(
+        `Backend Server is running on port ${process.env.PORT || 4000}`
+      );
     });
   })
   .catch((err) => {
     console.error(`Error connecting to MongoDB: ${err}`);
   });
-
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       if (!origin) return callback(null, true);
-//       const allowedOrigins = ["http://localhost:3000"];
-//       if (allowedOrigins.includes(origin)) return callback(null, true);
-//       const errorMessage = "Access Denied";
-//       return callback(new Error(errorMessage), false);
-//     },
-//     methods: ["GET", "POST", "PUT"],
-//     credentials: true,
-//   })
-// );
-
-// app.use(
-//   cors({
-//     origin: ["http://localhost:3000"],
-//     methods: ["GET", "POST", "PUT"],
-//     credentials: true,
-//   })
-// );
