@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import lottery from '../../assets/lotteryBg.webp';
 import lottery2 from '../../assets/doubledigitLottery.webp';
 import lottery3 from '../../assets/3DLottery3.webp';
-import ludo from '../../assets/ludoBgImg.png';
+import ludo from '../../assets/ludoBgImg.webp';
 import poker from '../../assets/pokerBg.webp';
 import andarBahar from '../../assets/andarBaharBg.webp';
 import teenpatti from '../../assets/teenpattiBg.webp';
