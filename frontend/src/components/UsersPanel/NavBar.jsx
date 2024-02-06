@@ -4,7 +4,7 @@ import { LuWallet, LuGamepad2, LuUserCircle } from 'react-icons/lu';
 import { FaWindowClose, FaPowerOff, FaUserCircle } from 'react-icons/fa';
 import { FaMobileRetro } from 'react-icons/fa6';
 import { MdQrCode2, MdOutlineReportProblem, MdOutlineLocalOffer } from "react-icons/md";
-import logo from '../../assets/up365Logo.jpeg';
+import logo from '../../assets/up365Logo.webp';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { BsDatabaseFillAdd, BsDatabaseAdd } from 'react-icons/bs';

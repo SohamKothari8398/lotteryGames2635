@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TiThMenu } from 'react-icons/ti';
 import { FaWindowClose, FaPowerOff } from 'react-icons/fa';
 import { BiSolidMessageSquareEdit } from 'react-icons/bi';
-import logo from '../../assets/up365Logo.jpeg';
+import logo from '../../assets/up365Logo.webp';
 import { useLogout } from '../../hooks/useLogout';
 
 
