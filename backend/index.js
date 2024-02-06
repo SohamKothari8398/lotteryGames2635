@@ -13,7 +13,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "https://up365gaming.com",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT"],
     credentials: true,
   },
 });
@@ -66,3 +66,25 @@ mongoose
   .catch((err) => {
     console.error(`Error connecting to MongoDB: ${err}`);
   });
+
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin) return callback(null, true);
+//       const allowedOrigins = ["http://localhost:3000"];
+//       if (allowedOrigins.includes(origin)) return callback(null, true);
+//       const errorMessage = "Access Denied";
+//       return callback(new Error(errorMessage), false);
+//     },
+//     methods: ["GET", "POST", "PUT"],
+//     credentials: true,
+//   })
+// );
+
+// app.use(
+//   cors({
+//     origin: ["http://localhost:3000"],
+//     methods: ["GET", "POST", "PUT"],
+//     credentials: true,
+//   })
+// );
