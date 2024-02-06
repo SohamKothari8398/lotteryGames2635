@@ -5,7 +5,7 @@ import { RxDotFilled } from 'react-icons/rx';
 import img3 from '../../assets/img3.webp';
 import img4 from '../../assets/img4.webp';
 import lottery from '../../assets/lotteryBg.webp';
-import ludo from '../../assets/ludoBgImg.png';
+import ludo from '../../assets/ludoBgImg.webp';
 import poker from '../../assets/pokerBg.webp';
 import andarbahar from '../../assets/andarBaharBg.webp';
 import teenpatti from '../../assets/teenpattiBg.webp';
