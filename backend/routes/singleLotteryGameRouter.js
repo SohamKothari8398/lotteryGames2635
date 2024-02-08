@@ -6,6 +6,7 @@ const {
   createBet,
   getBetsById,
   getRecentBetsById,
+  deleteAllNull,
 } = require("../controllers/singleDigitLotteryController");
 
 router.get("/games", getAllGames);
@@ -13,5 +14,6 @@ router.get("/games", getAllGames);
 router.post("/createBet", createBet);
 router.get("/bets/:userID", getBetsById);
 router.get("/recentBets/:userID", getRecentBetsById);
+router.delete("/games/delete", deleteAllNull);
 
 module.exports = router;

@@ -224,10 +224,42 @@ const getRecentBetsById = async (req, res) => {
   res.status(200).json(recentBets);
 };
 
+const deleteAllNull = async (req, res) => {
+  try {
+    const latestGame = await GameModel.findOne(
+      {},
+      {},
+      { sort: { createdAt: -1 } }
+    );
+    const gamesToDelete = await GameModel.find({
+      _id: { $ne: latestGame._id }, // Exclude the latest game
+      totalBets: null,
+      totalAmount: null,
+    });
+    if (!gamesToDelete || gamesToDelete.length === 0) {
+      return res.status(404).json({ message: "No games found to delete." });
+    }
+    for (const game of gamesToDelete) {
+      await game.deleteOne();
+    }
+
+    console.log(
+      `Deleted ${gamesToDelete.length} games where totalBets and totalAmount are null`
+    );
+    res
+      .status(200)
+      .json({ message: `Deleted ${gamesToDelete.length} games successfully.` });
+  } catch (error) {
+    console.error("Error deleting games:", error.message);
+    res.status(500).json({ error: "Failed to delete games." });
+  }
+};
+
 module.exports = {
   getAllGames,
   getAllBets,
   createBet,
   getBetsById,
   getRecentBetsById,
+  deleteAllNull,
 };
