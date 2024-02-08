@@ -49,9 +49,9 @@ function GameTable() {
                         </tr>
                     </thead>
                     <tbody className='font-bold text-xs md:text-sm'>
-                        {gamesTable.map((row, index) => (
+                        {gamesTable.slice().reverse().map((row, index) => (
                             <tr key={index} className="bg-white">
-                                <td className='text-center border-2 p-1'>{index}</td>
+                                <td className='text-center border-2 p-1'>{index + 1}</td>
                                 <td className='text-center border-2 p-1'>{row.gameID}</td>
                                 <td className='text-center border-2 p-1'>{format(new Date(row.gameID * 1000), 'dd/MM/yyyy')}</td>
                                 <td className='text-center border-2 p-1'>{format(new Date(row.gameID * 1000), 'HH:mm:ss')}</td>
