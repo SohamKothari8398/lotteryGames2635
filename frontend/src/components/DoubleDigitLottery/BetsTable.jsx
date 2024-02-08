@@ -63,7 +63,7 @@ function BetsTable() {
                     <tbody className='font-bold text-xs md:text-sm'>
                         {myBetsTable.map((row, index) => (
                             <tr key={index} className={`${row.rewardAmount !== 0 && row.rewardAmount !== null ? 'bg-green-500' : 'bg-white'}`}>
-                                <td className='text-center border-2 p-1'>{index}</td>
+                                <td className='text-center border-2 p-1'>{index + 1}</td>
                                 <td className='text-center border-2 p-1'>{row.gameID}</td>
                                 <td className='text-center border-2 p-1'>{row.betID}</td>
                                 <td className="text-center border-2 p-1">{format(new Date(row.betTime * 1000), 'dd/MM/yyyy')}</td>
