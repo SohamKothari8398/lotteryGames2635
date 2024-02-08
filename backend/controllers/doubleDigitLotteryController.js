@@ -19,7 +19,7 @@ cron.schedule("5 */1 * * * *", async () => {
     else {
       await createGame();
       console.log(
-        "Double Digit Lottery Game Request Created from Controller",
+        "Double Digit Lottery Game Request Created at ",
         Math.floor(Date.now() * 1000)
       );
     }
@@ -52,14 +52,7 @@ const createGame = async (req, res) => {
       newGame.gameTimer = 600;
       newGame.pauseTime = 150;
       newGame.endTime = currentTimestamp + 750;
-      newGame.winningNumber = null;
-      newGame.totalBets = null;
-      newGame.totalAmount = null;
       await newGame.save();
-      console.log(
-        "Double Digit Lottery Game Created at:",
-        Math.floor(Date.now() / 1000)
-      );
       await updateBetsAndGame(newGame.gameID);
     }
   } catch (error) {
@@ -96,10 +89,6 @@ const updateBetsAndGame = async (gameIdToUpdate) => {
       try {
         gameToUpdate.winningNumber = generateRandomDoubleDigit();
         await gameToUpdate.save();
-        console.log(
-          "Double Digit Lottery Game Updated Successfully",
-          Math.floor(Date.now() * 1000)
-        );
         const betsToUpdate = await BetsModel.find({ gameID: gameIdToUpdate });
         for (const bet of betsToUpdate) {
           bet.winningNumber = gameToUpdate.winningNumber;
@@ -118,10 +107,9 @@ const updateBetsAndGame = async (gameIdToUpdate) => {
           await bet.save();
         }
         console.log(
-          "Double Digit Lottery Bets Updated Successfully",
+          "Double Digit Lottery Game Updated Successfully",
           Math.floor(Date.now() * 1000)
         );
-        // console.log("Game:", gameToUpdate, "\nBets:", betsToUpdate);
       } catch (error) {
         console.error("Error updating game and bets:", error.message);
       }
@@ -179,8 +167,6 @@ const createBet = async (req, res) => {
     newGame.betTime = currentTimestamp;
     newGame.betAmount = betAmount;
     newGame.betNumber = betNumber;
-    newGame.rewardAmount = null;
-    newGame.winningNumber = null;
     await newGame.save();
     game.totalBets += 1;
     game.totalAmount += betAmount;
@@ -189,7 +175,6 @@ const createBet = async (req, res) => {
     await user.save();
     res.status(201).json({
       status: "Bet Placed",
-      newGame,
       walletBalance: user.walletBalance,
     });
   } catch (error) {
@@ -242,58 +227,3 @@ module.exports = {
   getBetsById,
   getRecentBetsById,
 };
-
-// // Update bets after 15 minutes
-// const updateBets = async (gameIdToUpdate) => {
-//   try {
-//     const gameToUpdate = await GameModel.find({
-//       gameID: gameIdToUpdate,
-//     });
-//     if (!gameToUpdate) {
-//       console.error("Game not found");
-//       return;
-//     }
-//     setTimeout(async () => {
-//       try {
-//         const betsToUpdate = await BetsModel.find({ gameID: gameIdToUpdate });
-//         betsToUpdate.forEach(async (bet) => {
-//           bet.winningNumber = gameToUpdate.winningNumber;
-//           if (bet.betNumber === gameToUpdate.winningNumber) {
-//             bet.rewardAmount = 88 * bet.betAmount;
-//           } else {
-//             bet.rewardAmount = 0;
-//           }
-//           await bet.save();
-//         });
-//         console.log("Bets updated successfully");
-//       } catch (error) {
-//         console.error("Error updating bets:", error.message);
-//       }
-//     }, 5 * 60 * 1000);
-//   } catch (error) {
-//     console.error("Error fetching game for bets update:", error.message);
-//   }
-// };
-
-// const updateGame = async (gameIdToUpdate) => {
-//   try {
-//     const gameToUpdate = await GameModel.findOne({
-//       gameID: gameIdToUpdate,
-//     });
-//     if (!gameToUpdate) {
-//       console.error("Game not found");
-//       return;
-//     }
-//     setTimeout(async () => {
-//       try {
-//         gameToUpdate.winningNumber = generateRandomDoubleDigit();
-//         await gameToUpdate.save();
-//         console.log("Game updated successfully");
-//       } catch (error) {
-//         console.error("Error updating game:", error.message);
-//       }
-//     }, 5 * 60 * 1000);
-//   } catch (error) {
-//     console.error("Error fetching game for game update:", error.message);
-//   }
-// };

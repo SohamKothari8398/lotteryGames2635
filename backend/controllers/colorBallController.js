@@ -10,15 +10,15 @@ function generateRandomNumber() {
 function generateRandomColor() {
   const colorOptions = [
     "Red",
+    "Blue",
+    "Green",
+    "Yellow",
+    "Purple",
     "Red",
-    "Blue",
-    "Blue",
-    "Green",
-    "Green",
-    "Yellow",
-    "Yellow",
     "Purple",
-    "Purple",
+    "Blue",
+    "Yellow",
+    "Green",
   ];
   const randomIndex = Math.floor(Math.random() * colorOptions.length);
   return colorOptions[randomIndex];
@@ -69,10 +69,6 @@ const createGame = async (req, res) => {
       newGame.gameTimer = 900;
       newGame.pauseTime = 300;
       newGame.endTime = currentTimestamp + 1200;
-      newGame.winningNumber = null;
-      newGame.winningColor = "No Color";
-      newGame.totalBets = null;
-      newGame.totalAmount = null;
       await newGame.save();
       console.log("Color Ball Game Created at", Math.floor(Date.now() * 1000));
       await updateBetsAndGame(newGame.gameID);
@@ -188,9 +184,6 @@ const createBet = async (req, res) => {
     newGame.betAmount = betAmount;
     newGame.betNumber = betNumber;
     newGame.betColor = betColor;
-    newGame.rewardAmount = null;
-    newGame.winningNumber = null;
-    newGame.winningColor = "No color";
     user.walletBalance -= betAmount;
     game.totalBets += 1;
     game.totalAmount += betAmount;
@@ -199,7 +192,6 @@ const createBet = async (req, res) => {
     await user.save();
     res.status(201).json({
       status: "Bet Placed",
-      newGame,
       walletBalance: user.walletBalance,
     });
   } catch (error) {
@@ -221,10 +213,6 @@ const updateBetsAndGame = async (gameIdToUpdate) => {
         gameToUpdate.winningNumber = generateRandomNumber();
         gameToUpdate.winningColor = generateRandomColor();
         await gameToUpdate.save();
-        console.log(
-          "ColorBall Game Updated Successfully",
-          Math.floor(Date.now() * 1000)
-        );
         const betsToUpdate = await BetsModel.find({ gameID: gameIdToUpdate });
         betsToUpdate.forEach(async (bet) => {
           bet.winningNumber = gameToUpdate.winningNumber;
@@ -246,10 +234,9 @@ const updateBetsAndGame = async (gameIdToUpdate) => {
           await bet.save();
         });
         console.log(
-          "ColorBall Bets Updated Successfully",
+          "ColorBall Game Updated Successfully",
           Math.floor(Date.now() * 1000)
         );
-        // console.log("Game:", gameToUpdate, "\nBets:", betsToUpdate);
       } catch (error) {
         console.error("Error updating game and bets:", error.message);
       }
@@ -266,63 +253,3 @@ module.exports = {
   createBet,
   getRecentBetsById,
 };
-
-// // Update bets after 15 minutes
-// const updateBets = async (gameIdToUpdate) => {
-//   try {
-//     const gameToUpdate = await GameModel.findOne({
-//       gameID: gameIdToUpdate,
-//     });
-//     if (!gameToUpdate) {
-//       console.error("Game not found");
-//       return;
-//     }
-//     setTimeout(async () => {
-//       try {
-//         const betsToUpdate = await BetsModel.find({ gameID: gameIdToUpdate });
-//         betsToUpdate.forEach(async (bet) => {
-//           bet.winningNumber = gameToUpdate.winningNumber;
-//           bet.winningColor = gameToUpdate.winningColor;
-//           if (
-//             bet.betNumber === gameToUpdate.winningNumber &&
-//             bet.betColor === gameToUpdate.winningColor
-//           ) {
-//             bet.rewardAmount = 200 * bet.betAmount;
-//           } else {
-//             bet.rewardAmount = 0;
-//           }
-//           await bet.save();
-//         });
-//         console.log("Bets updated successfully");
-//       } catch (error) {
-//         console.error("Error updating bets:", error.message);
-//       }
-//     }, 5 * 60 * 1000);
-//   } catch (error) {
-//     console.error("Error fetching game for bets update:", error.message);
-//   }
-// };
-
-// const updateGame = async (gameIdToUpdate) => {
-//   try {
-//     const gameToUpdate = await GameModel.findOne({
-//       gameID: gameIdToUpdate,
-//     });
-//     if (!gameToUpdate) {
-//       console.error("Game not found");
-//       return;
-//     }
-//     setTimeout(async () => {
-//       try {
-//         gameToUpdate.winningNumber = generateRandomNumber();
-//         gameToUpdate.winningColor = generateRandomColor();
-//         await gameToUpdate.save();
-//         console.log("Game updated successfully");
-//       } catch (error) {
-//         console.error("Error updating game:", error.message);
-//       }
-//     }, 5 * 60 * 1000);
-//   } catch (error) {
-//     console.error("Error fetching game for game update:", error.message);
-//   }
-// };
