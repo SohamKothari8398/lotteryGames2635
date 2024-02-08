@@ -20,12 +20,15 @@ const DoubleLotteryGameSchema = new mongoose.Schema(
     },
     totalBets: {
       type: Number,
+      default: null,
     },
     totalAmount: {
       type: Number,
+      default: null,
     },
     winningNumber: {
       type: Number,
+      default: null,
     },
   },
   { timestamps: true }

@@ -18,7 +18,7 @@ cron.schedule("5 */1 * * * *", async () => {
     else {
       await createGame();
       console.log(
-        "Single Digit Lottery Game Request Created from Controller",
+        "Single Digit Lottery Game Created at :",
         Math.floor(Date.now() * 1000)
       );
     }
@@ -52,18 +52,8 @@ const createGame = async (req, res) => {
         gameTimer: 300,
         pauseTime: 60,
         endTime: currentTimestamp + 360,
-        winningNumber: null,
-        totalBets: null,
-        totalAmount: null,
       });
       await newGame.save();
-      console.log(
-        "Single Digit Lottery Game Created at:",
-        Math.floor(Date.now() / 1000)
-      );
-      // if (res) {
-      //   res.status(201).json(newGame);
-      // }
       await updateBetsAndGame(newGame.gameID);
     }
   } catch (error) {
@@ -86,10 +76,6 @@ const updateBetsAndGame = async (gameIdToUpdate) => {
         console.log(generateRandomSingleDigit());
         gameToUpdate.winningNumber = generateRandomSingleDigit();
         await gameToUpdate.save();
-        console.log(
-          "Single Digit Lottery Game Updated Successfully",
-          Math.floor(Date.now() * 1000)
-        );
         const betsToUpdate = await BetsModel.find({ gameID: gameIdToUpdate });
         for (const bet of betsToUpdate) {
           bet.winningNumber = gameToUpdate.winningNumber;
@@ -108,10 +94,9 @@ const updateBetsAndGame = async (gameIdToUpdate) => {
           await bet.save();
         }
         console.log(
-          "Single Digit Lottery Bets Updated Successfully",
+          "Single Digit Lottery Game Updated Successfully",
           Math.floor(Date.now() * 1000)
         );
-        // console.log("Game:", gameToUpdate, "\nBets:", betsToUpdate);
       } catch (error) {
         console.error("Error updating game and bets:", error.message);
       }
@@ -185,8 +170,6 @@ const createBet = async (req, res) => {
     newGame.betTime = currentTimestamp;
     newGame.betAmount = betAmount;
     newGame.betNumber = betNumber;
-    newGame.rewardAmount = null;
-    newGame.winningNumber = null;
     await newGame.save();
     game.totalBets += 1;
     game.totalAmount += betAmount;
@@ -195,7 +178,6 @@ const createBet = async (req, res) => {
     await user.save();
     res.status(201).json({
       status: "Bet Placed",
-      newGame,
       walletBalance: user.walletBalance,
     });
   } catch (error) {
@@ -249,41 +231,3 @@ module.exports = {
   getBetsById,
   getRecentBetsById,
 };
-
-// const updateBetsAndGame = async () => {
-//   try {
-//     const gameToUpdate = await GameModel.findOne().sort({ createdAt: -1 });
-//     if (!gameToUpdate) {
-//       console.error("Game not found");
-//       return;
-//     }
-//     // console.log(generateRandomSingleDigit());
-//     gameToUpdate.winningNumber = generateRandomSingleDigit();
-//     // console.log(gameToUpdate.winningNumber);
-//     await gameToUpdate.save();
-//     console.log("Single Digit Lottery Game Updated Successfully");
-//     const betsToUpdate = await BetsModel.find({
-//       gameID: gameToUpdate.gameID,
-//     });
-//     for (const bet of betsToUpdate) {
-//       bet.winningNumber = gameToUpdate.winningNumber;
-//       if (bet.betNumber === gameToUpdate.winningNumber) {
-//         bet.rewardAmount = 8 * bet.betAmount;
-//         const user = await UserModel.findOne({ userID: bet.userID });
-//         if (!user) {
-//           console.error("User Not Found");
-//           continue;
-//         }
-//         user.walletBalance += bet.rewardAmount;
-//         await user.save();
-//       } else {
-//         bet.rewardAmount = 0;
-//       }
-//       await bet.save();
-//     }
-//     // console.log("Game:", gameToUpdate, "\nBets:", betsToUpdate);
-//     console.log("Single Digit Lottery Bets Updated Successfully");
-//   } catch (error) {
-//     console.error("Error fetching game for update:", error.message);
-//   }
-// };

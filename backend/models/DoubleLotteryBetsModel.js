@@ -28,9 +28,11 @@ const DoubleLotteryBetsSchema = new mongoose.Schema(
     },
     rewardAmount: {
       type: Number,
+      default: null,
     },
     winningNumber: {
       type: Number,
+      default: null,
     },
   },
   { timestamps: true }

@@ -31,12 +31,15 @@ const ColorballBetsSchema = new mongoose.Schema({
   },
   rewardAmount: {
     type: Number,
+    default: null,
   },
   winningNumber: {
     type: Number,
+    default: null,
   },
   winningColor: {
     type: String,
+    default: "",
   },
 });
 
