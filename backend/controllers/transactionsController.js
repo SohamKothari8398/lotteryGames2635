@@ -120,7 +120,7 @@ const getWithdrawalByUserId = async (req, res) => {
 };
 
 const getTransactionsByUserId = async (req, res) => {
-  const userId = req.query.userId;
+  const userId = req.body.userId;
   try {
     const userTransactions = await TransactionModel.find({
       userId,
@@ -128,8 +128,6 @@ const getTransactionsByUserId = async (req, res) => {
     if (userTransactions.length === 0) {
       return res.status(404).json({ error: "No Transactions Found" });
     }
-    // if (!userTransactions)
-    //   res.status(404).json({ error: "No Transactions Found" });
     res.status(200).json(userTransactions);
   } catch (error) {
     console.error("Error fetching transactions for user:", error);
