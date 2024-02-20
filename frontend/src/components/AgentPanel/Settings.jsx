@@ -13,10 +13,10 @@ function AgentsSettings() {
   const [showPromoForm, setShowPromoForm] = useState(false);
   const [showBankForm, setShowBankForm] = useState(false);
   const [showMobileForm, setShowMobileForm] = useState(false);
-  const [mobile, setMobile] = useState("");
-  const [mobile2, setMobile2] = useState("");
-  const [otp, setOtp] = useState("");
-  const [otp2, setOtp2] = useState("");
+  const [mobile, setMobile] = useState(null);
+  const [mobile2, setMobile2] = useState(null);
+  const [otp, setOtp] = useState(null);
+  const [otp2, setOtp2] = useState(null);
   const [newUpiID, setNewUpiID] = useState("");
   const [newPassword, setNewPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -43,6 +43,10 @@ function AgentsSettings() {
       });
       if (response.data.status === 'Password updated successfully') {
         alert('Password Changed successfully');
+        setMobile2(null);
+        setOtp2(null);
+        setNewPassword("");
+        setConfirmPassword("");
       } else {
         throw new Error(response.data.error || 'Failed to update password. Please check your inputs.');
       }
@@ -65,6 +69,9 @@ function AgentsSettings() {
       });
       if (response.data.status === "UPI Details Updated") {
         alert("Bank Details changed successfully!");
+        setMobile(null);
+        setOtp(null);
+        setNewUpiID("");
       } else {
         throw new Error(response.data.error || 'Failed to update UPI details. Please try again.');
       }
@@ -97,10 +104,8 @@ function AgentsSettings() {
   //   }
   // };
 
-  // Navigator
   const navigate = useNavigate();
 
-  // The handler for the logout button click
   const handleLogoutClick = () => {
     alert("Logged out successfully!");
     navigate('/');
@@ -125,6 +130,7 @@ function AgentsSettings() {
   const handleToggleMobileForm = () => {
     setShowMobileForm(!showMobileForm);
   };
+
   const profileDetails = [
     { label: "User ID", value: user.userID },
     { label: "Account Status", value: user.accountStatus },
@@ -213,8 +219,8 @@ function AgentsSettings() {
               <label htmlFor="recaptcha2" className="font-medium text-blue-500 underline underline-offset-2">I'm not a robot</label>
             </div>
             <div className="flex justify-center text-2xs md:text-sm font-semibold">
-              <button type="button" onClick={handleUpiChange} disabled={!mobile || !otp || !recaptcha2}
-                className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded ${!mobile || !otp || !recaptcha2 ? "opacity-50 cursor-not-allowed" : ""}`}>
+              <button type="button" onClick={handleUpiChange} disabled={!mobile || !otp || !newUpiID || !confirmUpiID || !recaptcha2}
+                className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded ${!mobile || !otp || !recaptcha2 || !newUpiID || !confirmUpiID ? "opacity-50 cursor-not-allowed" : ""}`}>
                 Submit
               </button>
             </div>
@@ -308,8 +314,8 @@ function AgentsSettings() {
               <label htmlFor="recaptcha3" className="font-medium text-blue-500 underline underline-offset-2">I'm not a robot</label>
             </div>
             <div className="flex justify-center text-2xs md:text-sm font-semibold">
-              <button type="button" onClick={handlePasswordChange} disabled={!mobile || !otp || !newPassword || !recaptcha3 || !confirmPassword}
-                className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded ${!mobile || !otp || !newPassword || !recaptcha3 || !confirmPassword ? "opacity-50 cursor-not-allowed" : ""}`}>
+              <button type="button" onClick={handlePasswordChange} disabled={!mobile2 || !otp2 || !newPassword || !recaptcha3 || !confirmPassword}
+                className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded ${!mobile2 || !otp2 || !newPassword || !recaptcha3 || !confirmPassword ? "opacity-50 cursor-not-allowed" : ""}`}>
                 Submit
               </button>
             </div>

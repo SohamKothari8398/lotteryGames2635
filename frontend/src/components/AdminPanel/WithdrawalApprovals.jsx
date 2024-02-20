@@ -85,8 +85,7 @@ const AdminWithdrawalApprovals = () => {
             const updatedData = [...tableData];
             updatedData[index] = response.data;
             setTableData(updatedData);
-            alert(`Transaction updated successfully: \n${JSON.stringify(row, 1, 2)}`,);
-            navigate(0);
+            alert(`Transaction Updated Successfully`);
         } catch (error) {
             console.error('Error updating transaction:', error);
         }
@@ -94,7 +93,7 @@ const AdminWithdrawalApprovals = () => {
 
 
     return (
-        <div className="bg-slate-600 flex w-full h-auto">
+        <div className="flex w-full h-auto">
             <div className="flex flex-col items-center justify-center w-full p-2">
                 <div className="text-center font-bold text-white text-2xl md:text-4xl lg:text-6xl my-4">Withdrawals Approvals Table</div>
                 <div className="w-full flex flex-col items-center">
@@ -132,7 +131,7 @@ const AdminWithdrawalApprovals = () => {
                             <tbody>
                                 {tableData.map((row, index) => (
                                     <tr key={index} className="bg-white font-semibold">
-                                        <td className="text-center border-2">{index}</td>
+                                        <td className="text-center border-2">{index + 1}</td>
                                         <td className="text-center border-2">{row.userId}</td>
                                         <td className="text-center border-2">{index}</td>
                                         <td className="text-center border-2">{row.mobileNumber}</td>
