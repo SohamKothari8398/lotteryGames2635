@@ -17,9 +17,10 @@ function UserWallet() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await service.get(`/user/wallet?userId=${user.userID}`);
-                if (!response) alert("Response Data Not Received.");
-                setTableData(response.data);
+                const response = await service.get(`/user/wallet/${user.userID}`);
+                const fetchedTxns = response.data;
+                setTableData(fetchedTxns);
+                if (!tableData || tableData.length === 0) console.error("No Transaction found.");
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -28,24 +29,24 @@ function UserWallet() {
     }, [tableData, user.userID]);
 
     return (
-        <div className="px-10 pb-10 flex flex-col bg-slate-900 items-center">
-            <div className="text-2xl md:text-4xl lg:text-6xl font-bold text-center mt-12 text-white underline underline-offset-8 italic">My Wallet</div>
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 text-center text-white font-bold mt-8">
-                <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-blue-500">
-                    <div>Wallet Balance(in INR)</div>
+        <div className="px-10 pb-10 flex flex-col items-center">
+            <div className="text-xl md:text-2xl lg:text-4xl font-bold text-center mt-12 text-white underline underline-offset-8 italic">My Wallet</div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-center text-white font-bold mt-8">
+                <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-green-800">
+                    <div>Wallet Balance</div>
                     <div className="bg-white rounded-lg text-black p-4 m-2"><GetWalletBalance /></div>
                 </div>
-                <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-blue-500">
+                <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-green-800">
                     <div>Total Games Played</div>
-                    <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4 hover:border-blue-500 hover:text-blue-500">{user.gamesPlayed}</div>
+                    <div className="bg-white rounded-lg text-black p-4 m-2 ">{user.gamesPlayed}</div>
                 </div>
-                <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-blue-500">
+                <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-green-800">
                     <div>Games Won</div>
-                    <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4 hover:border-green-500 hover:text-green-500">{user.gamesWon}</div>
+                    <div className="bg-white rounded-lg text-black p-4 m-2 ">{user.gamesWon}</div>
                 </div>
-                <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-blue-500">
+                <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-green-800">
                     <div>Active Games</div>
-                    <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4 hover:border-yellow-500 hover:text-yellow-500">{user.gamesActive}</div>
+                    <div className="bg-white rounded-lg text-black p-4 m-2 ">{user.gamesActive}</div>
                 </div>
             </div>
             <div className="text-center font-semibold  bg-black text-white rounded-lg text-lg md:text-xl lg:text-2xl p-4 my-4 flex flex-row">Transactions

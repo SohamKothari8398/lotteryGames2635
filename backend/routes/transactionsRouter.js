@@ -12,7 +12,7 @@ const {
 
 const router = express.Router();
 
-router.get("/user/wallet", getTransactionsByUserId);
+router.get("/user/wallet/:userID", getTransactionsByUserId);
 router.get("/admin/adminDepositApprovalsPage", getAllDeposit);
 router.get("/admin/adminWithdrawalApprovalsPage", getAllWithdrawal);
 router.patch("/admin/adminDepositApprovalsPage/:transactionID", updateDeposit);
