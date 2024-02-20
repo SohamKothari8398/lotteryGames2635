@@ -15,17 +15,16 @@ const Profile = () => {
     const [showForm, setShowForm] = useState(false);
     const [showBankForm, setShowBankForm] = useState(false);
     const [showMobileForm, setShowMobileForm] = useState(false);
-    const [mobile, setMobile] = useState("");
-    const [otp, setOtp] = useState("");
+    const [mobile, setMobile] = useState(null);
+    const [otp, setOtp] = useState(null);
     const [newUpiID, setNewUpiID] = useState("");
-    const [confirmUpiID, setConfirmUpiID] = useState('');
-    const [newMobileNumber, setnewMobileNumber] = useState("");
+    const [confirmUpiID, setConfirmUpiID] = useState("");
     const [recaptcha, setRecaptcha] = useState(false);
     const [recaptcha2, setRecaptcha2] = useState(false);
     const [recaptcha3, setRecaptcha3] = useState(false);
-    const [newPassword, setNewPassword] = useState('');
+    const [newPassword, setNewPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState("");
     const navigate = useNavigate();
     const navigateToUserHomePage = () => {
         navigate(-1);
@@ -38,12 +37,6 @@ const Profile = () => {
     };
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
-    };
-    const handleRecaptcha2Change = (e) => {
-        setRecaptcha2(e.target.checked);
-    };
-    const handleRecaptcha3Change = (e) => {
-        setRecaptcha3(e.target.checked);
     };
     const handlePasswordChange = async (e) => {
         e.preventDefault();
@@ -249,14 +242,14 @@ const Profile = () => {
                             id="recaptcha2"
                             name="recaptcha2"
                             checked={recaptcha2}
-                            onChange={handleRecaptcha2Change}
+                            onChange={(e) => setRecaptcha2(e.target.checked)}
                             className="border border-gray-300 rounded mr-2 focus:outline-none focus:ring focus:border-blue-300"
                         />
                         <label htmlFor="recaptcha2" className="font-medium text-blue-500 underline underline-offset-2">I'm not a robot</label>
                     </div>
                     <div className="flex justify-center text-2xs md:text-sm font-semibold">
-                        <button type="button" onClick={handleUpiChange} disabled={!mobile || !otp || !recaptcha2}
-                            className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded ${!mobile || !otp || !recaptcha2 ? "opacity-50 cursor-not-allowed" : ""}`}>
+                        <button type="button" onClick={handleUpiChange} disabled={!mobile || !otp || !recaptcha2 || !newUpiID || !confirmUpiID}
+                            className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded ${!mobile || !otp || !recaptcha2 || !newUpiID || !confirmUpiID ? "opacity-50 cursor-not-allowed" : ""}`}>
                             Submit
                         </button>
                     </div>
@@ -343,7 +336,7 @@ const Profile = () => {
                             id="recaptcha3"
                             name="recaptcha3"
                             checked={recaptcha3}
-                            onChange={handleRecaptcha3Change}
+                            onChange={(e) => setRecaptcha3(e.target.checked)}
                             className="border border-gray-300 rounded mr-2 focus:outline-none focus:ring focus:border-blue-300"
                         />
                         <label htmlFor="recaptcha3" className="font-medium text-blue-500 underline underline-offset-2">I'm not a robot</label>

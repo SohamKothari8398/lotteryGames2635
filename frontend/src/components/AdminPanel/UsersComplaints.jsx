@@ -44,8 +44,6 @@ const UserComplaints = () => {
     const handleSubmit = (index) => {
         const selectedStatus = complaintStatuses[index];
         const enteredRemark = complaintRemarks[index];
-
-        // Assuming you have an endpoint to update adminRemarks and compStatus
         service.patch(`/admin/usersComplaints/${complaintsData[index]._id}`, {
             adminRemarks: enteredRemark,
             compStatus: selectedStatus,
@@ -53,8 +51,6 @@ const UserComplaints = () => {
             .then(response => {
                 // Handle the response if needed
                 console.log('Update successful:', response.data);
-
-                // You might want to update the local state after a successful update
                 const updatedData = [...complaintsData];
                 updatedData[index].adminRemarks = response.data.complaint.adminRemarks;
                 updatedData[index].compStatus = response.data.complaint.compStatus;
@@ -66,7 +62,7 @@ const UserComplaints = () => {
     }
 
     return (
-        <div className="bg-slate-600 flex flex-col w-full items-center h-auto">
+        <div className="flex flex-col w-full items-center h-auto">
             <div className="text-center font-bold text-white text-2xl md:text-4xl lg:text-6xl my-4">Complaints</div>
             <div className="text-center font-semibold text-white bg-black rounded-lg text-md md:text-xl lg:text-2xl p-4 my-4">Complaints Table</div>
             <div className='w-[90%] mx-auto h-auto p-4 overflow-x-auto'>
