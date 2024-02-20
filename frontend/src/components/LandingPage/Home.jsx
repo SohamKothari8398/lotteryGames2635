@@ -9,8 +9,10 @@ import LandingPageImagesMarquee from './ImagesMarquee'
 import MainBodyScroller from './MainBodyScroller'
 import { BsWhatsapp } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import useScrollToTop from '../../hooks/useScrollToTop';
 
 function Home() {
+    useScrollToTop();
     const navigate = useNavigate();
     const handleHelpClick = () => { navigate('/helpCenter'); };
     return (

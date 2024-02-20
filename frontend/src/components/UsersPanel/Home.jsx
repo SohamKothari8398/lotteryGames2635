@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './NavBar';
 import GamesCards from '../Games/GamesCards';
 import { BsWhatsapp } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import useScrollToTop from '../../hooks/useScrollToTop';
 
 function User() {
+    useScrollToTop();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const navigate = useNavigate();
     const handleHelpClick = () => { navigate('/helpCenter'); };
     return (

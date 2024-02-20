@@ -65,7 +65,7 @@ function App() {
   }, []);
 
   return (
-    <div className='bg-black text-white'>
+    <div className='bg-black text-white overflow-hidden'>
       <BrowserRouter>
         <Routes>
           {/* Landing Page */}

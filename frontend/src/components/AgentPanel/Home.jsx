@@ -3,8 +3,10 @@ import AgentNavbar from './Navbar';
 import GamesCards from '../Games/GamesCards';
 import { BsWhatsapp } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import useScrollToTop from '../../hooks/useScrollToTop';
 
 function AgentsHome() {
+    useScrollToTop();
     const navigate = useNavigate();
     const handleHelpClick = () => { navigate('/helpCenter'); };
     return (
