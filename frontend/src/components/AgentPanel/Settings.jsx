@@ -231,7 +231,7 @@ function AgentsSettings() {
           {showForm ? (<form className="mt-8 border-4 p-4 text-white text-xs md:text-sm lg:text-lg rounded-lg shadow-lg shadow-white">
             <div className="flex flex-col mb-4 mx-auto">
               <label htmlFor="mobile" className="mb-2 font-bold text-center">Mobile Number</label>
-              <input type="tel" id="mobile" name="mobile" value={mobile}
+              <input type="tel" id="mobile" name="mobile" value={mobile2}
                 onChange={(e) => setMobile2(e.target.value)}
                 placeholder="Registered mobile number"
                 className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 "
@@ -239,7 +239,7 @@ function AgentsSettings() {
             </div>
             <div className="flex flex-col mb-4 mx-auto">
               <label htmlFor="otp3" className="mb-2 font-bold text-center">OTP</label>
-              <input type="number" id="otp3" name="otp3" value={otp}
+              <input type="number" id="otp3" name="otp3" value={otp2}
                 onChange={(e) => setOtp2(e.target.value)}
                 placeholder="Enter OTP Received"
                 className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 " />

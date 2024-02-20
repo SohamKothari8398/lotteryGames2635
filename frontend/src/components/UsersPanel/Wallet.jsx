@@ -71,8 +71,8 @@ function UserWallet() {
                             <tr key={index} className="bg-white font-semibold">
                                 <td className='py-3 text-center border-2 px-6'>{index}</td>
                                 <td className='py-3 text-center border-2 px-6'>{row._id}</td>
-                                <td className="py-3 text-center border-2 px-6">{format(new Date(row.createdAt), 'yyyy-MM-dd')}</td>
-                                <td className="py-3 text-center border-2 px-6">{format(new Date(row.createdAt), 'HH:mm:s')}</td>
+                                <td className="py-3 text-center border-2 px-6">{format(new Date(row.createdAt), 'dd-MM-yyyy')}</td>
+                                <td className="py-3 text-center border-2 px-6">{format(new Date(row.createdAt), 'HH:mm:ss')}</td>
                                 <td className='py-3 text-center border-2 px-6'>{row.mobileNumber}</td>
                                 <td className='py-3 text-center border-2 px-6'>{row.amount}</td>
                                 <td className='py-3 text-center border-2 px-6'>{row.transactionType}</td>
