@@ -5,3 +5,12 @@
 body {
   background-color: #000300;
 }
+
+.text-2xs {
+  font-size: 0.6rem;
+  line-height: 0.75rem;
+}
+.text-3xs {
+  font-size: 0.5rem;
+  line-height: 0.75rem;
+}

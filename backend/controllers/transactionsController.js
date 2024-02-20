@@ -120,7 +120,7 @@ const getWithdrawalByUserId = async (req, res) => {
 };
 
 const getTransactionsByUserId = async (req, res) => {
-  const userId = req.body.userId;
+  const userId = req.params.userID;
   try {
     const userTransactions = await TransactionModel.find({
       userId,

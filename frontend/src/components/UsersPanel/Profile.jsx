@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPowerOff, FaHome } from "react-icons/fa";
+import { FaPowerOff, FaHome, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
 import { useAuthContext } from "../../hooks/useAuthContext";
@@ -15,48 +15,29 @@ const Profile = () => {
     const [showForm, setShowForm] = useState(false);
     const [showBankForm, setShowBankForm] = useState(false);
     const [showMobileForm, setShowMobileForm] = useState(false);
-    const [showTable, setShowTable] = useState(false);
     const [mobile, setMobile] = useState("");
     const [otp, setOtp] = useState("");
     const [newUpiID, setNewUpiID] = useState("");
-    const [newPassword, setnewPassword] = useState("");
+    const [confirmUpiID, setConfirmUpiID] = useState('');
     const [newMobileNumber, setnewMobileNumber] = useState("");
     const [recaptcha, setRecaptcha] = useState(false);
     const [recaptcha2, setRecaptcha2] = useState(false);
     const [recaptcha3, setRecaptcha3] = useState(false);
+    const [newPassword, setNewPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
-
     const navigateToUserHomePage = () => {
         navigate(-1);
     }
-
-    // The handler for the mobile number input change
     const handleMobileChange = (e) => {
         setMobile(e.target.value);
     };
-
-    // The handler for the OTP input change
     const handleOtpChange = (e) => {
         setOtp(e.target.value);
     };
-
-    const handleNewPasswordChange = (e) => {
-        setnewPassword(e.target.value);
-    };
-
-    const handleNewNumberChange = (e) => {
-        setnewMobileNumber(e.target.value);
-    };
-
-    const handleConfirmNewNumber = (e) => {
-        if (e.target.value === newMobileNumber)
-            return true;
-        else return 'Numbers does not match!!';
-    }
-
-    // The handler for the Google reCAPTCHA checkbox change
-    const handleRecaptchaChange = (e) => {
-        setRecaptcha(e.target.checked);
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
     };
     const handleRecaptcha2Change = (e) => {
         setRecaptcha2(e.target.checked);
@@ -64,8 +45,6 @@ const Profile = () => {
     const handleRecaptcha3Change = (e) => {
         setRecaptcha3(e.target.checked);
     };
-
-    // The handler for the submit button click
     const handlePasswordChange = async (e) => {
         e.preventDefault();
         try {
@@ -79,6 +58,10 @@ const Profile = () => {
             });
             if (response.data.status === 'Password updated successfully') {
                 alert('Password Changed successfully');
+                setMobile(null);
+                setOtp(null);
+                setNewPassword("");
+                setConfirmPassword("");
             } else {
                 throw new Error(response.data.error || 'Failed to update password. Please check your inputs.');
             }
@@ -87,10 +70,18 @@ const Profile = () => {
             alert(error.message || 'Failed to update password. Please try again.');
         }
     };
-
-    const handleMobileNumberChange = () => {
-        alert("Mobile Number changed successfully!");
-    };
+    const profileDetails = [
+        { label: "User ID", value: user.userID },
+        { label: "Account Status", value: user.accountStatus },
+        { label: "Bets Status", value: user.bets },
+        { label: "Mobile Number", value: user.mobileNumber },
+        { label: "Wallet Balance", value: user.walletBalance },
+        { label: "Promo Code", value: user.promoCode },
+        { label: "Games Played", value: user.gamesPlayed },
+        { label: "Games Won", value: user.gamesWon },
+        { label: "Active Games", value: user.gamesActive },
+        { label: "Games Lost", value: user.gamesLoss }
+    ];
 
     const handleUpiChange = async (e) => {
         e.preventDefault();
@@ -105,6 +96,10 @@ const Profile = () => {
             });
             if (response.data.status === "UPI Details Updated") {
                 alert("Bank Details changed successfully!");
+                setMobile(null);
+                setOtp(null);
+                setNewUpiID("");
+                setConfirmUpiID("");
             } else {
                 throw new Error(response.data.error || 'Failed to update UPI details. Please try again.');
             }
@@ -114,8 +109,6 @@ const Profile = () => {
             alert(error.response?.data?.error || error.message || 'Failed to update UPI details. Please try again.');
         }
     };
-
-    // The handler for the logout button click
     const handleLogoutClick = () => {
         logout();
     };
@@ -130,69 +123,26 @@ const Profile = () => {
         setShowMobileForm(!showMobileForm);
     };
 
-    const handleToggleTable = () => {
-        setShowTable(!showTable);
-    };
-
-
     return (
-        <div className="mx-auto px-4 py-8 bg-slate-900">
-            <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-center text-white underline underline-offset-8 italic">Settings</h1>
-            {/* <div className="mt-8 w-[90%] md:w-[80%] m-auto">
-                <div className="text-xl md:text-2xl flex justify-center lg:text-4xl font-semibold w-full mt-16 text-white">
-                    My Status
+        <div className="mx-auto px-4 py-8">
+            <h1 className="text-xl md:text-2xl lg:text-4xl font-bold text-center text-white underline underline-offset-8 italic">Settings</h1>
+            <div className="mt-8 w-[90%] md:w-[80%] m-auto">
+                <div className="flex justify-center text-lg md:text-xl lg:text-2xl font-semibold w-full mt-16 text-white">
+                    My Profile
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 text-center text-white font-bold mt-8">
-                    <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-blue-500">
-                        <div>Wallet Balance(in INR)</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2">{user.walletBalance}</div>
-                    </div>
-                    <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-blue-500">
-                        <div>Total Games Played</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4 ">{user.gamesPlayed}</div>
-                    </div>
-                    <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-blue-500">
-                        <div>Games Won</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4">{user.gamesWon}</div>
-                    </div>
-                    <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:border-4 hover:bg-blue-500">
-                        <div>Active Games</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4">{user.gamesActive}</div>
-                    </div>
-                    <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:bg-green-700 hover:border-4">
-                        <div>Games Lost</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4">{user.gamesLoss}</div>
-                    </div>
-                    <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:bg-green-700 hover:border-4">
-                        <div>Personal Best</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4">500000</div>
-                    </div>
-                    <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:bg-green-700 hover:border-4">
-                        <div>Jackpot</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4">100000000</div>
-                    </div>
-                    <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:bg-green-700 hover:border-4">
-                        <div>Highest Bet</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4">50000</div>
-                    </div>
-                    <div className="bg-black m-2 p-2 rounded-lg w-auto h-auto flex flex-col hover:scale-125 hover:bg-green-700 hover:border-4">
-                        <div>Referal Earned</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2 hover:border-4">1000000</div>
-                    </div>
-                    <div className="bg-black hover:border-4 hover:scale-125 hover:bg-green-700 m-2 p-2 rounded-lg w-auto h-auto flex flex-col">
-                        <div>Feature</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2">Value</div>
-                    </div>
-                    <div className="bg-black hover:border-4 hover:scale-125 hover:bg-green-700 m-2 p-2 rounded-lg w-auto h-auto flex flex-col">
-                        <div>Option</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2">Value</div>
-                    </div>
-                    <div className="bg-black hover:border-4 hover:scale-125 hover:bg-green-700 m-2 p-2 rounded-lg w-auto h-auto flex flex-col">
-                        <div>Attribute</div>
-                        <div className="bg-white rounded-lg text-black p-4 m-2">Value</div>
-                    </div>
+                <div className="py-4 rounded-xl flex justify-center items-center w-auto mx-auto text-white text-center font-bold mt-8 ">
+                    <table className="shadow-white shadow-lg text-2xs md:text-base">
+                        <tbody>
+                            {profileDetails.map((detail, index) => (
+                                <tr key={index}>
+                                    <td className="bg-black border-2 border-white py-1 sm:py-2 px-10">{detail.label}</td>
+                                    <td className="bg-white text-black font-semibold border-t-2  py-1 sm:py-2 border-black px-10">{detail.value}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
-            </div> */}
+            </div>
             {/* <div className="mt-8 flex flex-col w-[90%] md:w-[80%] lg:w-[60%]  mx-auto">
                 <div className="w-full">
                     <button onClick={handleToggleMobileForm} className="text-xl flex items-center mx-auto border-4 md:text-2xl lg:text-4xl font-semibold w-auto p-4 m-4 text-white rounded-lg bg-black">
@@ -202,36 +152,36 @@ const Profile = () => {
                 </div>
                 <div>
                     {showMobileForm ? (<form className="mt-8 border-4 p-4 text-white font-bold">
-                        <div className="flex flex-col mb-4">
-                            <label htmlFor="userID" className="mb-2 font-bold text-lg text-center">Confirm User-ID</label>
+                        <div className="flex flex-col mb-4 mx-auto">
+                            <label htmlFor="userID" className="mb-2 font-bold text-center">Confirm User-ID</label>
                             <input type="text" id="userID" name="userID" value={userID} onChange={handleUserIDChange} placeholder="It will be fetched automatically"
-                                className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center" />
+                                className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 " />
                         </div>
-                        <div className="flex flex-col mb-4">
-                            <label htmlFor="mobile" className="mb-2 font-bold text-lg text-center">Mobile Number</label>
+                        <div className="flex flex-col mb-4 mx-auto">
+                            <label htmlFor="mobile" className="mb-2 font-bold text-center">Mobile Number</label>
                             <input type="tel" id="mobile" name="mobile" value={mobile} maxLength={10}
                                 onChange={handleMobileChange}
                                 placeholder="Enter your mobile number"
-                                className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center"
+                                className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 "
                             />
                         </div>
-                        <div className="flex flex-col mb-4">
-                            <label htmlFor="otp" className="mb-2 font-bold text-lg text-center">OTP</label>
+                        <div className="flex flex-col mb-4 mx-auto">
+                            <label htmlFor="otp" className="mb-2 font-bold text-center">OTP</label>
                             <input type="number" id="otp" name="otp" value={otp}
                                 onChange={handleOtpChange}
-                                placeholder="Enter the OTP received on your mobile number" className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center" />
+                                placeholder="Enter the OTP received on your mobile number" className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 " />
                         </div>
-                        <div className="flex flex-col mb-4">
-                            <label htmlFor="new_number" className="mb-2 font-bold text-lg text-center">New Number</label>
+                        <div className="flex flex-col mb-4 mx-auto">
+                            <label htmlFor="new_number" className="mb-2 font-bold text-center">New Number</label>
                             <input type="password" id="new_number" maxLength={10} name="new_number" value={newMobileNumber}
                                 onChange={handleNewNumberChange}
-                                placeholder="Enter new mobile number" className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center" />
+                                placeholder="Enter new mobile number" className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 " />
                         </div>
-                        <div className="flex flex-col mb-4">
-                            <label htmlFor="confirm_new_number" className="mb-2 font-bold text-lg text-center">Confirm New Number</label>
+                        <div className="flex flex-col mb-4 mx-auto">
+                            <label htmlFor="confirm_new_number" className="mb-2 font-bold text-center">Confirm New Number</label>
                             <input type="tel" id="confirm_new_nuber" maxLength={10} name="confirm_new_number" value={newMobileNumber}
                                 onChange={handleNewNumberChange && handleConfirmNewNumber}
-                                placeholder="Confirm your mobile number" className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center" />
+                                placeholder="Confirm your mobile number" className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 " />
                         </div>
                         <div className="flex items-center mb-4  justify-center">
                             <input
@@ -253,37 +203,46 @@ const Profile = () => {
                     </form>) : (<></>)}
                 </div>
             </div> */}
-            <div className="mt-8 flex flex-col w-[90%] md:w-[80%] lg:w-[60%]  mx-auto">
+            <div className="mt-8 flex flex-col w-[90%] md:w-[60%] lg:w-[50%] mx-auto">
                 <div className="w-full">
-                    <button onClick={handleToggleBankForm} className="text-xl flex items-center mx-auto border-4 md:text-2xl lg:text-4xl font-semibold w-auto p-4 m-4 text-white rounded-lg bg-black">
+                    <button onClick={handleToggleBankForm} className="flex items-center mx-auto border-4 text-lg md:text-xl lg:text-2xl font-semibold w-auto p-4 m-4 text-white rounded-lg bg-black">
                         Change UPI Details
                         <MdOutlineArrowDropDownCircle size={35} className="ml-10" />
                     </button>
                 </div>
-                {showBankForm ? (<form className="mt-8 border-4 p-4 text-white">
-                    <div className="flex flex-col mb-4">
-                        <label htmlFor="mobile" className="mb-2 font-bold text-lg text-center">Mobile Number</label>
+                {showBankForm ? (<form className="mt-8 border-4 p-4 text-white text-xs md:text-sm lg:text-lg rounded-lg shadow-lg shadow-white">
+                    <div className="flex flex-col mb-4 mx-auto">
+                        <label htmlFor="mobile" className="mb-2 font-bold text-center">Mobile Number</label>
                         <input type="tel" id="mobile" name="mobile" value={mobile}
                             onChange={handleMobileChange}
                             placeholder="Enter your mobile number"
-                            className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center"
+                            className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 "
                         />
                     </div>
-                    <div className="flex flex-col mb-4">
-                        <label htmlFor="otp2" className="mb-2 font-bold text-lg text-center">OTP</label>
+                    <div className="flex flex-col mb-4 mx-auto">
+                        <label htmlFor="otp2" className="mb-2 font-bold text-center">OTP</label>
                         <input type="number" id="otp2" name="otp2" value={otp}
                             onChange={handleOtpChange}
-                            placeholder="Enter the OTP received on your mobile number" className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center" />
+                            placeholder="Enter the OTP received on your mobile number"
+                            className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 " />
                     </div>
-                    <div className="flex flex-col mb-4">
-                        <label htmlFor="new_UPI_ID" className="mb-2 font-bold text-lg text-center">New UPI Details</label>
+                    <div className="flex flex-col mb-4 mx-auto">
+                        <label htmlFor="new_UPI_ID" className="mb-2 font-bold text-center">New UPI Details</label>
                         <input type="text" id="new_UPI_ID" value={newUpiID} onChange={(e) => setNewUpiID(e.target.value)} name="new_UPI_ID"
-                            placeholder="Enter new bank details" className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center" />
+                            placeholder="Enter new bank details"
+                            className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 " />
                     </div>
-                    <div className="flex flex-col mb-4">
-                        <label htmlFor="confirm_new_UPI_ID" className="mb-2 font-bold text-lg text-center">Confirm New UPI Details</label>
-                        <input type="text" id="confirm_new_UPI_ID" value={newUpiID} onChange={(e) => setNewUpiID(e.target.value)} name="confirm_new_UPI_ID" placeholder="Confirm your new bank details" className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center" />
+                    <div className="flex flex-col mb-4 mx-auto">
+                        <label htmlFor="confirm_new_UPI_ID" className="mb-2 font-bold text-center">Confirm New UPI Details</label>
+                        <input type="text" id="confirm_new_UPI_ID" value={newUpiID} onChange={(e) => setNewUpiID(e.target.value)} name="confirm_new_UPI_ID" placeholder="Confirm your new bank details"
+                            className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 " />
                     </div>
+                    {newUpiID !== confirmUpiID && (
+                        <div className="text-red-500 text-center mt-1">UPI-ID Mismatch</div>
+                    )}
+                    {newUpiID === confirmUpiID && (
+                        <div className="text-green-500 text-center mt-1">UPI-ID Match</div>
+                    )}
                     <div className="flex items-center mb-4  justify-center">
                         <input
                             type="checkbox"
@@ -295,7 +254,7 @@ const Profile = () => {
                         />
                         <label htmlFor="recaptcha2" className="font-medium text-blue-500 underline underline-offset-2">I'm not a robot</label>
                     </div>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center text-2xs md:text-sm font-semibold">
                         <button type="button" onClick={handleUpiChange} disabled={!mobile || !otp || !recaptcha2}
                             className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded ${!mobile || !otp || !recaptcha2 ? "opacity-50 cursor-not-allowed" : ""}`}>
                             Submit
@@ -303,41 +262,82 @@ const Profile = () => {
                     </div>
                 </form>) : (<></>)}
             </div>
-            <div className="mt-8 text-white w-[90%] md:w-[80%] lg:w-[60%] flex flex-col  mx-auto">
+            <div className="mt-8 text-white w-[90%] md:w-[60%] lg:w-[50%] flex flex-col  mx-auto">
                 <div className="w-full">
-                    <button onClick={handleToggleForm} className="text-xl flex items-center mx-auto border-4 md:text-2xl lg:text-4xl font-semibold w-auto p-4 m-4 text-white rounded-lg bg-black">
-                        Change Password
+                    <button onClick={handleToggleForm} className="flex items-center mx-auto border-4 text-lg md:text-xl lg:text-2xl font-semibold w-auto p-4 m-4 text-white rounded-lg bg-black">
+                        Password
                         <MdOutlineArrowDropDownCircle size={35} className="ml-10" />
                     </button>
                 </div>
-                {showForm ? (<form className="mt-8 border-4 p-4">
-                    <div className="flex flex-col mb-4">
-                        <label htmlFor="mobile" className="mb-2 font-bold text-lg text-center">Mobile Number</label>
+                {showForm ? (<form className="mt-8 border-4 p-4 text-xs md:text-sm lg:text-lg rounded-lg shadow-lg shadow-white">
+                    <div className="flex flex-col mb-4 mx-auto">
+                        <label htmlFor="mobile" className="mb-2 font-bold text-center">Mobile Number</label>
                         <input type="tel" id="mobile" name="mobile" value={mobile}
                             onChange={handleMobileChange}
-                            placeholder="Enter registered mobile number"
-                            className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center"
+                            placeholder="Registered mobile number"
+                            className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 "
                         />
                     </div>
-                    <div className="flex flex-col mb-4">
-                        <label htmlFor="otp3" className="mb-2 font-bold text-lg text-center">OTP</label>
+                    <div className="flex flex-col mb-4 mx-auto">
+                        <label htmlFor="otp3" className="mb-2 font-bold text-center">OTP</label>
                         <input type="number" id="otp3" name="otp3" value={otp}
                             onChange={handleOtpChange}
-                            placeholder="Enter the OTP received on your mobile number" className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center" />
+                            placeholder="Enter OTP Received"
+                            className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 " />
                     </div>
-                    <div className="flex flex-col mb-4">
-                        <label htmlFor="new_password" className="mb-2 font-bold text-lg text-center">New Password</label>
-                        <input type="password" id="new_password" name="new_password" value={newPassword}
-                            onChange={handleNewPasswordChange}
-                            placeholder="Enter new password" className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center" />
+                    <div className="flex flex-col mb-4 mx-auto">
+                        <label htmlFor="mobile" className="mb-2 font-bold text-center">New Password</label>
+                        <div className=" flex w-full justify-center items-center">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                value={newPassword}
+                                placeholder="Enter new Password"
+                                onChange={(e) => setNewPassword(e.target.value)}
+                                className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 "
+                                name="newPassword"
+                                id="newPassword"
+                                maxLength={16}
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={togglePasswordVisibility}
+                                className="ml-2"
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </button>
+                        </div>
                     </div>
-                    <div className="flex flex-col mb-4">
-                        <label htmlFor="confirm_new_password" className="mb-2 font-bold text-lg text-center">Confirm New Password</label>
-                        <input type="text" id="confirm_new_password" name="confirm_new_password" value={newPassword}
-                            onChange={handleNewPasswordChange}
-                            placeholder="Confirm new password" className="border border-white bg-black text-white font-semibold w-full md:w-[70%] lg:w-[60%] mx-auto rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center" />
+                    <div className="flex flex-col mb-4 mx-auto">
+                        <label htmlFor="mobile" className="mb-2 font-bold text-center">Confirm New Password</label>
+                        <div className=" flex justify-center items-center">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                value={confirmPassword}
+                                placeholder="Confirm New Password"
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 "
+                                name="confirmNewPassword"
+                                id="confirmNewPassword"
+                                maxLength={16}
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={togglePasswordVisibility}
+                                className="ml-2"
+                            >
+                                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </button>
+                        </div>
                     </div>
-                    <div className="flex items-center mb-4  justify-center">
+                    {newPassword !== confirmPassword && (
+                        <div className="text-red-500 text-center mt-1">Passwords do not match</div>
+                    )}
+                    {newPassword === confirmPassword && (
+                        <div className="text-green-500 text-center mt-1">Passwords match</div>
+                    )}
+                    <div className="flex items-center my-4  justify-center">
                         <input
                             type="checkbox"
                             id="recaptcha3"
@@ -348,16 +348,16 @@ const Profile = () => {
                         />
                         <label htmlFor="recaptcha3" className="font-medium text-blue-500 underline underline-offset-2">I'm not a robot</label>
                     </div>
-                    <div className="flex justify-center">
-                        <button type="button" onClick={handlePasswordChange} disabled={!mobile || !otp || !newPassword}
-                            className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded ${!mobile || !otp || !newPassword ? "opacity-50 cursor-not-allowed" : ""}`}>
+                    <div className="flex justify-center text-2xs md:text-sm font-semibold">
+                        <button type="button" onClick={handlePasswordChange} disabled={!mobile || !otp || !newPassword || !recaptcha3 || !confirmPassword}
+                            className={`bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded ${!mobile || !otp || !newPassword || !recaptcha3 || !confirmPassword ? "opacity-50 cursor-not-allowed" : ""}`}>
                             Submit
                         </button>
                     </div>
                 </form>) : (<></>)}
             </div>
-            <div className="mt-8 flex justify-center">
-                <button type="button" onClick={handleLogoutClick} className="bg-red-600 w-auto hover:bg-red-700 hover:border-4 text-white font-bold p-4 m-4 rounded-xl flex items-center">
+            <div className="mt-8 flex justify-center text-2xs md:text-sm lg:text-base">
+                <button type="button" onClick={handleLogoutClick} className="bg-red-600 w-auto hover:bg-red-700 text-white font-bold p-2 md:p-2 rounded-lg flex items-center">
                     <FaPowerOff className="mr-2" /> Logout
                 </button>
             </div>
