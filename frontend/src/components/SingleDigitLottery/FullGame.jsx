@@ -5,8 +5,10 @@ import BetsTable from './BetsTable'
 import { useNavigate } from 'react-router-dom';
 import { FaWindowClose } from 'react-icons/fa';
 import History from './History';
+import useScrollToTop from '../../hooks/useScrollToTop';
 
 function Game() {
+    useScrollToTop();
     const navigate = useNavigate();
     const navigateToBack = () => {
         navigate(-1);

@@ -12,9 +12,11 @@ import { FaWindowClose, FaHome } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useService } from '../../hooks/useService';
+import useScrollToTop from '../../hooks/useScrollToTop';
 
 
 const GamesCards = () => {
+    useScrollToTop();
     const { user } = useAuthContext();
     const service = useService();
     const [showVideo, setShowVideo] = useState(false);

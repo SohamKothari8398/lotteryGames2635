@@ -18,7 +18,7 @@ const LandingPageFooter = () => {
       {/** App Description, Social Media Links*/}
       <div>
         <div className="text-xl grid md:grid-cols-2 text-white items-center">
-          <div className='flex'>
+          <a href='/' rel='noopener noreferrer' target='_self' className='flex'>
             <div className='hover:text-yellow-600 flex italic font-bold mr-10'>
               <div className='text-3xl md:text-5xl lg:text-6xl'>UP</div>
               <div className='flex flex-col mt-2 ml-2 text-xs md:text-sm lg:text-lg'>
@@ -30,7 +30,7 @@ const LandingPageFooter = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </a>
           <p className='text-xs lg:text-base py-4 md:-ml-48 lg:-ml-96'>We have a well established presence in the casino industry with successful establishments in India, Dubai, Malta and many more. And now we are setting our sights on the online gaming arena. We provide our services to the individuals, who seek excitement, entertainment, and pleasure of earning hefty through gaming and risks. </p>
         </div>
         <div className='grid grid-cols-1 mt-10'>

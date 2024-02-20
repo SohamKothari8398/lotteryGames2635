@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { FaWindowClose, FaEye, FaEyeSlash, FaArrowAltCircleUp, FaArrowCircleDown } from 'react-icons/fa';
 import { useLogin } from '../../hooks/useLogin';
 import { useService } from '../../hooks/useService';
+import useScrollToTop from '../../hooks/useScrollToTop';
 
 function LoginSignin() {
+    useScrollToTop();
     const service = useService()
     const navigate = useNavigate();
     const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -15,6 +17,7 @@ function LoginSignin() {
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [confirmPassword, setConfirmPassword] = useState('');
     const { login, error, isLoading } = useLogin();
 
     const togglePasswordVisibility = () => {
@@ -93,6 +96,7 @@ function LoginSignin() {
                                         min={1000000000}
                                         max={9999999999}
                                         maxLength={10}
+                                        required
                                     />
                                 </label>
                                 <label htmlFor="otp" className="flex font-bold mb-2 flex-col text-center">
@@ -105,7 +109,8 @@ function LoginSignin() {
                                         placeholder="Enter OTP"
                                         name="otp"
                                         id="otp"
-                                        maxLength={6}
+                                        maxLength={8}
+                                        required
                                     />
                                 </label>
                                 <label htmlFor="newPassword" className="flex font-bold mb-2 flex-col items-center text-center">
@@ -120,6 +125,7 @@ function LoginSignin() {
                                             name="newPassword"
                                             id="newPassword"
                                             maxLength={16}
+                                            required
                                         />
                                         <button
                                             type="button"
@@ -135,13 +141,14 @@ function LoginSignin() {
                                     <div className="flex w-[80%] bg-black m-auto items-center  rounded-lg border-2">
                                         <input
                                             type={showPassword ? "text" : "password"}
-                                            value={newPassword}
-                                            placeholder="Enter new Password"
-                                            onChange={(e) => setNewPassword(e.target.value)}
+                                            value={confirmPassword}
+                                            placeholder="Confirm New Password"
+                                            onChange={(e) => setConfirmPassword(e.target.value)}
                                             className="m-auto mt-2 rounded-sm h-8 outline-none w-[80%] text-white bg-black text-center"
                                             name="confirmNewPassword"
                                             id="confirmNewPassword"
                                             maxLength={16}
+                                            required
                                         />
                                         <button
                                             type="button"
@@ -152,6 +159,12 @@ function LoginSignin() {
                                         </button>
                                     </div>
                                 </label>
+                                {newPassword !== confirmPassword && (
+                                    <div className="text-red-500 text-sm text-center mt-1">Passwords do not match</div>
+                                )}
+                                {newPassword === confirmPassword && (
+                                    <div className="text-green-500 text-sm text-center mt-1">Passwords match</div>
+                                )}
                                 <div className="flex justify-center">
                                     <button
                                         onClick={handleChangePasswordClick}

@@ -3,8 +3,10 @@ import { FaWindowClose, FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useService } from '../../hooks/useService';
+import useScrollToTop from '../../hooks/useScrollToTop';
 
 function Register() {
+    useScrollToTop();
     const { message } = useAuthContext();
     const service = useService();
     const [mobileNumber, setMobileNumber] = useState(null);
@@ -31,7 +33,7 @@ function Register() {
                     setMobileNumber(null);
                     setPassword("");
                     setPromoCode("");
-                    // navigate to login or any other page as needed
+                    navigate("/login");
                 } else {
                     alert(`Registration failed: ${response.data.error}`);
                 }
@@ -50,7 +52,6 @@ function Register() {
         }
     };
 
-    // Function to toggle password visibility
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
