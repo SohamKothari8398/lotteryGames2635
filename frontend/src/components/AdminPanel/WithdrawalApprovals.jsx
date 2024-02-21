@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
-import { format } from 'date-fns';
 import { useService } from '../../hooks/useService';
 
 const AdminWithdrawalApprovals = () => {
@@ -39,6 +38,17 @@ const AdminWithdrawalApprovals = () => {
         updatedData[index].adminRemarks = remarks;
         setTableData(updatedData);
     };
+    const handleUTRChange = (index, utr) => {
+        const updatedData = [...tableData];
+        updatedData[index].utrId = utr;
+        setTableData(updatedData);
+    };
+
+    const handleAmountChange = (index, amount) => {
+        const updatedData = [...tableData];
+        updatedData[index].amount = amount;
+        setTableData(updatedData);
+    };
 
     const handleWithdrawSearch = () => {
         const searchTerm = withdrawSearchInput.trim();
@@ -66,6 +76,8 @@ const AdminWithdrawalApprovals = () => {
         }
         try {
             const response = await service.patch(`/admin/adminWithdrawalApprovalsPage/${row._id}`, {
+                utrId: row.utrId,
+                amount: row.amount,
                 status: row.status,
                 adminRemarks: row.adminRemarks,
             });
@@ -120,16 +132,41 @@ const AdminWithdrawalApprovals = () => {
                                     <tr key={index} className="bg-white font-semibold">
                                         <td className="text-center border-2">{index + 1}</td>
                                         <td className="text-center border-2">{row.userId}</td>
-                                        <td className="text-center border-2">{index}</td>
+                                        <td className="text-center border-2">{row.status === 'Pending' ? (
+                                            <div>
+                                                <input
+                                                    type="text" name="utrId" id="utrId"
+                                                    value={row.utrId}
+                                                    onChange={(e) => handleUTRChange(index, e.target.value)}
+                                                    placeholder="Unique Transaction Reference"
+                                                    className="text-black font-semibold border-black border-2"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div>{row.utrId}</div>
+                                        )}</td>
                                         <td className="text-center border-2">{row.mobileNumber}</td>
                                         <td className="text-center border-2">{row.walletBalance}</td>
                                         <td className="text-center border-2">
-                                            {format(new Date(row.createdAt), 'HH:mm:ss dd-MM-yyyy')}
+                                            {row.createdAt}
                                         </td>
                                         <td className="text-center border-2">
-                                            {format(new Date(row.updatedAt), 'HH:mm:ss dd-MM-yyyy')}
+                                            {row.updatedAt}
                                         </td>
-                                        <td className="text-center border-2">{row.amount}</td>
+                                        <td className="text-center border-2">{row.status === 'Pending' ? (
+                                            <div>
+                                                <input
+                                                    type="number" name="dAmount" id="dAmount"
+                                                    value={row.amount}
+                                                    onChange={(e) => handleAmountChange(index, e.target.value)}
+                                                    placeholder="Deposit Amount"
+                                                    min={100}
+                                                    className="text-black font-semibold border-black border-2"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div>{row.amount}</div>
+                                        )}</td>
                                         <td className="text-center border-2">
                                             {row.status === 'Pending' ? (
                                                 <div>

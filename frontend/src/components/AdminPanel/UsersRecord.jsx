@@ -53,7 +53,7 @@ const AdminUserRecordTable = () => {
                     <tbody >
                         {tableData.map((row, index) => (
                             <tr key={index} className="bg-white font-semibold">
-                                <td className='text-center border-2 p-1'>{index}</td>
+                                <td className='text-center border-2 p-1'>{index + 1}</td>
                                 <td className='text-center border-2 p-1'>{row.userID}</td>
                                 <td className='text-center border-2 p-1'>{row.mobileNumber}</td>
                                 <td className='text-center border-2 p-1'>{row.promoCode}</td>

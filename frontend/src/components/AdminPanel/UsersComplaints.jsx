@@ -83,7 +83,7 @@ const UserComplaints = () => {
                     <tbody>
                         {complaintsData.map((row, index) => (
                             <tr key={index} className="bg-white font-semibold">
-                                <td className='py-3 text-center font-bold border-2 px-6' >{index}</td>
+                                <td className='py-3 text-center font-bold border-2 px-6' >{index + 1}</td>
                                 <td className='py-3 text-center font-bold border-2 px-6'>{row.complaintID}</td><td className="text-center border-2">
                                     {format(new Date(row.createdAt), 'HH:mm:ss dd-MM-yyyy')}
                                 </td>
