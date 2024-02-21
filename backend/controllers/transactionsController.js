@@ -27,7 +27,7 @@ const getAllWithdrawal = async (req, res) => {
 
 const updateDeposit = async (req, res) => {
   const { transactionID } = req.params;
-  const { status, adminRemarks } = req.body;
+  const { utrId, amount, status, adminRemarks } = req.body;
   try {
     const updatedTransaction = await TransactionModel.findByIdAndUpdate(
       transactionID
@@ -42,11 +42,13 @@ const updateDeposit = async (req, res) => {
         userID: updatedTransaction.userId,
       });
       if (!user) return res.status(404).json({ error: "User Not Found" });
-      user.walletBalance += updatedTransaction.amount;
-      admin.walletBalance += updatedTransaction.amount;
+      user.walletBalance += amount;
+      admin.walletBalance += amount;
       await user.save();
       await admin.save();
     }
+    updatedTransaction.utrId = utrId;
+    updatedTransaction.amount = amount;
     updatedTransaction.status = status;
     updatedTransaction.adminRemarks = adminRemarks;
     await updatedTransaction.save();

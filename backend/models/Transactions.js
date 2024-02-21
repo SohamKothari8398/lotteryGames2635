@@ -4,6 +4,7 @@ const validator = require("validator");
 const TransactionsSchema = new mongoose.Schema(
   {
     userId: { type: String, required: true },
+    utrId: { type: String, default: "XXXXR7310682908954385XX" },
     mobileNumber: { type: Number, required: true },
     walletBalance: { type: Number, required: true },
     upiID: { type: String, default: "1234567890@upi" },
@@ -27,7 +28,6 @@ TransactionsSchema.statics.createTxn = async function (
 ) {
   if (!userId || !mobileNumber || !amount || !transactionType)
     throw Error("All fields required");
-  // Convert mobileNumber to string if it's a number
   const formattedMobileNumber =
     typeof mobileNumber === "number" ? mobileNumber.toString() : mobileNumber;
   if (!validator.isMobilePhone(formattedMobileNumber))
