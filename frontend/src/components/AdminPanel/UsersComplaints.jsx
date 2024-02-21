@@ -13,7 +13,6 @@ const UserComplaints = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch complaints data from the server
         service.get('/user/complaints')
             .then(response => {
                 const fetchedData = response.data;
@@ -22,7 +21,7 @@ const UserComplaints = () => {
             .catch(error => {
                 console.error('Error fetching complaints data:', error);
             });
-    }, []); // The empty dependency array ensures that this effect runs only once on mount
+    }, []);
 
     const navigateToAdminPage = () => {
         navigate(-1);
@@ -49,7 +48,6 @@ const UserComplaints = () => {
             compStatus: selectedStatus,
         })
             .then(response => {
-                // Handle the response if needed
                 console.log('Update successful:', response.data);
                 const updatedData = [...complaintsData];
                 updatedData[index].adminRemarks = response.data.complaint.adminRemarks;

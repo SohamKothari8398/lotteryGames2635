@@ -9,21 +9,7 @@ const AdminWithdrawalApprovals = () => {
     const [tableData, setTableData] = useState([]);
     const [statusOptions] = useState(['Select Status', 'Pending', 'Success', 'Rejected']);
     const navigate = useNavigate();
-
-    // States
     const [withdrawSearchInput, setWithdrawSearchInput] = useState('');
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await service.get('/admin/adminWithdrawalApprovalsPage');
-    //             setTableData(response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //         }
-    //     };
-    //     fetchData();
-    // }, []);
 
     useEffect(() => {
         service.get('/admin/adminWithdrawalApprovalsPage')
@@ -40,6 +26,7 @@ const AdminWithdrawalApprovals = () => {
         navigate(-1);
     };
 
+    // Handlers
     const handleStatusChange = (index, selectedStatus) => {
         const updatedData = [...tableData];
         updatedData[index].status = selectedStatus;
