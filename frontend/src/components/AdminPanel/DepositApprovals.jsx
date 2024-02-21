@@ -86,6 +86,7 @@ const AdminDepositApprovals = () => {
             updatedData[index] = response.data;
             setTableData(updatedData);
             alert(`Transaction updated successfully`);
+            navigate(0);
         } catch (error) {
             console.error('Error updating transaction:', error);
         }

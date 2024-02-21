@@ -85,6 +85,7 @@ const AdminWithdrawalApprovals = () => {
             updatedData[index] = response.data;
             setTableData(updatedData);
             alert(`Transaction Updated Successfully`);
+            navigate(0);
         } catch (error) {
             console.error('Error updating transaction:', error);
         }
