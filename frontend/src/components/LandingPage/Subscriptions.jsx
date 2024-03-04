@@ -25,7 +25,7 @@ const LandingPageSubscriptions = () => {
               maxLength={10}
               required
             />
-            <a href={`https://api.whatsapp.com/send?phone=917988145538&text=Your number ${mobile} is subscribed to the whatsapp group.`} target='_blank' className=' text-white border-2 flex hover:bg-green-500 rounded-md font-medium ml-4 my-6 px-6 py-3'>
+            <a href={`https://api.whatsapp.com/send?phone=919730219716&text=Your number ${mobile} is subscribed to the whatsapp group.`} target='_blank' rel='noreferrer' className=' text-white border-2 flex hover:bg-green-500 rounded-md font-medium ml-4 my-6 px-6 py-3'>
               <BsWhatsapp size={20} className='mr-2' /> Subscribe
             </a>
           </div>

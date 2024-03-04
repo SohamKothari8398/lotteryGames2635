@@ -40,7 +40,7 @@ function HelpCenter() {
                             />
                         </div>
                         <div>
-                            <a href={`https://api.whatsapp.com/send?phone=917988145538&text=${message}`} rel="noreferrer" target='_blank'>
+                            <a href={`https://api.whatsapp.com/send?phone=919730219716&text=${message}`} rel="noreferrer" target='_blank'>
                                 <button onClick={handleSendMessage} className='m-auto my-4 hover:bg-green-500 shadow-lg ml-4 text-xl shadow-slate-900 border-2  bg-slate-900 text-slate-100 rounded-lg h-10  w-[30%] lg:w-[15%] md:w-[20%] font-bold'>
                                     Send
                                 </button>

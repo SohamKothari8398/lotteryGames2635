@@ -37,7 +37,7 @@ function History() {
 
     return (
         <div className="px-4 pb-10 flex flex-col items-center">
-            <div onClick={handleShowBets} className="text-center font-semibold cursor-pointer bg-black text-white rounded-lg text-lg md:text-xl p-4 my-4 border-4 flex flex-row">Active Bets
+            <div onClick={handleShowBets} className="text-center font-semibold cursor-pointer bg-black text-white rounded-lg text-lg md:text-xl p-4 my-4 border-4 flex flex-row">All Bets
                 <MdOutlineArrowDropDownCircle size={30} className='ml-4' />
             </div>
             {showBets ? (<div className="w-full md:w-auto flex h-auto overflow-x-auto lg:overflow-hidden rounded-lg text-white items-center">
