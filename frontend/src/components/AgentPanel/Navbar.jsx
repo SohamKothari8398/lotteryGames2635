@@ -10,7 +10,7 @@ import { FaMobileRetro } from 'react-icons/fa6';
 import { MdQrCode2, MdOutlineReportProblem, MdOutlineLocalOffer } from 'react-icons/md';
 import { BiMoneyWithdraw } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/up365Logo.webp';
+import logo from '../../assets/up365LogoDark.webp';
 import { useLogout } from '../../hooks/useLogout';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import GetWalletBalance from '../UsersPanel/WalletBalance';
@@ -111,7 +111,10 @@ function AgentsNavbar() {
         <nav className=" bg-black text-white grid grid-cols-1 p-4 sticky top-0 z-20">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="text-xl flex text-white items-center">
-                    <div>
+                    <div className='ml-10 sm:ml-0'>
+                        <img src={logo} alt="logo not available" className='h-[6rem] w-[10rem] 2xs:h-[7rem] 2xs:w-[14rem] sm:h-[7.5rem] sm:w-[16rem] cursor-pointer  mr-4 rounded-xl' />
+                    </div>
+                    {/* <div>
                         <img src={logo} alt="logo not available" className='h-16 md:h-20 w-[10rem] mr-4 rounded-xl' />
                     </div>
                     <div className='hover:text-yellow-600 flex italic font-bold mr-10'>
@@ -124,7 +127,7 @@ function AgentsNavbar() {
                                 Gaming
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* <div className="hidden font-bold md:flex lg:flex xl:flex  space-x-4">

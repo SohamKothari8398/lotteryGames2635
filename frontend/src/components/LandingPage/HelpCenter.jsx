@@ -27,7 +27,7 @@ function HelpCenter() {
             <div className="bg-slate-200 absolute lg:w-[60%] md:w-[60%] h-[60%] w-[80%] rounded-lg">
                 <div className="flex-col w-[100%] h-[100%] p-8">
                     <div className="flex flex-row justify-center mb-4 mt-4 text-green-700 text-2xl md:text-4xl w-auto font-bold">
-                        <BsWhatsapp size={40} style={{ color: '#15803d' }} /> <span className="p-1"> </span> WhatsApp Chat
+                        <BsWhatsapp size={30} style={{ color: '#15803d' }} /> <span className="p-1"> </span> WhatsApp Chat
                     </div>
                     <div className="w-full justify-center flex-col">
                         <div>

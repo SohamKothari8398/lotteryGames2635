@@ -11,24 +11,16 @@ import netBanking_Logo from '../../assets/netBanking_Logo.webp';
 import card_payments from '../../assets/visaLogo.webp';
 import card_payments2 from '../../assets/masterCardLogo.webp';
 import card_payments3 from '../../assets/discoverLogo.webp';
+import logo from '../../assets/up365LogoDark.webp';
 
 const LandingPageFooter = () => {
   return (
     <div className='w-full mx-auto flex flex-col pt-8 pb-4 px-8 text-white md:mb-96 lg:mb-0'>
-      {/** App Description, Social Media Links*/}
       <div>
         <div className="text-xl grid md:grid-cols-2 text-white items-center">
           <a href='/' rel='noopener noreferrer' target='_self' className='flex'>
-            <div className='hover:text-yellow-600 flex italic font-bold mr-10'>
-              <div className='text-3xl md:text-5xl lg:text-6xl'>UP</div>
-              <div className='flex flex-col mt-2 ml-2 text-xs md:text-sm lg:text-lg'>
-                <div>
-                  365
-                </div>
-                <div className='-ml-4 lg:-ml-6'>
-                  Gaming
-                </div>
-              </div>
+            <div>
+              <img src={logo} alt="logo not available" className='h-[4rem] w-[10rem] ml-8 2xs:h-[6rem] mb-10 cursor-pointer 2xs:w-[14rem] mr-4 rounded-xl' />
             </div>
           </a>
           <p className='text-xs lg:text-base py-4 md:-ml-48 lg:-ml-96'>We have a well established presence in the casino industry with successful establishments in India, Dubai, Malta and many more. And now we are setting our sights on the online gaming arena. We provide our services to the individuals, who seek excitement, entertainment, and pleasure of earning hefty through gaming and risks. </p>

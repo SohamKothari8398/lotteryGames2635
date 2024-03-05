@@ -26,8 +26,8 @@ function Home() {
             <LandingPageSubscriptions />
             <ResultGamesColorComponent />
             <div className='w-full bg-white h-full'>
-                <button onClick={handleHelpClick} className="fixed  flex flex-row z-50 w-auto h-auto bottom-8 md:left-4 bg-green-600 hover:bg-white hover:text-black p-2 outline outline-4 outline-white ml-4 font-bold text-xl rounded-full">
-                    <BsWhatsapp size={35} />
+                <button onClick={handleHelpClick} className="fixed  flex flex-row z-50 w-auto h-auto bottom-8 md:left-4 bg-green-600 hover:bg-white hover:text-black p-1 outline sm:outline-4 outline-white ml-4 font-bold text-xl rounded-full">
+                    <BsWhatsapp className='h-8 w-8 sm:h-10 sm:w-10' />
                 </button>
             </div>
             {/* <GamesResult /> */}

@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { TiThMenu } from 'react-icons/ti';
 import { FaWindowClose, FaPowerOff } from 'react-icons/fa';
 import { BiSolidMessageSquareEdit } from 'react-icons/bi';
-import logo from '../../assets/up365Logo.webp';
+import logo from '../../assets/up365LogoDark.webp';
 import { useLogout } from '../../hooks/useLogout';
 
-
-// Comonent
 function AdminNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { logout } = useLogout();
@@ -25,8 +23,6 @@ function AdminNavbar() {
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-black/30 flex justify-center items-center">
                 <div className="bg-slate-500 absolute w-[65vw] h-[65vh] m-auto rounded-lg top-0 bottom-0 right-0 left-0 flex justify-center items-center">
                     <ul className="flex flex-col">
-                        {/* <li className="border-b-2 p-2"> USERID : ABCD1234xyz!@#</li>
-                        <li className="border-b-2 p-2"> Referal Code :  ABCD1234</li> */}
                         <li>
                             <button onClick={handleLogout} className="w-auto ml-2 mt-2 border-transparent text-sm underline underline-offset-2 hover:border-red-600 flex text-red-600 font-bold flex-row p-2 rounded-lg transition duration-300 ease-in-out">
                                 <FaPowerOff size={25} style={{ color: 'red' }} /> <span className="p-1"> </span> Logout
@@ -45,7 +41,10 @@ function AdminNavbar() {
         <nav className="text-white p-4 sticky top-0 z-20">
             < div className="container mx-auto flex justify-between items-center" >
                 <div className="text-xl flex text-white items-center">
-                    <div>
+                    <div className='ml-10 sm:ml-0'>
+                        <img src={logo} alt="logo not available" className='h-[6rem] w-[10rem] 2xs:h-[7rem] 2xs:w-[14rem] sm:h-[7.5rem] sm:w-[16rem] cursor-pointer  mr-4 rounded-xl' />
+                    </div>
+                    {/* <div>
                         <img src={logo} alt="logo not available" className='h-16 md:h-20 w-40 lg:w-44 mr-4 rounded-xl' />
                     </div>
                     <div className='hover:text-yellow-600 flex italic font-bold mr-10'>
@@ -58,7 +57,7 @@ function AdminNavbar() {
                                 Gaming
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="hidden font-bold md:flex lg:flex xl:flex  space-x-4">
