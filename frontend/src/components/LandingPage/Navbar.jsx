@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { TiThMenu } from 'react-icons/ti';
 import { FaWindowClose } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../assets/up365Logo.webp';
+import logo from '../../assets/up365NewLogo2.jpeg';
 
 function LandingPageNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,10 +65,10 @@ function LandingPageNavbar() {
         <nav className="bg-black text-white p-4 sticky top-0 z-20">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="text-xl flex text-white items-center">
-                    <div>
-                        <img src={logo} alt="logo not available" className='h-[4rem] cursor-pointer w-[10rem] mr-4 rounded-xl' />
+                    <div onClick={navigateNull}>
+                        <img src={logo} alt="logo not available" className='h-[8rem] cursor-pointer w-[14rem] mr-4 rounded-xl' />
                     </div>
-                    <div onClick={navigateNull} className='hover:text-yellow-600 flex italic font-bold cursor-pointer mr-10'>
+                    {/* <div onClick={navigateNull} className='hover:text-yellow-600 flex italic font-bold cursor-pointer mr-10'>
                         <div className='text-3xl md:text-5xl lg:text-6xl'>UP</div>
                         <div className='flex flex-col mt-2 ml-2 text-xs md:text-sm lg:text-lg'>
                             <div>
@@ -78,7 +78,7 @@ function LandingPageNavbar() {
                                 Gaming
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     {/* <div className='hover:text-yellow-800 border-none italic text-3xl md:text-5xl lg:text-7xl font-bold mr-10'>UP365</div> */}
                 </div>
 
