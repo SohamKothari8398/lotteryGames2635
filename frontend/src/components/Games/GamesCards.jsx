@@ -9,7 +9,7 @@ import teenpatti from '../../assets/teenpattiBg.webp';
 import colorball from '../../assets/colorballBg.webp';
 import { ImYoutube } from 'react-icons/im';
 import { FaWindowClose, FaHome } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useService } from '../../hooks/useService';
 import useScrollToTop from '../../hooks/useScrollToTop';
@@ -27,6 +27,7 @@ const GamesCards = () => {
     const [videoLink2, setVideoLink2] = useState("");
     const [videoLink3, setVideoLink3] = useState("");
     const [videoLink4, setVideoLink4] = useState("");
+    const location = useLocation();
 
     // Navigators
     const navigate = useNavigate();
@@ -45,6 +46,88 @@ const GamesCards = () => {
     }
     const navigateToColorBallLotteryGame = () => {
         if (user) { navigate('/games/colorBallLottery'); } else navigate('/login');
+    }
+
+    const handleShowVideoClick = () => {
+        setShowVideo(!showVideo);
+    }
+    const handleShowVideo2Click = () => {
+        setShowVideo2(!showVideo2);
+    }
+    const handleShowVideo3Click = () => {
+        setShowVideo3(!showVideo3);
+    }
+    const handleShowVideo4Click = () => {
+        setShowVideo4(!showVideo4);
+    }
+
+    const renderShowVideo = () => {
+        if (!showVideo) {
+            return null;
+        }
+        return (
+            <div className='fixed top-0 left-0 right-0 bottom-0 w-full h-auto bg-black/40 flex justify-center items-center z-20'>
+                <div className='border-4 border-white mt-10 w-[90%] h-[90%]'>
+                    <iframe title='video_1' className='w-full h-full'
+                        src={videoLink} >
+                    </iframe>
+                </div>
+                <button onClick={handleShowVideoClick} className="absolute rounded-lg top-4 right-5 z-10">
+                    <FaWindowClose size={30} className='text-red-600 shadow-md shadow-slate-900 bg-white rounded-lg' />
+                </button>
+            </div>
+        );
+    }
+    const renderShowVideo2 = () => {
+        if (!showVideo2) {
+            return null;
+        }
+        return (
+            <div className='fixed top-0 left-0 right-0 bottom-0 w-full h-auto bg-black/40 flex justify-center items-center z-20'>
+                <div className='border-4 border-white mt-10 w-[90%] h-[90%]'>
+                    <iframe title='video_2' className='w-full h-full'
+                        src={videoLink2}>
+                    </iframe>
+                </div>
+                <button onClick={handleShowVideo2Click} className="absolute rounded-lg top-4 right-5 z-10">
+                    <FaWindowClose size={30} className='text-red-600 shadow-md shadow-slate-900 bg-white rounded-lg' />
+                </button>
+            </div>
+        );
+    }
+    const renderShowVideo3 = () => {
+        if (!showVideo3) {
+            return null;
+        }
+        return (
+            <div className='fixed top-0 left-0 right-0 bottom-0 w-full h-auto bg-black/40 flex justify-center items-center z-20'>
+                <div className='border-4 border-white mt-10 w-[90%] h-[90%]'>
+                    <iframe title='video_2' className='w-full h-full'
+                        src={videoLink3}>
+                    </iframe>
+                </div>
+                <button onClick={handleShowVideo3Click} className="absolute rounded-lg top-4 right-5 z-10">
+                    <FaWindowClose size={30} className='text-red-600 shadow-md shadow-slate-900 bg-white rounded-lg' />
+                </button>
+            </div>
+        );
+    }
+    const renderShowVideo4 = () => {
+        if (!showVideo4) {
+            return null;
+        }
+        return (
+            <div className='fixed top-0 left-0 right-0 bottom-0 w-full h-auto bg-black/40 flex justify-center items-center z-20'>
+                <div className='border-4 border-white mt-10 w-[90%] h-[90%]'>
+                    <iframe title='video_2' className='w-full h-full'
+                        src={videoLink4}>
+                    </iframe>
+                </div>
+                <button onClick={handleShowVideo4Click} className="absolute rounded-lg top-4 right-5 z-10">
+                    <FaWindowClose size={30} className='text-red-600 shadow-md shadow-slate-900 bg-white rounded-lg' />
+                </button>
+            </div>
+        );
     }
 
     useEffect(() => {
@@ -66,89 +149,8 @@ const GamesCards = () => {
         };
 
         fetchData();
-    }, []);    // Empty dependency array ensures the effect runs only once on component mount
+    }, [service]);    // Empty dependency array ensures the effect runs only once on component mount
 
-
-    const handleShowVideoClick = () => {
-        setShowVideo(!showVideo);
-    }
-    const renderShowVideo = () => {
-        if (!showVideo) {
-            return null;
-        }
-        return (
-            <div className='fixed top-0 left-0 right-0 bottom-0 w-full h-auto bg-black/40 flex justify-center items-center z-20'>
-                <div className='border-4 border-white mt-10 w-[90%] h-[90%]'>
-                    <iframe title='video_1' className='w-full h-full'
-                        src={videoLink} >
-                    </iframe>
-                </div>
-                <button onClick={handleShowVideoClick} className="absolute rounded-lg top-4 right-5 z-10">
-                    <FaWindowClose size={30} className='text-red-600 shadow-md shadow-slate-900 bg-white rounded-lg' />
-                </button>
-            </div>
-        );
-    }
-    const handleShowVideo2Click = () => {
-        setShowVideo2(!showVideo2);
-    }
-    const renderShowVideo2 = () => {
-        if (!showVideo2) {
-            return null;
-        }
-        return (
-            <div className='fixed top-0 left-0 right-0 bottom-0 w-full h-auto bg-black/40 flex justify-center items-center z-20'>
-                <div className='border-4 border-white mt-10 w-[90%] h-[90%]'>
-                    <iframe title='video_2' className='w-full h-full'
-                        src={videoLink2}>
-                    </iframe>
-                </div>
-                <button onClick={handleShowVideo2Click} className="absolute rounded-lg top-4 right-5 z-10">
-                    <FaWindowClose size={30} className='text-red-600 shadow-md shadow-slate-900 bg-white rounded-lg' />
-                </button>
-            </div>
-        );
-    }
-    const handleShowVideo3Click = () => {
-        setShowVideo3(!showVideo3);
-    }
-    const renderShowVideo3 = () => {
-        if (!showVideo3) {
-            return null;
-        }
-        return (
-            <div className='fixed top-0 left-0 right-0 bottom-0 w-full h-auto bg-black/40 flex justify-center items-center z-20'>
-                <div className='border-4 border-white mt-10 w-[90%] h-[90%]'>
-                    <iframe title='video_2' className='w-full h-full'
-                        src={videoLink3}>
-                    </iframe>
-                </div>
-                <button onClick={handleShowVideo3Click} className="absolute rounded-lg top-4 right-5 z-10">
-                    <FaWindowClose size={30} className='text-red-600 shadow-md shadow-slate-900 bg-white rounded-lg' />
-                </button>
-            </div>
-        );
-    }
-    const handleShowVideo4Click = () => {
-        setShowVideo4(!showVideo4);
-    }
-    const renderShowVideo4 = () => {
-        if (!showVideo4) {
-            return null;
-        }
-        return (
-            <div className='fixed top-0 left-0 right-0 bottom-0 w-full h-auto bg-black/40 flex justify-center items-center z-20'>
-                <div className='border-4 border-white mt-10 w-[90%] h-[90%]'>
-                    <iframe title='video_2' className='w-full h-full'
-                        src={videoLink4}>
-                    </iframe>
-                </div>
-                <button onClick={handleShowVideo4Click} className="absolute rounded-lg top-4 right-5 z-10">
-                    <FaWindowClose size={30} className='text-red-600 shadow-md shadow-slate-900 bg-white rounded-lg' />
-                </button>
-            </div>
-        );
-    }
 
     return (
         <div className='w-full py-[5rem] flex flex-col'>
@@ -266,11 +268,13 @@ const GamesCards = () => {
                     <button onClick={navigateToSingleDigitLotteryGame} className='bg-white text-slate-900 hover:bg-green-400 w-[8rem] text-sm rounded-md font-bold m-2 mx-auto p-2'>Play Now</button>
                 </div>
             </div >
-            <div className="fixed top-1 right-1 bg-black hover:bg-green-600 text-white shadow-md shadow-white m-2 p-2 rounded-lg">
-                <button onClick={navigateToBack}>
-                    <FaHome size={30} />
-                </button>
-            </div>
+            {location.pathname === '/games' && (
+                <div className="fixed top-1 right-1 bg-black hover:bg-green-600 text-white shadow-md shadow-white m-2 p-2 rounded-lg">
+                    <button onClick={navigateToBack}>
+                        <FaHome size={30} />
+                    </button>
+                </div>
+            )}
             {renderShowVideo()}
             {renderShowVideo2()}
             {renderShowVideo3()}
