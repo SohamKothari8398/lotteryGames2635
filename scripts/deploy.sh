@@ -12,4 +12,3 @@ pm2 restart frontend
 cd ../backend
 yarn install
 pm2 restart backend
-
