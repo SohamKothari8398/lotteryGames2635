@@ -12,7 +12,7 @@ function LandingPageMarqueeText() {
                 const response = await service.get('/promoLink');
                 const sliderText = response.data.adsSliderText;
                 setMarqueeText(sliderText);
-                console.log(marqueeText);
+                console.log("Marquee Text Available");
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

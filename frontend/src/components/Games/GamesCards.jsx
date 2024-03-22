@@ -61,6 +61,28 @@ const GamesCards = () => {
         setShowVideo4(!showVideo4);
     }
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await service.get('/promoLinks'); // Assuming your backend route is /api/promoLinks
+                // Axios automatically parses JSON, so you can directly access the data property
+                const data = response.data;
+                // Update the videoLink states based on the fetched promoLinks
+                if (data) {
+                    setVideoLink(data.singleDigitLottery);
+                    setVideoLink2(data.doubleDigitLottery);
+                    setVideoLink3(data.tripleDigitLottery);
+                    setVideoLink4(data.colorballGame);
+                }
+                console.log("Promos Links Available.");
+            } catch (error) {
+                console.error('Error fetching promo links:', error);
+            }
+        };
+
+        fetchData();
+    }, [service]);    // Empty dependency array ensures the effect runs only once on component mount
+
     const renderShowVideo = () => {
         if (!showVideo) {
             return null;
@@ -129,28 +151,6 @@ const GamesCards = () => {
             </div>
         );
     }
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await service.get('/promoLinks'); // Assuming your backend route is /api/promoLinks
-                // Axios automatically parses JSON, so you can directly access the data property
-                const data = response.data;
-                // Update the videoLink states based on the fetched promoLinks
-                if (data) {
-                    setVideoLink(data.singleDigitLottery);
-                    setVideoLink2(data.doubleDigitLottery);
-                    setVideoLink3(data.tripleDigitLottery);
-                    setVideoLink4(data.colorballGame);
-                }
-            } catch (error) {
-                console.error('Error fetching promo links:', error);
-            }
-        };
-
-        fetchData();
-    }, [service]);    // Empty dependency array ensures the effect runs only once on component mount
-
 
     return (
         <div className='w-full py-[5rem] flex flex-col'>
