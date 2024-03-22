@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UserHome from './components/UsersPanel/Home';
 import UserProfile from './components/UsersPanel/Profile';
 import LandingPage from './components/LandingPage/Home';

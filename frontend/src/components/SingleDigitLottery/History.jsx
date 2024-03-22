@@ -32,7 +32,7 @@ function History() {
         return () => {
             clearInterval(interval);
         };
-    }, [user, allBetsTable]);
+    }, [user, allBetsTable, service]);
 
 
     return (

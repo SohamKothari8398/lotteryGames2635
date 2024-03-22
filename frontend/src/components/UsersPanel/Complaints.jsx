@@ -62,7 +62,7 @@ function UserComplaintsForm() {
         if (userId) {
             fetchUserComplaints();
         }
-    }, [userId, userComplaints, filteredPendingComplaints]);
+    }, [userId, userComplaints, filteredPendingComplaints, service]);
 
 
     const handleSubmit = (e) => {

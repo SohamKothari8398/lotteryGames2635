@@ -36,9 +36,9 @@ function AgentsNavbar() {
     const navigateToAddUserCredentials = () => {
         navigate('/agent/addUserCredentials');
     }
-    const navigateToAllRecords = () => {
-        navigate('/agent/allRecords');
-    }
+    // const navigateToAllRecords = () => {
+    //     navigate('/agent/allRecords');
+    // }
     const navigateToAgentSummaryPage = () => {
         navigate('/agent/summary');
     }

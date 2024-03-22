@@ -26,7 +26,7 @@ function UserWallet() {
             }
         }
         fetchData();
-    }, [tableData, user.userID]);
+    }, [tableData, user.userID, service]);
 
     return (
         <div className="px-10 pb-10 flex flex-col items-center">

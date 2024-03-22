@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
 import { HiOutlineDocumentDownload } from 'react-icons/hi';
 import { FaPowerOff, FaHome } from "react-icons/fa";
 
@@ -21,9 +20,9 @@ function AdminSummary() {
         alert('Users Reports and Statements Downloaded.');
     };
 
-    const downloadVendorsRecords = () => {
-        alert('Vendors Reports and Statements Downloaded.');
-    };
+    // const downloadVendorsRecords = () => {
+    //     alert('Vendors Reports and Statements Downloaded.');
+    // };
 
     const handleshowAllGamesSettings = () => {
         alert('Vendors Reports and Statements Downloaded.');

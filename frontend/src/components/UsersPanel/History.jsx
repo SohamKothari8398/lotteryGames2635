@@ -7,7 +7,7 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 function UserHistory() {
     const { user } = useAuthContext();
     const [showBetsHistory, setshowBetsHistory] = useState('');
-    const [betsHistoryTable, setBetsHistoryTable] = useState('');
+    // const [betsHistoryTable, setBetsHistoryTable] = useState('');
     const navigate = useNavigate();
     const navigateToUserHome = () => {
         navigate(-1);

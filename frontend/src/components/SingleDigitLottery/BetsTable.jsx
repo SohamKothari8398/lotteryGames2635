@@ -31,7 +31,7 @@ function BetsTable() {
         return () => {
             clearInterval(interval);
         };
-    }, [user, myBetsTable]);
+    }, [user, myBetsTable, service]);
 
     return (
         <div className="px-4 pb-10 flex flex-col items-center">

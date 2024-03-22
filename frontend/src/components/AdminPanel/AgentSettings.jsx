@@ -5,7 +5,7 @@ import { useService } from '../../hooks/useService';
 
 function AgentSettings() {
   const navigate = useNavigate();
-  const [deleteAgent, setDeleteAgent] = useState('');
+  const [deleteAgent] = useState('');
   const [agentDetails, setAgentDetails] = useState({
     userID: '',
     mobileNumber: '',

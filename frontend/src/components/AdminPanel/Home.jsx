@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AdminNavbar from './NavBar';
-import AdminGamesRecords from './GamesRecords';
+// import AdminGamesRecords from './GamesRecords';
 import AdminControlBar from './ControlBar';
 // import sound from '../../assets/notification-1.mp3';
 import useScrollToTop from '../../hooks/useScrollToTop';

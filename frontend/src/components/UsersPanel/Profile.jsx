@@ -14,12 +14,12 @@ const Profile = () => {
     // States
     const [showForm, setShowForm] = useState(false);
     const [showBankForm, setShowBankForm] = useState(false);
-    const [showMobileForm, setShowMobileForm] = useState(false);
+    // const [showMobileForm, setShowMobileForm] = useState(false);
     const [mobile, setMobile] = useState(null);
     const [otp, setOtp] = useState(null);
     const [newUpiID, setNewUpiID] = useState("");
     const [confirmUpiID, setConfirmUpiID] = useState("");
-    const [recaptcha, setRecaptcha] = useState(false);
+    // const [recaptcha, setRecaptcha] = useState(false);
     const [recaptcha2, setRecaptcha2] = useState(false);
     const [recaptcha3, setRecaptcha3] = useState(false);
     const [newPassword, setNewPassword] = useState("");
@@ -112,9 +112,9 @@ const Profile = () => {
     const handleToggleBankForm = () => {
         setShowBankForm(!showBankForm);
     };
-    const handleToggleMobileForm = () => {
-        setShowMobileForm(!showMobileForm);
-    };
+    // const handleToggleMobileForm = () => {
+    //     setShowMobileForm(!showMobileForm);
+    // };
 
     return (
         <div className="mx-auto px-4 py-8">

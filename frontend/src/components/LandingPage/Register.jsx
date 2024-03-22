@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaWindowClose, FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
@@ -105,6 +105,7 @@ function Register() {
                         <label htmlFor="promo_code" className='flex mb-2 flex-col text-center'>Promo Code
                             <input type="text" placeholder='Harry10, AgentX5,...' value={promoCode} onChange={(e) => setPromoCode(e.target.value)} className='m-auto mt-2 rounded-lg h-8 text-center w-[70%] bg-black p-4 border-2' name="promo_code" id="promo_code" maxLength={16} />
                         </label>
+                        {message ? (<div className=' text-red-500'>{message}</div>) : (<></>)}
                         <div className='flex justify-center'>
                             <button type='submit' onClick={handleRegisterClick} className='my-4 font-bold hover:bg-green-800 border-4 bg-white text-black rounded-lg h-10 w-[50%]'>
                                 Register

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { IoMdClock } from "react-icons/io";
 import { BiSolidWalletAlt, BiUserCircle } from 'react-icons/bi';
-import { MdLockClock, MdArrowDropDownCircle } from 'react-icons/md';
+import { MdArrowDropDownCircle } from 'react-icons/md';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import GetWalletBalance from '../UsersPanel/WalletBalance';
 import { useService } from '../../hooks/useService';
 
 const gameTimer = 600;
-let totalRewardAmount = 0;
+// let totalRewardAmount = 0;
 
 function formatTimer(seconds) {
     // const days = Math.floor(seconds / (3600 * 24));
@@ -28,7 +28,7 @@ function Form() {
     const [cooldown, setCooldown] = useState(10);
     const [number, setNumber] = useState(0);
     const [selectColor, setSelectColor] = useState('No Color');
-    const [rewardAmount, setRewardAmount] = useState(0);
+    const [rewardAmount] = useState(0);
     const [betAmount, setBetAmount] = useState(0);
     const [counter, setCounter] = useState(1);
     let [betCount, setBetCount] = useState(0);
@@ -53,7 +53,7 @@ function Form() {
         } else if (number > 0 && number < 37 && betAmount > 99) {
             setBetCount((prevCount) => prevCount + 1);
             // setTotalAmountBet((prevAmount) => (prevAmount + betAmount));
-            console.log(userID, number, betAmount);
+            console.log(userID, number, betAmount, counter);
             const response = await service.post("/games/colorBallLottery/createBet", {
                 userID: userID,
                 betNumber: number,
@@ -219,4 +219,4 @@ function Form() {
     )
 }
 
-export default Form; 
+export default Form;

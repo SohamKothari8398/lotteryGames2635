@@ -11,14 +11,14 @@ function LoginSignin() {
     const navigate = useNavigate();
     const [showForgotPassword, setShowForgotPassword] = useState(false);
     const [userID, setUserID] = useState("");
-    const [mobileNumber, setMobileNumber] = useState('');
+    // const [mobileNumber, setMobileNumber] = useState('');
     const [mobileNumber2, setMobileNumber2] = useState('');
     const [otp, setOtp] = useState('');
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState('');
-    const { login, error, isLoading } = useLogin();
+    const { login, error } = useLogin();
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -213,6 +213,7 @@ function LoginSignin() {
                                         </button>
                                     </div>
                                 </label>
+                                {error ? (<div className=" text-red-500">{error}</div>) : (<></>)}
                                 <div className="flex justify-center">
                                     <button
                                         onClick={handleLoginClick}

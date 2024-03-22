@@ -10,9 +10,9 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 function AgentsSettings() {
   const service = useService();
   const [showForm, setShowForm] = useState(false);
-  const [showPromoForm, setShowPromoForm] = useState(false);
+  // const [showPromoForm, setShowPromoForm] = useState(false);
   const [showBankForm, setShowBankForm] = useState(false);
-  const [showMobileForm, setShowMobileForm] = useState(false);
+  // const [showMobileForm, setShowMobileForm] = useState(false);
   const [mobile, setMobile] = useState(null);
   const [mobile2, setMobile2] = useState(null);
   const [otp, setOtp] = useState(null);
@@ -21,9 +21,9 @@ function AgentsSettings() {
   const [newPassword, setNewPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [newPromo, setNewPromo] = useState("");
+  // const [newPromo, setNewPromo] = useState("");
   const [confirmUpiID, setConfirmUpiID] = useState('');
-  const [recaptcha, setRecaptcha] = useState(false);
+  // const [recaptcha, setRecaptcha] = useState(false);
   const [recaptcha2, setRecaptcha2] = useState(false);
   const [recaptcha3, setRecaptcha3] = useState(false);
   const { user } = useAuthContext();
@@ -119,17 +119,17 @@ function AgentsSettings() {
     setShowForm(!showForm);
   };
 
-  const handleTogglePromoForm = () => {
-    setShowPromoForm(!showPromoForm);
-  };
+  // const handleTogglePromoForm = () => {
+  //   setShowPromoForm(!showPromoForm);
+  // };
 
   const handleTogglebBankForm = () => {
     setShowBankForm(!showBankForm);
   };
 
-  const handleToggleMobileForm = () => {
-    setShowMobileForm(!showMobileForm);
-  };
+  // const handleToggleMobileForm = () => {
+  //   setShowMobileForm(!showMobileForm);
+  // };
 
   const profileDetails = [
     { label: "User ID", value: user.userID },
@@ -198,7 +198,7 @@ function AgentsSettings() {
             </div>
             <div className="flex flex-col mb-4 mx-auto">
               <label htmlFor="confirm_new_UPI_ID" className="mb-2 font-bold text-center">Confirm New UPI Details</label>
-              <input type="text" id="confirm_new_UPI_ID" value={newUpiID} onChange={(e) => setNewUpiID(e.target.value)} name="confirm_new_UPI_ID" placeholder="Confirm your new bank details"
+              <input type="text" id="confirm_new_UPI_ID" value={confirmUpiID} onChange={(e) => setConfirmUpiID(e.target.value)} name="confirm_new_UPI_ID" placeholder="Confirm your new bank details"
                 className="border border-white bg-black text-white font-semibold mx-auto px-3 py-2 focus:outline-none focus:ring focus:border-blue-300 text-center w-auto md:w-1/2 " />
             </div>
             {newUpiID !== confirmUpiID && (

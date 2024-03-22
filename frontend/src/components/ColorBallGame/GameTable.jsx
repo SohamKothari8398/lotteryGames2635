@@ -28,7 +28,7 @@ function GameTable() {
         return () => {
             clearInterval(interval);
         };
-    }, [gamesTable]);
+    }, [gamesTable, service]);
 
     return (
 

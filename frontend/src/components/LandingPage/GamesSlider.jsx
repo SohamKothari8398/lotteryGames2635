@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiFillRightSquare, AiFillLeftSquare } from 'react-icons/ai';
 import { RxDotFilled } from 'react-icons/rx';
@@ -19,23 +19,25 @@ function LandingPageGamesSlider() {
         navigate("/games");
     }
 
+    const nextImage = useCallback(() => {
+        const newImageIndex = (currentImageIndex + 1) % imageArray.length;
+        setCurrentImageIndex(newImageIndex);
+    }, [currentImageIndex, imageArray.length]); // Only include currentImageIndex as a dependency
+
+
     useEffect(() => {
         const interval = setInterval(() => {
             nextImage();
         }, 5000); // Change image every 5 seconds (adjust as needed)
 
         return () => clearInterval(interval);
-    }, [currentImageIndex]);
+    }, [currentImageIndex, nextImage]);
 
     const prevImage = () => {
         const newImageIndex = (currentImageIndex - 1 + imageArray.length) % imageArray.length;
         setCurrentImageIndex(newImageIndex);
     }
 
-    const nextImage = () => {
-        const newImageIndex = (currentImageIndex + 1) % imageArray.length;
-        setCurrentImageIndex(newImageIndex);
-    }
 
     const goToImage = (imageIndex) => {
         setCurrentImageIndex(imageIndex);

@@ -22,4 +22,4 @@ function AgentsHome() {
     );
 };
 
-export default AgentsHome;    
+export default AgentsHome;

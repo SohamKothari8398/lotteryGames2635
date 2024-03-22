@@ -13,14 +13,14 @@ function AdminSettings2() {
     const [showSubAdminSettings, setshowSubAdminSettings] = useState('');
     const [showOfferSettings, setshowOfferSettings] = useState('');
     const [gameDuration, setgameDuration] = useState(10);
-    const [confirmation, setConfirmation] = useState(false);
+    // const [confirmation, setConfirmation] = useState(false);
     const [userID, setUserID] = useState();
     const [mobileNumber, setMobileNumber] = useState(0);
     const { logout } = useLogout();
     // States
     const [mobile, setMobile] = useState("");
     const navigate = useNavigate();
-    const [deleteSubAdmin, setDeleteSubAdmin] = useState('');
+    const [deleteSubAdmin] = useState('');
     const [userDetails, setUserDetails] = useState({
         userID: '',
         mobileNumber: '',
@@ -112,31 +112,31 @@ function AdminSettings2() {
             }
         }
     };
-    const handleUserGamesLockSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            if (!userID || !mobileNumber) {
-                alert('Please fill out all required fields');
-                return;
-            }
-            const response = await service.patch('/admin/settings/gamesLock', { userID, mobileNumber });
-            if (response.status === 200) {
-                alert(`User Games Locked!!!!\nUser Name: ${userID} \nMobile Number: ${mobileNumber}`);
-                setUserID('');
-                setMobileNumber(0);
-            }
-            else {
-                alert('Failed to block user. Please try again.');
-            }
-        } catch (error) {
-            console.error('Error User Games Lock:', error);
-            if (error.response && error.response.data) {
-                alert(`Error: ${error.response.data.error}`);
-            } else {
-                alert('An unexpected error occurred. Please try again.');
-            }
-        }
-    };
+    // const handleUserGamesLockSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         if (!userID || !mobileNumber) {
+    //             alert('Please fill out all required fields');
+    //             return;
+    //         }
+    //         const response = await service.patch('/admin/settings/gamesLock', { userID, mobileNumber });
+    //         if (response.status === 200) {
+    //             alert(`User Games Locked!!!!\nUser Name: ${userID} \nMobile Number: ${mobileNumber}`);
+    //             setUserID('');
+    //             setMobileNumber(0);
+    //         }
+    //         else {
+    //             alert('Failed to block user. Please try again.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error User Games Lock:', error);
+    //         if (error.response && error.response.data) {
+    //             alert(`Error: ${error.response.data.error}`);
+    //         } else {
+    //             alert('An unexpected error occurred. Please try again.');
+    //         }
+    //     }
+    // };
     const handleUserCredentialsSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -635,15 +635,15 @@ function AdminSettings2() {
                                     <form action={`/admin/settings`} className='text-white border-4 rounded-lg p-2 w-full'>
                                         <div className='flex flex-col text-center font-semibold mt-10'>
                                             <label htmlFor="special_Offers_Code">Offer Name</label>
-                                            <input type="text" name="special_Offers_Code" placeholder='E.g. Diwali10, NewYear15, etc.' className='mb-4 h-auto text-center md:h-14 font-semibold rounded-lg border-4 border-white w-full bg-white bg-black shadow-lg shadow-black' />
+                                            <input type="text" name="special_Offers_Code" placeholder='E.g. Diwali10, NewYear15, etc.' className='mb-4 h-auto text-center md:h-14 font-semibold rounded-lg border-4 border-white w-full bg-white shadow-lg shadow-black' />
                                         </div>
                                         <div className='flex flex-col text-center font-semibold'>
                                             <label htmlFor="bonus_percent">Set Bonus Percent</label>
-                                            <input type="number" maxLength={2} min={5} max={50} name="bonus_percent" placeholder='E.g. 5,10,15,20,25 etc.' className='mb-4 h-auto text-center md:h-14 font-semibold rounded-lg border-4 border-white bg-white bg-black shadow-lg shadow-black' />
+                                            <input type="number" maxLength={2} min={5} max={50} name="bonus_percent" placeholder='E.g. 5,10,15,20,25 etc.' className='mb-4 h-auto text-center md:h-14 font-semibold rounded-lg border-4 border-white bg-white shadow-lg shadow-black' />
                                         </div>
                                         <div className='flex flex-col text-center font-semibold'>
                                             <label htmlFor="selected_game_name">Select Game</label>
-                                            <select name="selected_game_name" className='mb-4 h-auto text-center md:h-14 font-semibold rounded-lg border-4 border-white w-full bg-white bg-black shadow-lg shadow-black'>
+                                            <select name="selected_game_name" className='mb-4 h-auto text-center md:h-14 font-semibold rounded-lg border-4 border-white w-full bg-white shadow-lg shadow-black'>
                                                 <option value="Select Option">Select Option</option>
                                                 <option value="All Games">All Games</option>
                                                 <option value="Single Digit Lottery">Single Digit Lottery</option>
@@ -665,11 +665,11 @@ function AdminSettings2() {
                                 <form className='flex flex-col mx-auto items-center text-lg md:text-xl lg:text-2xl border-4 rounded-lg p-4 m-4 w-full'>
                                     <div className='flex flex-col text-center font-semibold w-full mt-4'>
                                         <label htmlFor="special_Offers_Code" className='my-4'>Offer Name</label>
-                                        <input type="text" name="special_Offers_Code" placeholder='E.g. Diwali10, NewYear15, etc.' className='text-center h-auto md:h-14 font-semibold rounded-lg border-4 border-white w-full bg-white bg-black shadow-lg shadow-black' />
+                                        <input type="text" name="special_Offers_Code" placeholder='E.g. Diwali10, NewYear15, etc.' className='text-center h-auto md:h-14 font-semibold rounded-lg border-4 border-white w-full bg-white shadow-lg shadow-black' />
                                     </div>
                                     <div className='flex flex-col w-full text-center font-semibold'>
                                         <label htmlFor="selected_game_name" className='my-4'>Select Game</label>
-                                        <select name="selected_game_name" className='text-center w-full h-auto md:h-14 font-semibold rounded-lg border-4 border-white bg-white bg-black shadow-lg shadow-black'>
+                                        <select name="selected_game_name" className='text-center w-full h-auto md:h-14 font-semibold rounded-lg border-4 border-white bg-white shadow-lg shadow-black'>
                                             <option value="Select Option">Select Option</option>
                                             <option value="All Games">All Games</option>
                                             <option value="Single Digit Lottery">Single Digit Lottery</option>
@@ -681,7 +681,7 @@ function AdminSettings2() {
                                     </div>
                                     <label className="block my-4 text-center font-medium">Change Bonus Percent</label>
                                     <input type="number"
-                                        className='p-2 m-4 text-center h-auto md:h-14 font-semibold rounded-lg border-4 border-white w-full bg-white bg-black shadow-lg shadow-black'
+                                        className='p-2 m-4 text-center h-auto md:h-14 font-semibold rounded-lg border-4 border-white w-full bg-white shadow-lg shadow-black'
                                     />
                                     <button onClick={handleDeleteAgentSubmit} className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:border-4 hover:bg-blue-900">
                                         Change
@@ -691,7 +691,7 @@ function AdminSettings2() {
                                 <form className='flex flex-col mx-auto items-center text-lg md:text-xl lg:text-2xl border-4 rounded-lg p-4 m-4 w-full'>
                                     <div className='flex flex-col text-center w-full font-semibold mt-10'>
                                         <label htmlFor="special_Offers_Code">Offer Name</label>
-                                        <input type="text" name="special_Offers_Code" placeholder='E.g. Diwali10, NewYear15, etc.' className='text-center h-auto md:h-14 font-semibold rounded-lg border-4 border-white w-full bg-white bg-black shadow-lg shadow-black' />
+                                        <input type="text" name="special_Offers_Code" placeholder='E.g. Diwali10, NewYear15, etc.' className='text-center h-auto md:h-14 font-semibold rounded-lg border-4 border-white w-full bg-white shadow-lg shadow-black' />
                                     </div>
                                     <button onClick={handleDeleteAgentSubmit} className="mt-2 bg-red-500 text-white px-4 py-2 rounded-md hover:border-4 hover:bg-red-700">
                                         Remove

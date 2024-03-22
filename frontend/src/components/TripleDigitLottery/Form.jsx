@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { IoMdClock } from "react-icons/io";
 import { BiSolidWalletAlt, BiUserCircle } from 'react-icons/bi';
-import { MdLockClock, MdArrowDropDownCircle } from 'react-icons/md';
+import { MdArrowDropDownCircle } from 'react-icons/md';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import GetWalletBalance from '../UsersPanel/WalletBalance';
 import { useService } from '../../hooks/useService';
 
 const gameTimer = 1200;
-let totalRewardAmount = 0;
+// let totalRewardAmount = 0;
 
 function formatTimer(seconds) {
     // const days = Math.floor(seconds / (3600 * 24));
@@ -30,7 +30,7 @@ function Form() {
     let [betCount, setBetCount] = useState(0);
     const [number, setNumber] = useState(0);
     const [betAmount, setBetAmount] = useState(0);
-    const [rewardAmount, setRewardAmount] = useState(0);
+    const [rewardAmount] = useState(0);
     // const [totalAmountBet, setTotalAmountBet] = useState(0);
     const userID = user.userID;
     const [showRules, setShowRules] = useState(false);
@@ -38,9 +38,9 @@ function Form() {
     const handleShowRules = () => {
         setShowRules(!showRules);
     }
-    const handleNumberClick = (value) => {
-        setNumber(parseInt(value, 10));
-    }
+    // const handleNumberClick = (value) => {
+    //     setNumber(parseInt(value, 10));
+    // }
     const handleBetClick = (value) => {
         setBetAmount(parseInt(value, 10));
     }
@@ -82,7 +82,7 @@ function Form() {
         return () => {
             clearInterval(interval);
         };
-    }, [countdownTimer, cooldown, userID, number, betAmount]);
+    }, [countdownTimer, cooldown, userID, number, betAmount, counter]);
 
     return (
         <div className="px-4 pb-10 flex flex-col items-center">

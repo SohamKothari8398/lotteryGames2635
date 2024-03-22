@@ -21,7 +21,7 @@ const UserComplaints = () => {
             .catch(error => {
                 console.error('Error fetching complaints data:', error);
             });
-    }, []);
+    }, [service]);
 
     const navigateToAdminPage = () => {
         navigate(-1);

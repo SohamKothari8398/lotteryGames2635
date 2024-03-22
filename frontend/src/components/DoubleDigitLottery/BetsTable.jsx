@@ -31,7 +31,7 @@ function BetsTable() {
         return () => {
             clearInterval(interval);
         };
-    }, [user, myBetsTable]);
+    }, [user, myBetsTable, service]);
 
 
     return (

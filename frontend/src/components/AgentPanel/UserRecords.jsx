@@ -12,9 +12,9 @@ function AgentsUserRecords() {
     const service = useService();
     // Use States
     const [tableData, setTableData] = useState([]);
-    const [showDepositRecord, setshowDepositRecord] = useState('');
+    // const [showDepositRecord, setshowDepositRecord] = useState('');
     const [showTransactionsRecord, setShowTransactionsRecord] = useState('');
-    const [showWithdrawRecord, setshowWithdrawRecord] = useState('');
+    // const [showWithdrawRecord, setshowWithdrawRecord] = useState('');
     const [showUserRecordsTable, setshowUserRecordsTable] = useState('');
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function AgentsUserRecords() {
             }
         }
         fetchData();
-    }, [tableData]);
+    }, [tableData, service, user.promoCode]);
 
     // Navigator
     const navigate = useNavigate();
@@ -42,12 +42,12 @@ function AgentsUserRecords() {
     const handleShowTransactionsRecord = () => {
         setShowTransactionsRecord(!showTransactionsRecord);
     }
-    const handleShowDepositRecords = () => {
-        setshowDepositRecord(!showDepositRecord);
-    }
-    const handleShowWithdrawalRecords = () => {
-        setshowWithdrawRecord(!showWithdrawRecord);
-    }
+    // const handleShowDepositRecords = () => {
+    //     setshowDepositRecord(!showDepositRecord);
+    // }
+    // const handleShowWithdrawalRecords = () => {
+    //     setshowWithdrawRecord(!showWithdrawRecord);
+    // }
 
     return (
         <div className="bg-slate-600 flex flex-col w-full py-16 items-center h-auto">

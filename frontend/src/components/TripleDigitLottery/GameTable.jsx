@@ -27,7 +27,7 @@ function GameTable() {
         return () => {
             clearInterval(interval);
         };
-    }, [gamesTable]);
+    }, [gamesTable, service]);
 
     return (
         <div className="px-4 pb-10 flex flex-col items-center">

@@ -115,31 +115,31 @@ function UsersSettings() {
             }
         }
     };
-    const handleUserGamesLockSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            if (!userID || !mobileNumber) {
-                alert('Please fill out all required fields');
-                return;
-            }
-            const response = await service.patch('/admin/settings/gamesLock', { userID });
-            if (response.status === 200) {
-                alert(`User Games Locked!!!!\nUser Name: ${userID}`);
-                setUserID('');
-                setMobileNumber(0);
-            }
-            else {
-                alert('Failed to block user. Please try again.');
-            }
-        } catch (error) {
-            console.error('Error User Games Lock:', error);
-            if (error.response && error.response.data) {
-                alert(`Error: ${error.response.data.error}`);
-            } else {
-                alert('An unexpected error occurred. Please try again.');
-            }
-        }
-    };
+    // const handleUserGamesLockSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         if (!userID || !mobileNumber) {
+    //             alert('Please fill out all required fields');
+    //             return;
+    //         }
+    //         const response = await service.patch('/admin/settings/gamesLock', { userID });
+    //         if (response.status === 200) {
+    //             alert(`User Games Locked!!!!\nUser Name: ${userID}`);
+    //             setUserID('');
+    //             setMobileNumber(0);
+    //         }
+    //         else {
+    //             alert('Failed to block user. Please try again.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error User Games Lock:', error);
+    //         if (error.response && error.response.data) {
+    //             alert(`Error: ${error.response.data.error}`);
+    //         } else {
+    //             alert('An unexpected error occurred. Please try again.');
+    //         }
+    //     }
+    // };
     const handleUserCredentialsSubmit = async (e) => {
         e.preventDefault();
         try {

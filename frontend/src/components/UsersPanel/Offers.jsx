@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { FaWindowClose } from 'react-icons/fa';
 
 function UserOffers() {
 
-    const [showDepositHistory, setshowDepositHistory] = useState('');
-    const [showWithdrawHistory, setshowWithdrawHistory] = useState('');
+    // const [showDepositHistory, setshowDepositHistory] = useState('');
+    // const [showWithdrawHistory, setshowWithdrawHistory] = useState('');
     const navigate = useNavigate();
 
     const navigateToUserHome = () => {

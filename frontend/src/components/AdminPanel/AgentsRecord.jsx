@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import { useService } from '../../hooks/useService';
-import axios from 'axios';
 import { format } from 'date-fns';
 
 const AgentsRecordTable = () => {
@@ -18,7 +17,7 @@ const AgentsRecordTable = () => {
             }
         };
         fetchData();
-    }, [tableData]);
+    }, [tableData, service]);
 
     // Navigator
     const navigate = useNavigate();

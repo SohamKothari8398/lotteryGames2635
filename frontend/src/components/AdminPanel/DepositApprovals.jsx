@@ -31,7 +31,7 @@ const AdminDepositApprovals = () => {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+    }, [service]);
 
     const navigateToAdminPage = () => {
         navigate(-1);

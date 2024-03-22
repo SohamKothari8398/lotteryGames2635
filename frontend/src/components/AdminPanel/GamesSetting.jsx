@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { FaHome } from "react-icons/fa";
-import { useService } from '../../hooks/useService';
 
 function GamesSetting() {
-    const service = useService();
     const [gameDuration, setgameDuration] = useState(null);
     const [rewardAmount, setRewardAmount] = useState(null);
-    const [confirmation, setConfirmation] = useState(false);
+    // const [confirmation, setConfirmation] = useState(false);
     const navigate = useNavigate();
 
     const navigateToAdminPage = () => {

@@ -4,7 +4,6 @@
     overflow: hidden;
     white-space: nowrap;
   }
-  
   .marquee {
     display: inline-block;
     animation: marqueeAnimation 10s ease-in-out infinite;
@@ -13,21 +12,18 @@
   .marquee:hover {
     animation-play-state: paused;
   }
-  
   .marquee-item {
     margin-right: 1.5rem; /* Adjust as needed to control spacing between images */
     display: inline-block;
     transition: border-color 0.3s ease;
     text-decoration: none; /* Remove underline from anchor tags */
   }
-  
   .image-container {
     width: 20rem; /* Adjust as needed */
     height: 10rem; /* Adjust as needed */
     background-size: cover;
     background-position: center;
   }
-  
   @keyframes marqueeAnimation {
     0% {
       transform: translateX(8%);
@@ -36,4 +32,3 @@
       transform: translateX(-88%);
     }
   }
-  

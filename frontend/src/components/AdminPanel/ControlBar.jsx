@@ -1,6 +1,6 @@
 import React, { } from 'react';
 import { BsFillClipboard2DataFill } from 'react-icons/bs';
-import { FaUserSecret, FaBriefcase, FaUser, FaWallet, FaGamepad } from 'react-icons/fa';
+import { FaUserSecret, FaBriefcase, FaUser, FaWallet } from 'react-icons/fa';
 import { PiFilesBold } from 'react-icons/pi';
 import { AiFillControl } from 'react-icons/ai';
 import { HiGift } from 'react-icons/hi';
@@ -20,9 +20,9 @@ function AdminControlBar() {
         navigate('/admin/adminWithdrawalApprovalsPage');
     }
 
-    const navigateToAllRecordsPage = () => {
-        navigate('/admin/allRecords');
-    }
+    // const navigateToAllRecordsPage = () => {
+    //     navigate('/admin/allRecords');
+    // }
     const navigateToCreateGiftCardPage = () => {
         navigate('/admin/createGiftCard');
     }
@@ -41,28 +41,28 @@ function AdminControlBar() {
         navigate('/admin/usersComplaints');
     }
 
-    const navigateToAdminSettingsPage = () => {
-        navigate('/admin/settings');
-    }
+    // const navigateToAdminSettingsPage = () => {
+    //     navigate('/admin/settings');
+    // }
     const navigateToUserSettingsPage = () => {
         navigate('/admin/userSettings');
     }
     const navigateToAgentSettingsPage = () => {
         navigate('/admin/agentSettings');
     }
-    const navigateToGamesSettingsPage = () => {
-        navigate('/admin/gamesSettings');
-    }
-    const navigateToOffersSettingsPage = () => {
-        navigate('/admin/OffersSettings');
-    }
+    // const navigateToGamesSettingsPage = () => {
+    //     navigate('/admin/gamesSettings');
+    // }
+    // const navigateToOffersSettingsPage = () => {
+    //     navigate('/admin/OffersSettings');
+    // }
     const navigateToAdminSummaryPage = () => {
         navigate('/admin/summaryReportsStatements');
     }
 
-    const navigateToAdminSpecialOffers = () => {
-        navigate('/admin/adminSpecialOffers');
-    }
+    // const navigateToAdminSpecialOffers = () => {
+    //     navigate('/admin/adminSpecialOffers');
+    // }
 
     const navigateToAdminPromotionsAdsPage = () => {
         navigate('/admin/setThemes');

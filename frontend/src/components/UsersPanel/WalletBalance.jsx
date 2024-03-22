@@ -29,7 +29,7 @@ function GetWalletBalance() {
         return () => {
             clearInterval(interval);
         };
-    }, [user.userID]);
+    }, [user.userID, service]);
 
     return (
         <div className="flex w-auto h-auto items-center ml-4">

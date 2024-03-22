@@ -17,7 +17,7 @@ const AdminGiftCardsTable = () => {
             }
         };
         fetchData();
-    }, [tableData]);
+    }, [tableData, service]);
 
     // Navigator
     const navigate = useNavigate();

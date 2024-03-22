@@ -47,9 +47,8 @@
       color: #5eead4;
     }
   }
-  
   .animate-color-change {
-    animation: changeTextColor 5s linear infinite; 
+    animation: changeTextColor 5s linear infinite;
     white-space: nowrap;
     overflow: hidden;
     display: inline-block;

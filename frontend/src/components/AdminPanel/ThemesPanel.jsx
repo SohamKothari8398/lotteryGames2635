@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome, FaYoutube } from 'react-icons/fa';
 import { BsFileText } from 'react-icons/bs';
-import { RiImageAddLine } from 'react-icons/ri';
+// import { RiImageAddLine } from 'react-icons/ri';
 import LandingPageMarqueeText from '../LandingPage/MarqueeText';
-import LandingPageGamesSlider from '../LandingPage/GamesSlider';
-import LandingPageImagesMarquee from '../LandingPage/ImagesMarquee';
+// import LandingPageGamesSlider from '../LandingPage/GamesSlider';
+// import LandingPageImagesMarquee from '../LandingPage/ImagesMarquee';
 import GamesCards from '../Games/GamesCards';
 import { useService } from '../../hooks/useService';
 
@@ -24,8 +24,8 @@ function AdminThemesPanel() {
     const [gameName, setGameName] = useState('');
     const [yotubeVideoLink, setYotubeVideoLink] = useState('https://www.youtube.com/embed/');
     const [showMarqueeTextForm, setShowMarqueeTextForm] = useState(false);
-    const [showMarqueeImageForm, setShowMarqueeImageForm] = useState(false);
-    const [showSliderImageForm, setShowSliderImageForm] = useState(false);
+    // const [showMarqueeImageForm, setShowMarqueeImageForm] = useState(false);
+    // const [showSliderImageForm, setShowSliderImageForm] = useState(false);
     const [showYoutubeLinksForm, setShowYoutubeLinksForm] = useState(false);
     const navigate = useNavigate();
     const navigateToAdminPage = () => {
@@ -40,12 +40,12 @@ function AdminThemesPanel() {
     const handleShowMarqueeTextForm = () => {
         setShowMarqueeTextForm(!showMarqueeTextForm);
     }
-    const handleShowMarqueeImageForm = () => {
-        setShowMarqueeImageForm(!showMarqueeImageForm);
-    }
-    const handleShowSliderImageForm = () => {
-        setShowSliderImageForm(!showSliderImageForm);
-    }
+    // const handleShowMarqueeImageForm = () => {
+    //     setShowMarqueeImageForm(!showMarqueeImageForm);
+    // }
+    // const handleShowSliderImageForm = () => {
+    //     setShowSliderImageForm(!showSliderImageForm);
+    // }
     const handleShowYoutubeLinksForm = () => {
         setShowYoutubeLinksForm(!showYoutubeLinksForm);
     }
@@ -76,7 +76,7 @@ function AdminThemesPanel() {
             if (response.data.status === "Updated Slider Text") {
                 console.log(adsSliderText);
                 alert(`The new slider text = ${adsSliderText}\nSlider Text Changed successfully!`);
-                window.location = window.location;
+                window.location.href = "/";
             } else {
                 alert("Failed to Update.");
                 throw new Error("Failed to Update.");

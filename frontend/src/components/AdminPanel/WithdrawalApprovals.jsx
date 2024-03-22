@@ -18,7 +18,7 @@ const AdminWithdrawalApprovals = () => {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+    }, [service]);
 
     // Navigators
     const navigateToAdminPage = () => {

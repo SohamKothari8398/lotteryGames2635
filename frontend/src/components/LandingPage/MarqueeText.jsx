@@ -18,7 +18,7 @@ function LandingPageMarqueeText() {
             }
         };
         fetchData();
-    }, [marqueeText]);
+    }, [marqueeText, service]);
 
     return (
         <div className="cursor-pointer sticky bg-black font-bold text-xl w-full h-12 hover:scale-150">

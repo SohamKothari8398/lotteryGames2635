@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaWindowClose, FaWallet } from 'react-icons/fa';
+import { FaWindowClose } from 'react-icons/fa';
 import upilogo from '../../assets/upiLogo.webp';
 import gpayLogo from '../../assets/gpayLogo.webp';
 import paytmLogo from '../../assets/paytmLogo.webp';
@@ -72,7 +72,7 @@ function Deposit() {
                         <div className="text-slate-900 font-bold text-3xl md:text-4xl lg:text-5xl ">
                             Add Funds
                         </div>
-                        <a href="#" className="text-blue-500 mt-8 text-sm ml-2 underline">
+                        <a href="/" className="text-blue-500 mt-8 text-sm ml-2 underline">
                             LEARN HOW
                         </a>
                     </div>

@@ -27,9 +27,9 @@ function UserStickyFooter() {
     const navigateToHelpCenter = () => {
         navigate('/helpCenter');
     };
-    const navigateToUserResult = () => {
-        navigate('/user/result');
-    };
+    // const navigateToUserResult = () => {
+    //     navigate('/user/result');
+    // };
     const navigateToUserOffers = () => {
         navigate('/user/offers');
     };
