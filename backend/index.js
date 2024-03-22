@@ -7,14 +7,21 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
-app.use(cors());
+
+const corsOptions = {
+  origin: "http://localhost:3000", // Allow requests only from your frontend (port 3000)
+  credentials: true, // Include cookies in requests
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"], // Allowed headers
+};
+app.use(cors(corsOptions));
 
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://up365gaming.com",
-    methods: ["GET", "POST", "PUT"],
-    credentials: true,
+    origin: "http://localhost:3000", // Same origin allowed for Socket.IO
+    methods: ["GET", "POST", "PUT"], // Allowed methods for Socket.IO
+    credentials: true, // Allow cookies for Socket.IO
   },
 });
 
@@ -45,13 +52,13 @@ app.use("/games/doubleDigitLottery", DoubleLotteryGameRouter);
 app.use("/games/tripleDigitLottery", TripleLotteryGameRouter);
 app.use("/games/colorBallLottery", ColorballGameRouter);
 
-io.on("connection", (socket) => {
-  console.log("New client connected");
+// io.on("connection", (socket) => {
+//   console.log("New client connected");
 
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
-  });
-});
+//   socket.on("disconnect", () => {
+//     console.log("Client disconnected");
+//   });
+// });
 
 mongoose
   .connect(process.env.MONGO || "mongodb://localhost:27017/up365gaming")
