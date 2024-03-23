@@ -11,7 +11,7 @@ const cors = require("cors");
 const corsOptions = {
   origin: "http://localhost:3000", // Allow requests only from your frontend (port 3000)
   credentials: true, // Include cookies in requests
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE"], // Allowed HTTP methods
   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"], // Allowed headers
 };
 app.use(cors(corsOptions));
@@ -20,7 +20,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000", // Same origin allowed for Socket.IO
-    methods: ["GET", "POST", "PUT"], // Allowed methods for Socket.IO
+    methods: ["GET", "POST", "PUT", "PATCH"], // Allowed methods for Socket.IO
     credentials: true, // Allow cookies for Socket.IO
   },
 });
@@ -35,6 +35,7 @@ const SingleLotteryGameRouter = require("./routes/singleLotteryGameRouter");
 const DoubleLotteryGameRouter = require("./routes/doubleLotteryGameRouter");
 const TripleLotteryGameRouter = require("./routes/tripleDigitLotteryRouter");
 const ColorballGameRouter = require("./routes/colorBallRouter");
+const CreateUpdateGamesController = require("./controllers/createUpdateGamesController");
 
 // Middleware
 app.use(express.json());
