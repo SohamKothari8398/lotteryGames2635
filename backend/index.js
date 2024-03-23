@@ -9,18 +9,10 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
-const corsOptions = {
-  origin: "https://up365gaming.com", // Allow requests only from your frontend (port 3000) || "http://localhost:3000",
-  credentials: true, // Include cookies in requests
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Allowed HTTP methods
-  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"], // Allowed headers
-};
-app.use(cors(corsOptions));
-
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://up365gaming.com", // Same origin allowed for Socket.IO // origin: "https://up365gaming.com" || "http://localhost:3000",
+    origin: "https://www.up365gaming.com", // Same origin allowed for Socket.IO // origin: "https://up365gaming.com" || "http://localhost:3000",
     methods: ["GET", "POST", "PUT", "PATCH"], // Allowed methods for Socket.IO
     credentials: true, // Allow cookies for Socket.IO
   },
