@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BiSolidOffer } from 'react-icons/bi';
 import { FaHome } from "react-icons/fa";
-import { useService } from '../../hooks/useService';
+// import { useService } from '../../hooks/useService';
 
 function OffersSettings() {
-    const service = useService();
+    // const service = useService();
     const [showOfferSettings, setshowOfferSettings] = useState('');
-    const [confirmation, setConfirmation] = useState(false);
+    // const [confirmation, setConfirmation] = useState(false);
     const navigate = useNavigate();
-    const [deleteSubAdmin, setDeleteSubAdmin] = useState('');
+    const [deleteAgent, setDeleteAgent] = useState('');
     const handleDeleteAgentSubmit = () => {
-        if (window.confirm(`Blocked Sub-Admin: ${deleteSubAdmin}`)) {
+        if (window.confirm(`Blocked Sub-Admin: ${deleteAgent}`)) {
+            setDeleteAgent("");
         } else {
             alert('Action Cancelled');
         }

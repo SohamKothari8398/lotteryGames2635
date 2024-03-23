@@ -1,5 +1,5 @@
 {
-  "proxy":"https://api.up365gaming.com",
+  "proxy": "https://api.up365gaming.com",
   "name": "up365_frontend",
   "version": "0.1.0",
   "private": true,
@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@webpack-cli/generators": "^3.0.7",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
