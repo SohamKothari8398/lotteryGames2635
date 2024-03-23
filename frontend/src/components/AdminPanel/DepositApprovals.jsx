@@ -75,21 +75,19 @@ const AdminDepositApprovals = () => {
             alert('Remarks are required for Pending and Rejected status.');
             return;
         }
-        try {
-            const response = await service.patch(`/admin/adminDepositApprovalsPage/${row._id}`, {
-                utrId: row.utrId,
-                amount: row.amount,
-                status: row.status,
-                adminRemarks: row.adminRemarks,
-            });
+        service.patch(`/admin/adminDepositApprovalsPage/${row._id}`, {
+            utrId: row.utrId,
+            amount: row.amount,
+            status: row.status,
+            adminRemarks: row.adminRemarks,
+        }).then(response => {
             const updatedData = [...tableData];
             updatedData[index] = response.data;
             setTableData(updatedData);
             alert(`Transaction updated successfully`);
-            navigate(0);
-        } catch (error) {
+        }).catch(error => {
             console.error('Error updating transaction:', error);
-        }
+        });
     };
 
     return (
