@@ -12,9 +12,12 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://www.up365gaming.com", // Same origin allowed for Socket.IO // origin: "https://up365gaming.com" || "http://localhost:3000",
-    methods: ["GET", "POST", "PUT", "PATCH"], // Allowed methods for Socket.IO
-    credentials: true, // Allow cookies for Socket.IO
+    origin: ["https://www.up365gaming.com", "https://api.up365gaming.com"],
+    // Same origin allowed for Socket.IO // origin: "https://up365gaming.com" || "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "PATCH"],
+    // Allowed methods for Socket.IO
+    credentials: true,
+    // Allow cookies for Socket.IO
   },
 });
 
