@@ -25,14 +25,13 @@ const io = new Server(server, {
     origin: [
       "https://www.up365gaming.com",
       "https://up365gaming.com",
+      "http://www.up365gaming.com",
+      "http://up365gaming.com",
       "https://api.up365gaming.com",
     ],
-    // Same origin allowed for Socket.IO // origin: "https://up365gaming.com" || "http://localhost:3000",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    // Allowed methods for Socket.IO
     allowedHeaders: "*",
     credentials: true,
-    // Allow cookies for Socket.IO
   },
 });
 
