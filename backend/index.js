@@ -20,6 +20,16 @@ const ColorballGameRouter = require("./routes/colorBallRouter");
 
 const app = express();
 const server = http.createServer(app);
+
+app.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://up365gaming.com https://www.up365gaming.com"
+  );
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+});
+
 const io = new Server(server, {
   cors: {
     origin: ["https://www.up365gaming.com", "https://up365gaming.com"],
