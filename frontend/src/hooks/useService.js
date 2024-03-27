@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const SERVICE_BASE_URL =
-  process.env.REACT_APP_SERVICE_BASEURL || "https://api.up365gaming.com";
+  process.env.REACT_APP_SERVICE_BASEURL || "https://up365gaming.com";
 
 export const useService = () => {
   const instance = axios.create({
