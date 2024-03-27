@@ -20,36 +20,23 @@ const ColorballGameRouter = require("./routes/colorBallRouter");
 
 const server = http.createServer(app);
 
+app.use(
+  cors({
+    origin: "https://www.up365gaming.com",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: "*",
+    credentials: true,
+  })
+);
+
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: "https://www.up365gaming.com",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: "*",
     credentials: true,
   },
 });
-
-// const io = new Server(server, {
-//   cors: {
-//     origin: [
-//       "https://www.up365gaming.com",
-//       "https://up365gaming.com",
-//       "https://api.up365gaming.com",
-//     ],
-// origin: [
-//   "https://www.up365gaming.com",
-//   "https://up365gaming.com",
-//   "http://www.up365gaming.com",
-//   "http://up365gaming.com",
-//   "https://api.up365gaming.com",
-// ],
-// Same origin allowed for Socket.IO // origin: "https://up365gaming.com" || "http://localhost:3000",
-// methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-// Allowed methods for Socket.IO
-// credentials: true,
-// Allow cookies for Socket.IO
-//   },
-// });
 
 // Middleware
 app.use(cors());
@@ -85,3 +72,25 @@ mongoose
   .catch((err) => {
     console.error(`Error connecting to MongoDB: ${err}`);
   });
+
+// const io = new Server(server, {
+//   cors: {
+//     origin: [
+//       "https://www.up365gaming.com",
+//       "https://up365gaming.com",
+//       "https://api.up365gaming.com",
+//     ],
+// origin: [
+//   "https://www.up365gaming.com",
+//   "https://up365gaming.com",
+//   "http://www.up365gaming.com",
+//   "http://up365gaming.com",
+//   "https://api.up365gaming.com",
+// ],
+// Same origin allowed for Socket.IO // origin: "https://up365gaming.com" || "http://localhost:3000",
+// methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+// Allowed methods for Socket.IO
+// credentials: true,
+// Allow cookies for Socket.IO
+//   },
+// });
