@@ -5,7 +5,7 @@ const http = require("http");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const cors = require("cors");
+// const cors = require("cors");
 
 // Importing Routers
 const UserRouter = require("./routes/userRouter");
@@ -20,22 +20,16 @@ const ColorballGameRouter = require("./routes/colorBallRouter");
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: ["https://www.up365gaming.com", "https://up365gaming.com"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  },
+});
 
 app.use(express.json());
 app.use(cookieParser());
-
-const corsOptions = {
-  origin: ["https://up365gaming.com", "https://www.up365gaming.com"],
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  allowedHeaders: "*",
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-io.use((socket, next) => {
-  cors(corsOptions)(socket.request, socket.request.res, next);
-});
 
 // Socket.io connection handling
 io.on("connection", (socket) => {
