@@ -5,8 +5,8 @@ const http = require("http");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const app = express();
 const cors = require("cors");
+
 // Importing Routers
 const UserRouter = require("./routes/userRouter");
 const PromosLinksRouter = require("./routes/promosLinksRouter");
@@ -18,30 +18,26 @@ const DoubleLotteryGameRouter = require("./routes/doubleLotteryGameRouter");
 const TripleLotteryGameRouter = require("./routes/tripleDigitLotteryRouter");
 const ColorballGameRouter = require("./routes/colorBallRouter");
 
+const app = express();
 const server = http.createServer(app);
+const io = new Server(server);
 
-app.use(
-  cors({
-    origin: "https://up365gaming.com",
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    allowedHeaders: "*",
-    credentials: true,
-  })
-);
-
-const io = new Server(server, {
-  cors: {
-    origin: "https://up365gaming.com",
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    allowedHeaders: "*",
-    credentials: true,
-  },
-});
-
-// Middleware
-app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+
+const corsOptions = {
+  origin: ["https://up365gaming.com", "https://www.up365gaming.com"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: "*",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+io.use((socket, next) => {
+  cors(corsOptions)(socket.request, socket.request.res, next);
+});
+
+// Socket.io connection handling
 io.on("connection", (socket) => {
   console.log("New client connected");
   socket.on("disconnect", () => {
@@ -49,6 +45,7 @@ io.on("connection", (socket) => {
   });
 });
 
+// Routing
 app.use("/", UserRouter);
 app.use("/", PromosLinksRouter);
 app.use("/", TransactionsRouter);
@@ -59,14 +56,14 @@ app.use("/games/doubleDigitLottery", DoubleLotteryGameRouter);
 app.use("/games/tripleDigitLottery", TripleLotteryGameRouter);
 app.use("/games/colorBallLottery", ColorballGameRouter);
 
+// MongoDB connection
 mongoose
   .connect(process.env.MONGO || "mongodb://localhost:27017/up365gaming")
   .then(() => {
     console.log("Connected to MongoDB");
-    server.listen(process.env.PORT || 4000, () => {
-      console.log(
-        `Backend Server is running on port ${process.env.PORT || 4000}`
-      );
+    const port = process.env.PORT || 4000;
+    server.listen(port, () => {
+      console.log(`Backend Server is running on port ${port}`);
     });
   })
   .catch((err) => {
