@@ -9,7 +9,7 @@ const {
 } = require("../controllers/promosLinksController");
 
 router.get("/promoLink", getAdsSliderText);
-router.get("/promoLinks", getAllLinks);
+router.get("/promosLinks", getAllLinks);
 router.put("/admin/setThemes/text", changeSliderText);
 router.put("/admin/setThemes/link", changeGamesYoutubeLink);
 

@@ -64,7 +64,7 @@ const GamesCards = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await service.get('/promoLinks'); // Assuming your backend route is /api/promoLinks
+                const response = await service.get('/promosLinks'); // Assuming your backend route is /api/promoLinks
                 // Axios automatically parses JSON, so you can directly access the data property
                 const data = response.data;
                 // Update the videoLink states based on the fetched promoLinks
