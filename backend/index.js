@@ -17,27 +17,10 @@ const SingleLotteryGameRouter = require("./routes/singleLotteryGameRouter");
 const DoubleLotteryGameRouter = require("./routes/doubleLotteryGameRouter");
 const TripleLotteryGameRouter = require("./routes/tripleDigitLotteryRouter");
 const ColorballGameRouter = require("./routes/colorBallRouter");
-
 const app = express();
 const server = http.createServer(app);
 
-app.use((req, res, next) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://up365gaming.com",
-    "https://www.up365gaming.com"
-  );
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-});
-
-const io = new Server(server, {
-  cors: {
-    origin: ["https://www.up365gaming.com", "https://up365gaming.com"],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true,
-  },
-});
+const io = new Server(server);
 
 app.use(express.json());
 app.use(cookieParser());

@@ -4,7 +4,6 @@ import './AdsSlider.css';
 // Import your images here
 import img3 from '../../assets/img3.webp';
 import img4 from '../../assets/img4.webp';
-import img6 from '../../assets/discoverLogo.webp';
 import img7 from '../../assets/img7.webp';
 import img8 from '../../assets/3DLottery.webp';
 import lottery from '../../assets/lotteryBg.webp';
@@ -15,7 +14,7 @@ import teenpatti from '../../assets/teenpattiBg.webp';
 import colorball from '../../assets/colorballBg.webp';
 import { useNavigate } from 'react-router-dom';
 
-const images = [img3, img4, lottery, ludo, poker, andarbahar, teenpatti, colorball, img6, img7, img8];
+const images = [img3, img4, lottery, ludo, poker, andarbahar, teenpatti, colorball, img3, img4, lottery, ludo, poker, andarbahar, teenpatti, colorball, img7, img8];
 
 function LandingPageImagesMarquee() {
     const [image] = useState(null);

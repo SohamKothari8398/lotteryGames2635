@@ -11,7 +11,6 @@ function AgentsCreatePromo() {
 
     const handlepromoCode = (e) => {
         setpromoCode(e.target.value);
-        promoCode = e.target.value;
     }
     const handleOnSubmit = () => {
         alert(`Confirm the details of your promo code`);
@@ -26,7 +25,7 @@ function AgentsCreatePromo() {
                         <form className='text-white border-4 rounded-lg p-2'>
                             <div className='flex flex-col text-center font-semibold mt-10'>
                                 <label htmlFor="promo_Code">Promo-Code Name</label>
-                                <input type="text" name="promo_Code" onChange={handlepromoCode} placeholder='E.g. Diwali10, NewYear15, etc.' className='p-2 m-4 text-center h-auto md:h-14 font-semibold rounded-lg bg-black shadow-lg shadow-black' />
+                                <input type="text" name="promo_Code" value={promoCode} onChange={handlepromoCode} placeholder='E.g. Diwali10, NewYear15, etc.' className='p-2 m-4 text-center h-auto md:h-14 font-semibold rounded-lg bg-black shadow-lg shadow-black' />
                             </div>
                             <div className='flex flex-col text-center font-semibold'>
                                 <label htmlFor="bonus_percent">Set Bonus Percent</label>

@@ -101,7 +101,9 @@ function UsersSettings() {
             if (response.status === 200) {
                 alert(`User Bets Activated!!!!\nUser Name: ${userID}`);
                 setUserID('');
-                setMobileNumber(0);
+                if (mobileNumber) {
+                    setMobileNumber(0);
+                };
             }
             else {
                 alert('Failed to block user. Please try again.');
