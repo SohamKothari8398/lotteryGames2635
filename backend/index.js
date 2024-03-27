@@ -22,7 +22,7 @@ const server = http.createServer(app);
 
 app.use(
   cors({
-    origin: "https://www.up365gaming.com",
+    origin: "https://up365gaming.com",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: "*",
     credentials: true,
@@ -31,7 +31,7 @@ app.use(
 
 const io = new Server(server, {
   cors: {
-    origin: "https://www.up365gaming.com",
+    origin: "https://up365gaming.com",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: "*",
     credentials: true,
