@@ -213,7 +213,7 @@ function LoginSignin() {
                                         </button>
                                     </div>
                                 </label>
-                                {error ? (<div className=" text-red-800 text-center w-full rounded-lg shadow-lg shadow-white bg-white">{error}</div>) : (<></>)}
+                                {error ? (<div className=" text-red-800 flex text-center w-full rounded-lg shadow-lg shadow-white bg-white">{error}</div>) : (<></>)}
                                 <div className="flex justify-center">
                                     <button
                                         onClick={handleLoginClick}
