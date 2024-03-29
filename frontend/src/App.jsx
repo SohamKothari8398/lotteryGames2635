@@ -54,10 +54,16 @@ function App() {
   const isLogin = isUser || isAdmin || isAgent;
 
   useEffect(() => {
+<<<<<<< HEAD
     const socket = socketIOClient("https://api.up365gaming.com");
     socket.on('connect', () => {
       console.log('Connected to Backend server');
       console.log('Connected to frontend server');
+=======
+    const socket = socketIOClient(`http://localhost:4000`);  // Connect to backend's Socket.IO
+    socket.on('connect', () => {
+      console.log('Connected to Backend Server is running Good');
+>>>>>>> local3000
     });
     return () => {
       socket.disconnect();

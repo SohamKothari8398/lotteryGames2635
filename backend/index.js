@@ -5,7 +5,29 @@ const http = require("http");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+<<<<<<< HEAD
 // const cors = require("cors");
+=======
+const app = express();
+const cors = require("cors");
+
+const corsOptions = {
+  origin: "http://localhost:3000", // Allow requests only from your frontend (port 3000)
+  credentials: true, // Include cookies in requests
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE"], // Allowed HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"], // Allowed headers
+};
+app.use(cors(corsOptions));
+
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000", // Same origin allowed for Socket.IO
+    methods: ["GET", "POST", "PUT", "PATCH"], // Allowed methods for Socket.IO
+    credentials: true, // Allow cookies for Socket.IO
+  },
+});
+>>>>>>> local3000
 
 // Importing Routers
 const UserRouter = require("./routes/userRouter");
@@ -17,14 +39,19 @@ const SingleLotteryGameRouter = require("./routes/singleLotteryGameRouter");
 const DoubleLotteryGameRouter = require("./routes/doubleLotteryGameRouter");
 const TripleLotteryGameRouter = require("./routes/tripleDigitLotteryRouter");
 const ColorballGameRouter = require("./routes/colorBallRouter");
+<<<<<<< HEAD
 const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server);
+=======
+const CreateUpdateGamesController = require("./controllers/createUpdateGamesController");
+>>>>>>> local3000
 
 app.use(express.json());
 app.use(cookieParser());
 
+<<<<<<< HEAD
 // Socket.io connection handling
 io.on("connection", (socket) => {
   console.log("New client connected");
@@ -32,6 +59,26 @@ io.on("connection", (socket) => {
     console.log("Client disconnected");
   });
 });
+=======
+app.use("/", UserRouter);
+app.use("/", PromosLinksRouter);
+app.use("/", TransactionsRouter);
+app.use("/admin", AdminRoutes);
+app.use("/user/complaints", ComplaintsRouter);
+
+app.use("/games/singleDigitLottery", SingleLotteryGameRouter);
+app.use("/games/doubleDigitLottery", DoubleLotteryGameRouter);
+app.use("/games/tripleDigitLottery", TripleLotteryGameRouter);
+app.use("/games/colorBallLottery", ColorballGameRouter);
+
+// io.on("connection", (socket) => {
+//   console.log("New client connected");
+
+//   socket.on("disconnect", () => {
+//     console.log("Client disconnected");
+//   });
+// });
+>>>>>>> local3000
 
 // Routing
 app.use("/", UserRouter);

@@ -28,21 +28,21 @@ function generateRandomColor() {
 // Game Timer every 12 minutes 30 seconds create new game
 // Update Game and Bets after 10 minutes 30 seconds
 
-cron.schedule("10 */1 * * * *", async () => {
-  try {
-    const games = await GameModel.find();
-    if (!games || games.length === 0) await createGame();
-    else {
-      await createGame();
-    }
-    console.log(
-      "Color Ball Game Request Created at",
-      Math.floor(Date.now() * 1000)
-    );
-  } catch (error) {
-    console.error("Error creating a new game:", error.message);
-  }
-});
+// cron.schedule("10 */1 * * * *", async () => {
+//   try {
+//     const games = await GameModel.find();
+//     if (!games || games.length === 0) await createGame();
+//     else {
+//       await createGame();
+//     }
+//     console.log(
+//       "Color Ball Game Request Created at",
+//       Math.floor(Date.now() * 1000)
+//     );
+//   } catch (error) {
+//     console.error("Error creating a new game:", error.message);
+//   }
+// });
 
 const createGame = async (req, res) => {
   try {

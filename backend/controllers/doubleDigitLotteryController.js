@@ -12,21 +12,21 @@ function generateRandomDoubleDigit() {
 // Game Timer every 17 minutes 30 seconds create new game
 // Update Game and Bets after 15 minutes 30 seconds
 
-cron.schedule("5 */1 * * * *", async () => {
-  try {
-    const games = await GameModel.find();
-    if (!games || games.length === 0) await createGame();
-    else {
-      await createGame();
-      console.log(
-        "Double Digit Lottery Game Request Created at ",
-        Math.floor(Date.now() * 1000)
-      );
-    }
-  } catch (error) {
-    console.error("Error creating a new game:", error.message);
-  }
-});
+// cron.schedule("5 */1 * * * *", async () => {
+//   try {
+//     const games = await GameModel.find();
+//     if (!games || games.length === 0) await createGame();
+//     else {
+//       await createGame();
+//       console.log(
+//         "Double Digit Lottery Game Request Created at ",
+//         Math.floor(Date.now() * 1000)
+//       );
+//     }
+//   } catch (error) {
+//     console.error("Error creating a new game:", error.message);
+//   }
+// });
 
 const createGame = async (req, res) => {
   try {
