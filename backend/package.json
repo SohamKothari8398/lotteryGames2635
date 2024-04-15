@@ -1,6 +1,6 @@
 {
   "proxy": "https://www.up365gaming.com",
-  "name": "up365_backend",
+  "name": "lottery_games_2365_backend",
   "version": "1.0.0",
   "description": "Backend",
   "main": "index.js",
