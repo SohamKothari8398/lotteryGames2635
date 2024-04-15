@@ -1,6 +1,6 @@
 {
   "proxy": "http://localhost:4000",
-  "name": "lotteryGames2365_backend",
+  "name": "lottery_games_2365_backend",
   "version": "1.0.0",
   "description": "Backend",
   "main": "index.js",
