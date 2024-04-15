@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "proxy": "https://www.up365gaming.com",
-=======
-  "proxy": "http://localhost:4000",
->>>>>>> local3000
   "name": "up365_backend",
   "version": "1.0.0",
   "description": "Backend",
